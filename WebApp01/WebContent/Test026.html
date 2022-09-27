@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test026.html</title>
+</head>
+<body>
+
+<div>
+	<h1>드롭다운메뉴(selectbox) 만들기</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<p>당신이 가장 좋아하는 운동은?</p>
+		<select name="selectSport">
+		<!-- select 태그는 단일속성값을 가질 때 쓰는 것 -->
+		<!-- name 속성이 있어야 submit이 가능 -->
+		    <option>--선택하세요--</option>
+			<option value="val1">축구</option>
+			<option value="val2">야구</option>
+			<option value="val3">배구</option>
+			<option value="val4">농구</option>
+		</select>
+		
+		<br><br>
+		
+		<p>당신의 직위를 선택하세요</p>
+		<select name="selectPosition">
+			<option>--선택하세요--</option>
+			<option value="jikCode1">회장</option>
+			<option value="jikCode2">사장</option>
+			<option value="jikCode3">이사</option>
+			<option value="jikCode4">부장</option>
+			<option value="jikCode5">차장</option>
+			<option value="jikCode6">과장</option>
+			<option value="jikCode7">대리</option>
+			<!-- "selected" 속성값을 이용해
+			 맨 위에 있지 않아도 기본값으로 설정할 수 있다 -->
+			<option value="jikCode8" selected="selected">사원</option>
+			<option value="jikCode9">인턴</option>
+		</select>
+		
+		<br><br>
+		
+		<button type="button">확인</button>
+		<button type="reset">취소</button>
+		
+		<br><br>
+		
+		<p>가고싶은 여행지는? (다중 선택 가능)</p>
+		<!-- <select size="3" multiple="multiple"> -->
+		<!-- size의 값을 옵션 개수보다 작게하면 스크롤이 생긴다 -->
+		<select size="5" multiple="multiple">
+		<!-- multiple 속성을 이용해 ctrl 누른 채로 여러 개 선택 가능 -->
+			<option>백두산</option>
+			<option>한라산</option>
+			<option>지리산</option>
+			<option>설악산</option>
+			<option>속리산</option>
+		</select>
+	</form>
+</div>
+
+</body>
+</html>

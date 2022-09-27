@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test024.html</title>
+</head>
+<body>
+	<div>
+		<h1>전송, 취소 버튼 만들기</h1>
+	</div>
+
+	<div>
+		<!-- 1.데이터 전송 및 2.페이지 요청 → submit 요청 -->
+		<!-- 2가지를 묶어서 생각할 것 -->
+		<form action="Test025.html">
+			이름(*) <input type="text" name="name" size="15" maxlength="8"><br>
+			이메일 <input type="text" name="email" size="15" maxlength="20"><br>
+			
+			하고싶은 말<br>
+			<textarea rows="10" cols="50" name="comment"></textarea>
+			<br><br>
+			
+			<input type="submit" value="전송하기" name="submitBtn">
+			<input type="reset" value="다시쓰기" name="resetBtn">
+		</form>
+	</div>
+</body>
+</html>

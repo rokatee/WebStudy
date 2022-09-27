@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test022.html</title>
+</head>
+<body>
+
+<div>
+	<h1>체크박스 만들기</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<p>오늘 점심으로 먹은 메뉴는?</p>
+		
+		<!-- label로 해두면 글씨만 선택해도 체크가 된다 -->
+		<label>
+		<input type="checkbox" name="foodSelect1" value="1" id="label1">흑미
+		</label>
+
+		<input type="checkbox" name="foodSelect1" value="2" id="label2">
+		<label for="label2">김치찌개</label>
+		
+		<!-- label이 없어 체크박스를 정확히 눌러야 체크가 된다 -->		
+		<input type="checkbox" name="foodSelect1" value="3" id="label3">오리고기
+		<input type="checkbox" name="foodSelect1" value="4" id="label4" checked="checkd">깻잎
+		<input type="checkbox" name="foodSelect1" value="5" id="label5">파김치
+		
+		<!-- 김의 label이 3번이라 김을 누르면 오리고기가 선택된다 -->
+		<input type="checkbox" name="foodSelect1" value="6" id="label6">
+		<label for="label3">김</label>
+		
+		<br><br>
+		
+		<p>어제 점심으로 먹은 메뉴는?</p>
+		
+		<label>
+		<input type="checkbox" name="foodSelect2" value="1" id="label7" checked="checkd">백미
+		</label>
+		
+		<input type="checkbox" name="foodSelect2" value="2" id="label8">
+		<label for="label8">순두부찌개</label>
+		
+		<input type="checkbox" name="foodSelect2" value="3" id="label9">소고기
+		<input type="checkbox" name="foodSelect2" value="4" id="label10">상추
+		<input type="checkbox" name="foodSelect2" value="5" id="label11">열무김치
+		
+		<input type="checkbox" name="foodSelect2" value="6" id="label12">
+		<label for="label12">김</label>
+		
+	</form>
+</div>
+
+</body>
+</html>

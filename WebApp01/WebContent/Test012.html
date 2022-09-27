@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test012.html</title>
+</head>
+<body>
+
+<div>
+	<h1>테이블 열 / 행 병합 실습</h1>
+	<hr>
+</div>
+
+<div>
+	<table border="1" bgcolor="orange" width="400">
+		<tr>
+			<td colspan="2">노원구</td>
+			<td colspan="2">강남구</td>
+		</tr>
+		<tr>
+			<td>상계동</td>
+			<td>중계동</td>
+			<td>논현동</td>
+			<td>역삼동</td>
+         </tr>
+	</table>
+</div>
+
+<br><br>
+
+<!-- th 셀의 활용 -->
+<div>
+	<table border="1" bgcolor="orange" width="400">
+		<tr>
+			<th colspan="2">노원구</th>
+			<th colspan="2">강남구</th>
+		</tr>
+		<tr>
+			<td>상계동</td>
+			<td>중계동</td>
+			<td>논현동</td>
+			<td>역삼동</td>
+         </tr>
+	</table>
+</div>
+
+<br><br>
+
+<div>
+	<table border="1" bgcolor="lightgray" width="400">
+		<tr>
+			<th rowspan="2">노원구</th>
+			<td>상계동</td>
+		</tr>
+		<tr>
+			<td>중계동</td>
+         </tr>
+         <tr>
+			<th rowspan="2">강남구</th>
+			<td>논현동</td>
+		</tr>
+		<tr>
+			<td>역삼동</td>
+		</tr>
+	</table>
+</div>
+
+</body>
+</html>

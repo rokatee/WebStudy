@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test010_1.html</title>
+</head>
+<body>
+
+<div>
+	<h1>링크 걸기 실습</h1>
+	<hr>
+</div>
+
+<div>
+	<a href="C:\WebStudy\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\WebApp01\Test010.html">절대경로 지정방식</a>
+	<!-- 보안정책으로 인해 아무 반응이 없음 -->
+	<br><br>
+	
+	<a href="Test010.html">상대경로 지정방식</a>
+	<!-- 이동되는 링크 : http://localhost:8090/WebApp01/Test010.html -->
+	<br><br>
+	
+	<a href="/Test010.html">상대경로 지정방식2</a>
+	<!-- 작동되지 않음 -->
+	<!-- 이동되는 링크 : http://localhost:8090/Test010.html -->
+	<br><br>
+	
+	<a href="./Test010.html">상대경로 지정방식3</a>
+	<!-- 『./』의 의미는 "내가 존재하는 위치의 Test010.html" -->
+	<br><br>
+	
+	<a href="http://localhost:8090/WebApp01/Test010.html">웹 상의 주소 지정방식</a>
+<!-- 	<a href="http://211.238.142.52:8090/WebApp01/Test010.html">웹 상의 주소 지정방식</a> -->
+	<br><br>
+
+	<a name="top">책갈피 위치 ↓아래로 스크롤을 내려보세요</a>
+	<br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br>
+	
+	<a href="#top">책갈피 위치(페이지 내)로 이동하기</a>
+</div>
+
+</body>
+</html>
