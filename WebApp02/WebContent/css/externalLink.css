@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+/* 아래와 같은 방식으로 적용시킬 수 없다 */
+/* 이 파일을 Test007.html에 적용시켜 주세요 */
+/* 그럼 어떻게 하느냐? Test007.html에서 확인 ㄱㄱ */
+
+h2
+{
+	color: blue;
+}
+
+p
+{
+	font-size: 20pt;
+	font-weight: bold;
+	color: red;
+}

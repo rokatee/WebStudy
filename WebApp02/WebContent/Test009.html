@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test009.html</title>
+
+<style type="text/css">
+	@import url("css/externalImport.css");
+</style>
+
+<link rel="stylesheet" type="text/css" href="css/externalLink.css">
+<!-- import VS link 차이 → 로딩속도 측면에서 link가 더 빠르고 엣지 브라우저에선 import 사용 불가 -->
+
+</head>
+<body>
+
+<div>
+	<h1>스타일의 우선순위 규칙</h1>
+	<hr>
+</div>
+
+<p style="color: orange;">이와 같은 상황이라면 나는 어떻게 표현되어야 할까...</p>
+<!-- style 적용은 먼저 쓴게 우선적용 되지만, 나중에 적은 것이 덮어씌우는 방식이다 -->
+
+</body>
+</html>
