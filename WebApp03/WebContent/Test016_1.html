@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test016.html</title>
+
+<style type="text/css">
+   * {color: #223322;}
+   input {font-family: 나눔고딕코딩; font-weight: bold;}
+   input:focus {background-color: #eeeedd;}
+   input.btn {width: 80px; font-weight: bold; font-family: 맑은 고딕;}
+   input.btn:hover {color: orange;}
+   td {text-align: left;}
+   .txt {text-align: left;}
+</style>
+
+<script type="text/javascript">
+	function myCal()
+	{
+		//alert("함수 호출 확인");
+		
+		//var vName = document.getElementById("name").value;	
+		// → 생각해보니 필요없음
+		
+		var vKor = Number(document.getElementById("kor").value);
+		var vEng = Number(document.getElementById("eng").value);
+		var vMat = Number(document.getElementById("mat").value);
+		
+		var vTot = 0;
+		var vAvg = 0;
+		var vResult = "";
+		
+		vTot = vKor + vEng + vMat;
+		vAvg = Math.round(vTot / 3);
+		
+		document.getElementById("avg").value = vAvg;
+		
+		if (vKor >= 40 && vEng >= 40 && vMat>= 40 && vAvg >= 60)
+		{
+			vResult = "합격";
+		}
+		else if (vAvg < 60)
+		{
+			vResult = "불합격";
+		}
+		else if (vAvg >= 60  /*&& vKor < 40 || vEng < 40 || vMat < 40*/)
+		{						// → 이미 위에서 합격인 경우를 제외시키므로
+			vResult = "과락";	//    평균은 60점 이상 이라 함은,
+		}						//    → 과목별로 40점 미만을 포함하는 의미이다
+		
+		document.getElementById("result").value = vResult;
+	}
+</script>
+
+</head>
+<body>
+
+<!-- 
+	사용자로부터 이름, 국어점수, 영어점수, 수학점수를 입력받아
+	평균점수와 판정결과를 출력하는 페이지를 구성한다.
+	판정결과는 합격, 과락, 불합격 중 하나로 처리한다.
+	
+	합격은 모든 과목 점수가 40점 이상이면서 평균 60점 이상인 경우
+	과락은 평균이 60점 이상이지만 한 과목이라도 과목 점수가
+	40점 미만의 과목이 존재하는 경우
+	불합격은 평균이 60점 미만인 경우로 처리한다.
+	(정보처리기사 / 산업기사 처리 기준과 동일한 원칙 적용)
+	
+	HTML, CSS, Javascript 활용
+	
+	페이지 레이아웃
+	---------------------------------------------------------------
+	이름	 [			]
+	국어점수 [			]
+	영어점수 [			]
+	수학점수 [			]
+	
+	<	처리결과확인	>
+	
+	평균		판정결과
+	[		]	[		]
+	---------------------------------------------------------------
+ -->
+ <div>
+      <form>
+         <table style="width: 250px;">
+            <tr>
+               <td>이름 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+               <td><input type="text" style= "width: 100px;" class="txt" id="name"><br></td>
+            </tr>
+            <tr>
+               <td>국어점수</td>
+               <td><input type="text" style= "width: 100px;" class="txt" id="kor"><br></td>
+            </tr>
+            <tr>
+               <td>영어점수</td>
+               <td><input type="text" style= "width: 100px;" class="txt" id="eng"><br></td>
+            </tr>
+            <tr>
+               <td>수학점수</td>
+               <td><input type="text" style= "width: 100px;" class="txt" id="mat"><br></td>
+            </tr>
+
+            <tr style="height: 50px;">
+               <td colspan="3">
+	               <input type="button" class="btn" value="결과" onclick="myCal()"> 
+	               &nbsp;&nbsp;
+	               <input type="reset" class="btn" value="취소"> 
+				   <br><br>
+               </td>
+            </tr>
+
+            <tr style="height: 10px;">
+            </tr>
+
+            <tr>
+               <td>평균</td>
+               <td><input type="text" style="width: 100px;" class="txt"
+                  id="avg" disabled="disabled"></td>
+            </tr>
+
+            <tr>
+               <td>판정결과</td>
+               <td><input type="text" style="width: 100px;" class="txt"
+                  id="result" disabled="disabled"></td>
+            </tr>
+         </table>
+      </form>
+ </div>
+
+</body>
+</html>

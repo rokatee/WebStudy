@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test015.html</title>
+
+<style type="text/css">
+	input:focus {background-color: #eeeedd;}
+	.txt {text-align: right;}
+	input {font-family: 나눔고딕코딩; font-weight: bold;}
+	input.btn:hover {background-color: #556655; color: white;}
+	input.btn:active {color: orange;}
+</style>
+
+<script type="text/javascript">
+
+	function myCal()
+	{
+		var vMoney = document.getElementById("money").value;
+		var money = Number(vMoney);
+		document.getElementById("total").value = money;
+		
+		var vOhback = Math.floor(money/500);
+		money = money%500;
+
+		var vBack = Math.floor(money/100);
+		money = money%100;
+
+		var vOhship = Math.floor(money/50);
+		money = money%50;
+
+		var vShip = Math.floor(money/10);
+		money = money%10;
+		
+		document.getElementById("ohback").value = vOhback
+		document.getElementById("back").value = vBack
+		document.getElementById("ohship").value = vOhship
+		document.getElementById("ship").value = vShip
+	}
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<p>특정 금액(10원~990원)을 사용자로부터 입력받아<br>
+	화폐 단위로 구분하여 출력하는 페이지를 구성한다.<br>
+	화폐 단위는 편의상 오백원, 백원, 오십원, 십원으로 구분한다.<br>
+	HTML, CSS, JavaScript 를 활용한다.<br>
+	</p><br><br>
+	
+	<form>
+		<p> 
+			페이지 기본 레이아웃 구성<br>
+			---------------------------------------------------------<br><br>
+			금액 <input type="text" style= "width: 100px;" class="txt" id="money"> 원
+			<br><br>
+			<input type="button" class="btn" value="결과" onclick="myCal()"> 
+			&nbsp;&nbsp;<input type="reset" class="btn" value="취소"> 
+			<br><br><br>
+			
+			총액&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style= "width: 100px;" class="txt" id="total" disabled="disabled"> 원<br>
+			오백원 <input type="text" style= "width: 100px;" class="txt" id="ohback" disabled="disabled"> 개<br>
+			백원&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style= "width: 100px;" class="txt" id="back" disabled="disabled"> 개<br>
+			오십원 <input type="text" style= "width: 100px;" class="txt" id="ohship" disabled="disabled"> 개<br>
+			십원&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style= "width: 100px;" class="txt" id="ship" disabled="disabled"> 개<br><br>
+			---------------------------------------------------------<br>
+		</p>
+	</form>
+</div>
+
+</body>
+</html>

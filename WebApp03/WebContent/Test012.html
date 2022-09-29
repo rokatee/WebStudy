@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test012.html</title>
+
+<script type="text/javascript">
+	
+	// msg 변수 → 함수 밖에 선언 → 모든 함수에서 접근 가능한 전역 변수
+	var msg = "2022년 9월 29일";
+	// → var 키워드 사용 여부와 관계없이
+	//    함수 밖에 선언되어 있으므로
+	//    전역 변수의 형태로 기능하는 상황
+
+	function buttonOnclick1()
+	{
+		//alert("첫 번째 버튼 클릭");
+		
+		// name 변수 → 함수 내부에 선언 → 이 함수 내부에서 사용하는 지역 변수
+		//var name = "정영준";
+		// → buttonOnclick2() 함수에 변수 선언을 안해준 이유?
+		// 	  name 변수가 지역 변수 이므로 
+		//    다른 함수에서 사용할 수 없는 것을 보여주기 위함
+		
+		name = "민찬우";
+		// → var(iable) 가 없으면 전역 변수와 유사한 역할을 한다
+		//    호출 이후엔 다른 함수에서도 값을 가져다 쓸 수 있다
+		//    하지만 위의 변수가 없는 함수부터 호출하면
+		//    위의 변수는 가져다 쓸 수 없다
+		
+		document.write("이름 : " + name);
+		alert(msg);
+	}
+
+	function buttonOnclick2()
+	{
+		//alert("두 번째 버튼 클릭");
+		
+		document.write("이름 : " + name);
+		alert(msg);
+	}
+
+</script>
+
+</head>
+<body>
+
+<input type="button" id="button1" value="Button1" onclick="buttonOnclick1()"><br>
+<input type="button" id="button2" value="Button2" onclick="buttonOnclick2()"><br>
+
+</body>
+</html>

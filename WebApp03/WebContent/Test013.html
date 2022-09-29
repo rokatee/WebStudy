@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test013.html</title>
+
+<style type="text/css">
+	input.box:focus {background-color: yellow;}
+	.btn:hover {background-color: #232; color: white; font-weight: bold;}
+	input.boxSu {width: 50px; font-weight: bold;}
+</style>
+
+<script type="text/javascript">
+	
+	function btnA_click()
+	{
+		// 확인
+		//alert("A버튼 클릭~!!!");
+		
+		// 테스트
+		//alert(document.getElementById("txtLeft"));
+		//alert(document.getElementById("txtLeft").value);
+		
+		/* 
+		var txt01 = document.getElementById("txtLeft");
+		var txt02 = document.getElementById("txtRight");
+		
+		var leftStr = txt01.value;
+		
+		txt02.value = leftStr; 
+		*/
+		
+		document.getElementById("txtRight").value = document.getElementById("txtLeft").value;
+		
+	}
+	
+	function btnB_click()
+	{
+		// 확인
+		//alert("B버튼 클릭~!!!");
+		
+		/*
+		var txt01 = document.getElementById("txtLeft");
+		var txt02 = document.getElementById("txtRight");
+		
+		var rightStr = txt02.value;
+		
+		txt01.value = rightStr; 
+		*/
+		
+		document.getElementById("txtLeft").value = document.getElementById("txtRight").value;
+	}
+	
+	function btnResult_click()
+	{
+		// 테스트
+		//alert("함수 호출 확인~!!!");
+		
+		/*
+		var num01 = document.getElementById("txtSu1").value;
+		var num02 = document.getElementById("txtSu2").value;
+		
+		//var result = Number(num01) + Number(num02);				// 방법 1
+		//var result = parseInt(num01) + parseInt(num02);			// 방법 2
+		//var result = parseFloat(num01) + parseFloat(num02);		// 방법 3
+		// → num 변수의 value를 그대로 쓰면 문자열로 인식하므로
+		//    정수로 변환 후 연산해야한다
+		//    Number(), parseInt(), parseFloat(), Math.round()
+		
+		
+		var result = Math.round(num01) + Math.round(num02);			// 방법 4
+		// → Math의 경우 ceil(올림), round(반올림), floor(버림)
+		//    처리를 하여 정수로 변환되기 때문에
+		//    소수를 갖고 있는 실수는 정수로 변환된다
+		
+		txtResult.value = result;
+		*/
+		
+		document.getElementById("txtResult").value = Number(document.getElementById("txtSu1").value) + Number(document.getElementById("txtSu2").value);
+		//document.getElementById("txtResult").value = parseInt(document.getElementById("txtSu1").value) + parseInt(document.getElementById("txtSu2").value);
+		//document.getElementById("txtResult").value = parseFloat(document.getElementById("txtSu1").value) + parseFloat(document.getElementById("txtSu2").value);
+		//document.getElementById("txtResult").value = Math.round(document.getElementById("txtSu1").value) + Math.round(document.getElementById("txtSu2").value);
+	}
+	
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 이벤트 처리 실습</h1>
+	<hr>
+</div>
+
+<div>
+	<hr>
+	<input type="text" class="box" id="txtLeft">
+	<input type="button" class="btn" id="btnA" value="A버튼" onclick="btnA_click()">
+	<input type="button" class="btn" id="btnA" value="B버튼" onclick="btnB_click()">
+	<input type="text" class="box" id="txtRight">
+	<hr>
+	
+	<br><br>
+	
+	<input type="text" class="boxSu" id="txtSu1">
+	+
+	<input type="text" class="boxSu" id="txtSu2">
+	<input type="button" class="btn" id="btnResult" value=" = " onclick="btnResult_click()">
+	<input type="text" class="boxSu" id="txtResult">
+	
+	
+</div>
+
+</body>
+</html>
