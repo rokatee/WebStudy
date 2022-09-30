@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test022.html</title>
+
+<script type="text/javascript">
+
+	function myScore()
+	{
+		var str = "";
+		var arr = new Array(new Array(), new Array(), new Array(), new Array(), new Array(), new Array());
+		var n = 0;
+		
+		do
+		{
+			str = prompt("이름 국어 영어 수학(" + (n+1) + ") : ");
+			
+			if (str == null || str == "" || str =="." || str == " ")
+				break;
+			
+			var member = str.split(" ");
+			
+			arr[0][n] = member[0];
+			arr[1][n] = member[1];
+			arr[2][n] = member[2];
+			arr[3][n] = member[3];
+			arr[4][n] = (Number(member[1]) + Number(member[2]) + Number(member[3])).toString();
+			arr[5][n] = 1;
+			
+			n++;
+			
+		} while (true);
+		
+		for (var i = 0; i < arr[0].length; i++)
+		{
+			for (var j = 0; j < arr[0].length; j++)
+			{
+				if (i == j)
+				{
+					continue;
+				}
+				
+				if ( Number(arr[4][i]) < Number(arr[4][j]) )
+				{
+					arr[5][i] = (Number(arr[5][i]) +1 ).toString(); 
+				}
+			}
+		}
+		
+		var result = "";
+		
+		for (var j = 0; j < arr[0].length; j++)
+		{
+			for (var k = 0; k < arr.length; k++)
+			{
+				result += arr[k][j] + " " + " " + " ";
+			}
+			
+			result += "\n";
+		}
+		
+		document.getElementById("txtCount").value = arr[0].length;
+		
+		document.getElementById("memberList").value = "  이름  국어  영어  수학  총점  등수\n";
+		
+		document.getElementById("memberList").value += result;
+	}
+
+</script>
+
+</head>
+<body>
+
+<!-- 
+	prompt() 를 활용하여 여러 명의 성적을 입력받고,
+	등수를 부여하여 리스트를 출력하는 페이지를 구성한다.
+	HTML, CSS, JavaScript 활용.
+	
+	페이지 레이아웃
+	----------------------------------------------------
+	<성적 정보 입력> → click → 프롬프트 대화창 → 이름 국어 영어 수학(1):
+	
+	전체 인원 수 : [ 3]명
+	-------------------------------------
+	이름	국어  영어  수학  총점  등수
+	최보라   90    80    70   xxx	 1등
+	최파랑   80    70	 60	  xxx	 2등
+	최노랑   80    70	 60	  xxx	 3등
+	-------------------------------------
+	
+	---------------------------------------------------
+	
+	1차원 배열
+	var arr = new Array();
+	
+	2차원 배열
+	var arr2 = new Array(new Array(), ...);
+	
+ -->
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<table>
+			<tr>
+				<td>
+				<input type="button" class="btn" id="score" value="성적 정보 입력" onclick="myScore()">
+			</td>
+			<tr>
+				<th>
+					전체 인원 수 : 
+					<input type="text" id="txtCount" class="txt" readonly="readonly" style = "width: 20px"> 명
+				</th>
+			</tr>
+		</table>
+	</form>
+</div>
+<div>
+	<form>
+			<textarea rows="30" cols="40" id="memberList" readonly="readonly"></textarea>
+	</form>
+</div>
+
+</body>
+</html>

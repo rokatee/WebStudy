@@ -1,0 +1,201 @@
+<html><head>
+<meta charset="UTF-8">
+<title>Test021.html</title>
+<style type="text/css">
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 나눔고딕코딩;
+}
+
+body {
+    text-align: center;
+    padding: 100px;
+    background: whitesmoke;
+    display: table-cell;
+}
+
+button {
+    margin: 20px;
+}
+
+textarea{
+	
+	height : 500px;
+	text-align: center;
+	border: 3px solid #f199bc;
+    color: #6e6e6e;
+    border-radius: 15px;
+	
+}
+textarea:focus{outline : none; }
+
+
+button {
+    margin: 20px;
+}
+
+.btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    color: white;
+    color: white;
+    background-size: 400% 400%;
+    animation: gradient1 5s ease infinite;
+}
+
+.btn:hover {
+    letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+    
+}
+
+.btn:active {
+    transform: scale(1.5);
+}
+
+
+@keyframes gradient1 {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.count{ border: none; width: 50px; height: 30px; text-align: right; font-size: 15pt;}
+
+
+.typing-txt{
+  position:relative;
+  font-size: 15px;
+  width: 70px;
+  height: 15px; 
+  overflow: hidden;
+  animation: typingAni 3s steps(5, end) 1;
+} 
+.typing-txt::after{
+  position: absolute; 
+  display: block;
+  content: ""; 
+  width: 20px; 
+  height: 15px;
+  top: 0;
+  right: 0; 
+  border-right: 1px solid #000;
+  animation: cursor 0.5s step-end infinite;
+}
+@keyframes typingAni {
+  0%{width:0%}
+  100%{width: 70px};
+}
+@keyframes cursor{
+  0%{opacity:0;}
+  50%{opacity:1;}
+  100%{opacity:0;}
+}
+</style>
+
+<script type="text/javascript">
+
+	function member()
+	{
+		var result = "";
+		var arr = new Array();
+		var n=0;
+		
+		do
+		{
+			var result = prompt("이름과 전화번호를 입력하세요. (공백 구분/ 종료=.)");
+			
+			if (result==".")
+			{
+				break;
+			}
+			//arr = result.split(" ");
+			
+			arr[n] = result;
+			n++;
+			
+		} while (true);
+		
+		
+		
+		
+		//담기
+		//count
+		document.getElementById("count").value = arr.length + "명";
+		
+		for (var n=0; n < arr.length; n++)
+		{	
+			document.getElementById("list").value += "\n" + arr[n] + " ";
+		}
+		
+		
+		
+		
+	}
+
+</script>
+
+
+</head>
+<body>
+<!-- 
+	사용자로부터 여러 명의 이름과 전화번호를 입력받고
+	그 내용을 전체 출력하는 페이지를 구성한다.
+	
+	HTML, CSS, Javascript 를 활용한다.
+	
+	※ prompt() 활용.
+	
+	페이지 레이아웃
+	----------------------------------------------
+	
+	<회원 정보 입력> → click → 프롬프트 대화창
+	
+	전체 회원 수 : [	]명
+	---------------------------
+		이름	전화번호
+	---------------------------
+	
+				:
+				
+	---------------------------			
+	----------------------------------------------
+ -->
+ 
+ <div>
+ 	<p class="typing-txt">방가방가 </p>
+ 	<h1>자바스크립트 활용</h1>
+ 	<hr>
+ 	<br>
+ </div>
+ 
+ <div>
+ 	<button type="button" class="btn" onclick="member()">회원 정보 입력</button>
+ 	<br><br>
+ 	전체 회원 수 
+ 	<input type="text" id="count" class="count" readonly="readonly"><br><br>
+ 	<textarea rows="10" cols="40" id="list" readonly="readonly">이름     전화번호
+ 	</textarea>
+ </div>
+ 
+
+</body></html>

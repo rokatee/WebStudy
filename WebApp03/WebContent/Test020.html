@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test020.html</title>
+
+<script type="text/javascript">
+
+	function check()
+	{
+		//alert("함수 호출 확인");
+		
+		var str = prompt("내용을 입력하세요.");
+		//alert(str);
+		
+		document.getElementById("txtResult").value = str;
+	}
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<h2>prompt()</h2>
+	<hr>
+</div>
+
+<div>
+	<button type="button" onclick="check()">확인</button>
+	<input type="text" id="txtResult" readonly="readonly">
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test022.html</title>
+
+<style type="text/css">
+	*
+	{
+		font-family: 나눔고딕코딩;
+		font-size: 20pt;
+		color: grey;
+		font-weight: bold;
+	}
+</style>
+
+<script type="text/javascript">
+
+	function myScore()
+	{
+		//alert("함수 호출 확인~!!!");
+		
+		var str = "";
+					//      이름들       국어점수들   영어점수들    수학점수들  총점들       등수들
+		var arr = new Array(new Array(), new Array(), new Array(), new Array(), new Array(), new Array())
+		var n = 0;
+		
+		do
+		{
+			str = prompt("이름 국어 영어 수학(" + (n+1) + ") : ");
+			
+			//alert(result);
+			
+			if (str == null || str == "" || str == "." || str == " ")
+				break;
+			
+			// 배열로 이름 / 국어 / 영어 / 수학 / 총점 / 등수(디폴트 1) 반환
+			var member = str.split(" ");
+			
+			// 이름
+			arr[0][n] = member[0];
+			// 국어
+			arr[1][n] = member[1];
+			// 영어
+			arr[2][n] = member[2];
+			// 수학
+			arr[3][n] = member[3];
+			// 총점
+			arr[4][n] = (Number(member[1]) + Number(member[2]) + Number(member[3])).toString();
+			// 등수
+			arr[5][n] = 1;	// 등수는 1로 통일하고 성적과 비교해서 1씩 증가
+			
+			n++;
+			
+		} while (true);
+		
+		for (var i = 0; i < arr[0].length; i++)
+		{
+			for (var j = 0; j < arr[0].length; j++)
+			{
+				if (i==j)
+				{
+					// 비교용 인덱스 → i 와 j 가 같은 경우
+					// i 가 0일 때, j 는 1,2,3,4 이름배열 arr[0]의 길이(사람수)만큼 비교하고
+					// i 가 1로 넘어와서 j 는 0,2,3,4
+					// i 가 2로 넘어와서 j 는 0,1,3,4
+					// 서로 비교한게 없을 때까지 비교한다 (자기 자신과 비교하는 거는 제외)
+					continue; // 뒷부분 미실시
+				}
+				
+				// i 와 j 가 다른 경우 비교하는건데, 밑 조건
+				// → arr[5][변수] 항은 성적의 총합... 
+				// i 보다 j 가 크다면 (기존 것보다 비교 인자가 더 크다면)
+				// → arr[1][변수] 항은 등수(디폴트 1 )이므로.. 성적들의 숫자를
+				// 낮은 인자에 1씩 높이기
+				// 그렇다면 등수 배열은
+				// 1 3 5 7 2 6 8 4 9 11 10 ... 이런식으로 형성될것임
+				// 왜 문자로 했는지는 모르겠지만..
+				if (Number(arr[4][i]) < Number(arr[4][j]))
+				{
+					arr[5][i] = (Number(arr[5][i])+1 ).toString();
+				}
+			}
+		}
+		
+		var result = "";
+		
+		for (var j = 0; j < arr[0].length; j++)
+		{
+			for (var k = 0; k < arr.length; k++)
+			{
+				// 6개속성배열     0번째(첫번째학생)
+				// arr        [0]  [0]  → 0 : 이름 
+				// arr        [1]  [0]  → 1 : 국어
+				// arr        [2]  [0]	→ 2 : 영어
+				// arr        [3]  [0]	→ 3 : 수학
+				// arr        [4]  [0]  → 4 : 총점
+				// arr        [5]  [0]	→ 5 : 등수
+				result += arr[k][j] + " " + " " + " ";
+			}
+			result += "\n";
+		}
+		
+		document.getElementById("txtCount").value = arr[0].length;
+		
+		document.getElementById("memberList").value = "  이름  국어  영어  수학  총점  등수\n";
+		
+		document.getElementById("memberList").value += result;
+		
+	}
+
+</script>
+
+</head>
+<body>
+
+<!-- 
+	prompt() 를 활용하여 여러 명의 성적을 입력받고,
+	등수를 부여하여 리스트를 출력하는 페이지를 구성한다.
+	HTML, CSS, JavaScript 활용.
+	
+	페이지 레이아웃
+	----------------------------------------------------
+	<성적 정보 입력> → click → 프롬프트 대화창 → 이름 국어 영어 수학(1):
+	
+	전체 인원 수 : [ 3]명
+	-------------------------------------
+	이름	국어  영어  수학  총점  등수
+	최보라   90    80    70   xxx	 1등
+	최파랑   80    70	 60	  xxx	 2등
+	최노랑   80    70	 60	  xxx	 3등
+	-------------------------------------
+	
+	---------------------------------------------------
+	
+	1차원 배열
+	var arr = new Array();
+	
+	2차원 배열
+	var arr2 = new Array(new Array(), ...);
+	
+ -->
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<table>
+			<tr>
+				<td>
+				<input type="button" class="btn" id = "score" value="성적 정보 입력" onclick="myScore()">
+			</td>
+			<tr>
+				<th>
+					전체 인원 수 : 
+					<input type="text" id="txtCount" class="txt" readonly="readonly" style = "width: 20px"> 명
+				</th>
+			</tr>
+		</table>
+	</form>
+</div>
+<div>
+	<form>
+			<textarea rows="30" cols="40" id="memberList" readonly="readonly"></textarea>
+	</form>
+</div>
+
+</body>
+</html>

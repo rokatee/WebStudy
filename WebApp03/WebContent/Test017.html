@@ -3,6 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <title>Test017.html</title>
+
+<style type="text/css">
+	div {text-align: center;}
+	input {font-family: 나눔고딕코딩; font-weight: bold;}
+	input:focus {background-color: #eeeedd;}
+	input.btn {width: 80px; font-weight: bold; font-family: 맑은 고딕;}
+	input.btn:hover {color: orange;}
+	.txt {width: 100px; text-align: right;}
+	textarea {font-size: 15pt; font-family: 맑은 고딕;}
+</style>
+
+<script type="text/javascript">
+
+	function myCal()
+	{
+		// 함수를 호출하자마자 초기화
+		// 이 문구가 없으면 정수 입력할 때마다 결과값이 중복되어 나타난다
+		// ex. 처음 10 입력 시 결과는 1~10까지의 합
+		//	   두번째 20 입력 시 결과는 처음 입력했던
+		//     1~10까지의 합과 함께 1~10까지의 합,1~20까지의 합
+		//     총 3가지가 나오며 1~10까지의 합이 중복되어 보여진다
+		document.getElementById("result").value = "";
+		
+		var vNum = Number(document.getElementById("num").value);
+		var vSum = 0;
+		
+		if (vNum < 100)
+		{
+			alert("100 이상의 숫자만 입력 가능합니다.");
+			return;
+		}
+		
+		for (var n = 1; n <= vNum; n++)
+		{
+			vSum += n;
+			
+			if (n%10 == 0)
+			{
+				document.getElementById("result").value += "1 ~ " + n + " : " + vSum + "\n";
+													// += 를 쓰는 이유?
+													// = 를 쓰면 계속해서 새로운 값으로 덮어 씌우기만 한다
+													//   → 입력값이 100일 경우 1~100의 합만 나온다
+													//		+= 로 해야 10마다의 합이 모두 나온다
+			}
+		}
+		
+		document.getElementById("result").value += "\n【입력한 정수까지의 합】";
+		document.getElementById("result").value += "\n1 ~ " + vNum + " : " + vSum + "\n";
+	}
+
+</script>
+
 </head>
 <body>
 
@@ -16,7 +68,7 @@
 	출력 시 10의 배수가 될 때마다 중간 합을 출력할 수 있는
 	페이지를 구성한다.
 	반복문을 활용할 수 있도록 한다.
-	HTML, CSS, Javascript 활용
+	HTML, CSS, JavaScript 활용
 	
 	페이지 레이아웃
 	------------------------------------------------------
@@ -32,6 +84,28 @@
       └─────────────┘
 	------------------------------------------------------
  -->
+<div>
+	<form>
+		<div>
+			정수 입력(100 이상) :
+			<input type="text" id="num" class="txt">
+		</div>
+		
+		<br>
+		
+		<div>
+			<input type="button" class="btn" value="결과" onclick="myCal()">
+			<input type="reset" class="btn" value="취소">
+		</div>
+
+		<br><br>
+
+		<div>
+			<textarea rows="15" cols="30" id="result" readonly="readonly"></textarea>
+		</div>		
+	</form>
+
+</div>
 
 </body>
 </html>
