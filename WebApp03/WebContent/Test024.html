@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test24.html</title>
+
+<style type="text/css">
+
+	* {
+		font-family: 나눔고딕코딩;
+		font-size: 20pt;
+		color: #ababab;
+		font-weight: bold;
+	  }
+	.txt {width: 67px;}
+	.btn {width: 200px;}
+	#sun {background-color: #f29886; color: red;}
+	#sat {background-color: #d9e6fd; color: black;}
+	#reset {text-decoration: none;}
+	
+</style>
+
+<script type="text/javascript">
+
+function actionCal()
+{
+	
+	for (var i = 0; i < 6; i++)
+	{
+		
+	}
+	//alert("함수 호출");
+	var year = parseInt(document.getElementById("txtYear").value);
+	var month = parseInt(document.getElementById("txtMonth").value);
+	
+	//alert("입력년도 : " + year + " / 입력월 : " + month);	
+	//--==>> 입력년도 : 2022 / 입력월 : 10
+	
+	/*
+	if(year < 1)
+	{
+		alert("년도는 1 이상의 숫자만 가능합니다");
+	}
+	if(month < 1 || month > 12)
+	{
+		alert("월은 1 ~ 12 사이의 숫자만 가능합니다");
+	}
+	*/
+	
+	if(year < 1 || month < 1 || month > 12)
+	{
+		alert("잘못된 월과 년도를 입력하셨습니다.");
+		return;
+	}
+	
+	// 1단계. 1년 1월 1일 부터... 입력 년도 기준 전년도 12월 31일 까지의 총 날짜 수 구함.
+	var total = 0;
+	total = (year-1)*365 + parseInt((year-1)/4) - parseInt((year-1)/100) + parseInt((year-1)/400);
+	
+	//alert("1년 1월 1일 ~" + (year-1) + "년12월31일 : " + total);
+	//--==>> 1년 1월 1일 ~2021년12월31일 : 738155
+	
+	// 2단계. 해당 년도 1월 1일 부터... 해당 년도 해당 월 1일 까지의 총 날짜 수 구함.
+	var m = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+	
+	//alert(m);
+	//--==>> 31,28,31,30,31,30,31,31,30,31,30,31
+	//alert(m.length);
+	//--==>> 12
+	
+	for (var i = 0; i < month-1; i++)
+	{
+		total += m[i];
+	}
+	total++;
+	
+	if (month > 3 && (year%4==0 && year%100!=0 || year%400==0))
+	{
+		total++;
+	}
+	//alert(total); 
+	//--==>> 738429 (2022년 5월 기준)
+	
+	// 3단계. 해당 년도 해당 월의 첫 날(1일)의 요일 구함.
+	var days = total % 7;
+	
+	//alert(days);
+	//--==>> 6 (2022년 10월 기준 → 토요일)
+	// 즉, 2022년 10월 1일은 토요일
+	
+	
+	// 4단계. 해당 년도 해당 월의 마지막 날짜 구함. (28일, 29일, 30일, 31일)
+	var lastDay = m[month-1];
+	if (month==2 && (year%4==0 && year%100!=0 || year%400==0))
+	{
+		lastDay = 29;
+	}		
+	
+	//alert(lastDay);
+	//--==>> 28 (2022년 2월 기준)
+	// 		 29 (2024년 2월 기준)
+	
+	
+	// 5단계. 해당 년도 해당 월 기준 달력 구성. (출력, 그리기)
+	// 5-1 기존 테이블 활용하기
+	
+	var tableNode = document.getElementById("calendarTbl");
+	
+	var trNode = document.createElement("tr");	//<tr></tr>
+	
+	// 1. 해당 월의 1일이 시작되기 전에 빈 칸 td 채우기
+	for (var i=0; i < days; i++)
+	{
+		trNode.appendChild(createTdNode(" "));	
+	}	
+	//테스트
+	//tableNode.appendChild(trNode);
+	
+	// 2. 1일 부터... 해당 월의 마지막 날짜까지 td 채우기
+	var d = 1;
+	for (d = 1; d <= lastDay; d++)
+	{
+		trNode.appendChild(createTdNode(d));
+		
+		// 일요일을 그리기 시작할 때... 기존 tr 구성을 마무리하고
+		// 다시 새로운 tr 을 구성하는 부분
+		if ( (d+days)%7==0)	// 일요일을 그리기 전에...
+		{
+			tableNode.appendChild(trNode);
+			trNode = document.createElement("tr");	//tr로 개행하는 것이므로 trNode를 사용
+		}
+	}
+	//테스트
+	//tableNode.appendChild(trNode);
+	
+	
+	// 3. 날짜 구성 이후 마지막 빈 칸 td 채우기
+	if ( ( (d-1)+days) != 0 )
+	{
+		for (var i = 0; i < 7; i++, d++)
+		{
+			trNode.appendChild(createTdNode(" "));
+			
+			if ((d+days)%7==0)
+			{
+				tableNode.appendChild(trNode);
+				break;
+			}
+		}
+	}
+	
+	tableNode.appendChild(trNode);
+	
+}
+
+
+function createTdNode(val)
+{
+	var textNode = document.createTextNode(val);
+	var tdNode = document.createElement("td");	//<td></td>
+	tdNode.appendChild(textNode);
+	return tdNode;
+}
+
+</script>
+
+</head>
+<body>
+
+<!--  
+만년달력 페이지를 구성한다.
+HTML, CSS, JavaScript 를 활용한다.
+테이블 태그 동적 생성 구문을 활용한다.
+
+1단계. 1년 1월 1일 부터... 입력 년도 기준 전년도 12월 31일 까지의 총 날짜 수 구함.
+2단계. 해당 년도 1월 1일 부터... 해당 년도 해당 월 1일 까지의 총 날짜 수 구함.
+3단계. 해당 년도 해당 월의 첫 날(1일)의 요일 구함.
+4단계. 해당 년도 해당 월의 마지막 날짜 구함.
+	   (28일, 29일, 30일, 31일)
+5단계. 해당 년도 해당 월 기준 달력 구성. (출력, 그리기)
+-->
+
+	<div>
+		<h1>테이블 동적 생성으로 만년달력 그리기</h1>
+		<hr>
+	</div>
+
+	<div>
+		<form>
+			<input type="text" id="txtYear" class="txt"> 년 
+			<input type="text" id="txtMonth" class="txt"> 월 
+			<br> <br>
+
+			<button type="button" class="btn" onclick="actionCal()">만년달력<br>그리기</button>
+			<a href = "http://localhost:8090/WebApp03/Test024.html" type = "button" id="reset">리셋</a>
+			<br><br>
+
+			<table border="1" id="calendarTbl">
+				<tr>
+					<th id="sun">일</th>
+					<th>월</th>
+					<th>화</th>
+					<th>수</th>
+					<th>목</th>
+					<th>금</th>
+					<th id="sat">토</th>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+</body>
+</html>

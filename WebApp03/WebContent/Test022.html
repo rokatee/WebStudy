@@ -22,7 +22,7 @@
 		
 		var str = "";
 					//      이름들       국어점수들   영어점수들    수학점수들  총점들       등수들
-		var arr = new Array(new Array(), new Array(), new Array(), new Array(), new Array(), new Array())
+		var arr = new Array(new Array(), new Array(), new Array(), new Array(), new Array(), new Array());
 		var n = 0;
 		
 		do
@@ -37,26 +37,22 @@
 			// 배열로 이름 / 국어 / 영어 / 수학 / 총점 / 등수(디폴트 1) 반환
 			var member = str.split(" ");
 			
-			// 이름
-			arr[0][n] = member[0];
-			// 국어
-			arr[1][n] = member[1];
-			// 영어
-			arr[2][n] = member[2];
-			// 수학
-			arr[3][n] = member[3];
-			// 총점
-			arr[4][n] = (Number(member[1]) + Number(member[2]) + Number(member[3])).toString();
-			// 등수
-			arr[5][n] = 1;	// 등수는 1로 통일하고 성적과 비교해서 1씩 증가
+			
+			arr[0][n] = member[0];		// n번째 학생의 이름
+			arr[1][n] = member[1];		// n번째 학생의 국어점수
+			arr[2][n] = member[2];		// n번째 학생의 영어점수
+			arr[3][n] = member[3];		// n번째 학생의 수학점수
+			arr[4][n] = (Number(member[1]) + Number(member[2]) + Number(member[3])).toString();		// n번째 학생의 총점
+			arr[5][n] = 1;	// n번째 학생의 등수 → 등수는 1로 통일하고 성적과 비교해서 1씩 증가
 			
 			n++;
 			
 		} while (true);
 		
-		for (var i = 0; i < arr[0].length; i++)
+		// 석차 계산
+		for (var i = 0; i < arr[4].length; i++)		// 성적으로 비교를 할 것이기에 arr[4].length 로 비교하는 것이 논리적으로 맞다
 		{
-			for (var j = 0; j < arr[0].length; j++)
+			for (var j = 0; j < arr[4].length; j++)
 			{
 				if (i==j)
 				{
@@ -71,23 +67,29 @@
 				// i 와 j 가 다른 경우 비교하는건데, 밑 조건
 				// → arr[5][변수] 항은 성적의 총합... 
 				// i 보다 j 가 크다면 (기존 것보다 비교 인자가 더 크다면)
-				// → arr[1][변수] 항은 등수(디폴트 1 )이므로.. 성적들의 숫자를
-				// 낮은 인자에 1씩 높이기
+				// → arr[1][변수] 항은 등수(디폴트 1 )이므로
+				// 석차들의 숫자를 낮은 인자에 1씩 높이기
 				// 그렇다면 등수 배열은
-				// 1 3 5 7 2 6 8 4 9 11 10 ... 이런식으로 형성될것임
-				// 왜 문자로 했는지는 모르겠지만..
+				// 1 3 5 7 2 6 8 4 9 11 10 ... 이런식으로 형성될 것임
 				if (Number(arr[4][i]) < Number(arr[4][j]))
 				{
+					//arr[5][i] = (Number(arr[5][i])+1 );
 					arr[5][i] = (Number(arr[5][i])+1 ).toString();
+					// → 자바스크립트에선 데이터타입의 안정성을 확보할 수 없기에
+					//    디폴트로 정수 입력을 하더라도 정수로 변환하는게 바람직하다
+					// → 뒤의 toString()으로 문자 전환 해주는 이유는
+					//    문자였던 데이터를 정수로 바꿨던 것이기에 다시 원래대로 문자로 바꿔주는 것이다
+					//    하지만 필수적인 코드는 아니고, 자바스크립트가 데이터타입의 불확정성이기에 해주는 과정
+					// → 자바스크립트는 기본적으로 문자타입이라고 생각하고 운용하는것이 바람직하기에 다시 toString으로 문자로 바꾼다.
 				}
 			}
 		}
 		
 		var result = "";
 		
-		for (var j = 0; j < arr[0].length; j++)
+		for (var j = 0; j < arr[0].length; j++)			// 학생 수 만큼 회전
 		{
-			for (var k = 0; k < arr.length; k++)
+			for (var k = 0; k < arr.length; k++)		// 학생이 가진 속성만큼 회전
 			{
 				// 6개속성배열     0번째(첫번째학생)
 				// arr        [0]  [0]  → 0 : 이름 
@@ -98,7 +100,7 @@
 				// arr        [5]  [0]	→ 5 : 등수
 				result += arr[k][j] + " " + " " + " ";
 			}
-			result += "\n";
+			result += "\n";								// 개행
 		}
 		
 		document.getElementById("txtCount").value = arr[0].length;

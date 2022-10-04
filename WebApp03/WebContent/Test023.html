@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test023.html</title>
+
+<style type="text/css">
+ * {color: #223322;}
+   input {font-family: 나눔고딕코딩; font-weight: bold;}
+   input:focus {background-color: #eeeedd;}
+   .btn {width: 80px; font-weight: bold; font-family: 맑은 고딕;}
+   .btn:hover {color: orange;}
+   td {text-align: center; background-color: #eeeeee;}
+   .txt {text-align: center;}
+   textarea {font-family: 나눔고딕코딩; font-weight: bold;}
+</style>
+
+<script type="text/javascript">
+
+function addMember()
+{
+	//alert("함수 호출 확인");
+	
+	var name = document.getElementById("txtName").value;
+	var tel = document.getElementById("txtTel").value;
+	var addr = document.getElementById("txtAddr").value;
+	
+	// 테스트
+	//alert(name + " " + tel + " " + addr);
+	
+	var tableNode = document.getElementById("memberTbl");
+	
+	// tbody 엘리먼트 접근 → 사용하지 않는 경우 생략
+	// ※ 주의. 브라우저에 따른 결과
+	
+	// 테스트
+	//alert(tableNode);
+	// --==>> [object HTMLTableElement]
+	//alert(tableNode.childNodes[0]);
+	//--==>> [object Text]
+	//alert(tableNode.childNodes[0].nodeType);
+	//--==>> 3
+	// → 브라우저마다 다른 결과가 뜨곤한다
+	
+	/*
+	var tbodyNode = null;
+	if (tableNode.childNodes[0].nodeType==1)		// IE 10 이전 버전
+	{
+		tbodyNode = tableNode.childNodes[0];
+	}
+	else 											// CR, FF, ...
+	{
+		tbodyNode = tableNode.childNodes[1];
+	}
+	*/
+	
+	// 테스트
+	//alert(tbodyNode);
+	// --==>> [object HTMLTableElement]
+	
+	// <tr></tr> 엘리먼트 동적 생성
+	// <td></td> 엘리먼트 동적 생성
+	
+	// "김보경" 텍스트 데이터를 <td> 엘리먼트에 추가
+	// → <td>"김보경"</td>
+	
+	// 위와 같이 구성된 td 엘리먼트를 <tr> 엘리먼트에 추가
+	// → <tr><td>"김보경"</td></tr>
+	
+	// "010-4444-4444" 텍스트 데이터를 <td> 엘리먼트에 추가
+	// → <td>"010-4444-4444"</td>
+	
+	// 위와 같이 구성된 td 엘리먼트를 <tr> 엘리먼트에 추가
+	// → <tr><td>"김보경"</td><td>"010-4444-4444"</td></tr>
+	
+	// "강원 횡성" 텍스트 데이터를 <td> 엘리먼트에 추가
+	// → <td>"강원 횡성"</td>
+	
+	// 위와 같이 구성된 td 엘리먼트를 <tr> 엘리먼트에 추가
+	// → <tr><td>"김보경"</td><td>"010-4444-4444"</td><td>"강원 횡성"</td></tr>
+	
+	// 최종적으로 이 결과물을 table 에 추가
+	// → <table><tr><td>"김보경"</td><td>"010-4444-4444"</td><td>"강원 횡성"</td></tr></table>
+	
+	var trNode = document.createElement("tr");		// <tr></tr>
+	/*
+	
+	var tdNode1 = document.createElement("td");		// <td></td>
+	
+	//document.createTextNode("김보경");
+	var nameNode = document.createTextNode(name);	// <td> 노드에 추가할 "김보경" 노드 생성
+	
+	var tdNode2 = document.createElement("td");		// <td></td>
+	var telNode = document.createTextNode(tel);		// <td> 노드에 추가할 "010-4444-4444" 노드 생성 
+	
+	var tdNode3 = document.createElement("td");		// <td></td>
+	var addrNode = document.createTextNode(addr);	// <td>노드에 추가할 "서울 강남구" 노드 생성 
+	
+	tdNode1.appendChild(nameNode);					// <td>"김보경"</td>
+	tdNode2.appendChild(telNode);					// <td>"010-4444-4444"</td>
+	tdNode3.appendChild(addrNode);					// <td>"강원 횡성"</td>
+	
+	trNode.appendChild(tdNode1);					// <tr><td>"김보경"</td></tr>
+	trNode.appendChild(tdNode2);					// <tr><td>"김보경"</td><td>"010-4444-4444"</td></tr>
+	trNode.appendChild(tdNode3);					// <tr><td>"김보경"</td><td>"010-4444-4444"</td><td>"강원 횡성"</td></tr>
+	
+	tableNode.appendChild(trNode);					// <table><tr><td>"김보경"</td><td>"010-4444-4444"</td><td>"강원 횡성"</td></tr></table>
+	*/
+	
+	// 아래 함수와 함께 더 간편하게 작성 가능
+	trNode.appendChild(createTdNode(name));
+	trNode.appendChild(createTdNode(tel));
+	trNode.appendChild(createTdNode(addr));
+
+	tableNode.appendChild(trNode);					
+}
+
+function createTdNode(val)
+{
+	var textNode = document.createTextNode(val);
+	var tdNode = document.createElement("td");
+	tdNode.appendChild(textNode);
+	return tdNode;
+}
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트를 활용한 테이블 동적 생성</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		이름 <input type="text" id="txtName" class="txt"><br>
+		전화 <input type="text" id="txtTel" class="txt"><br>
+		주소 <input type="text" id="txtAddr" class="txt"><br>
+		<br>
+		
+		<button type="button" class="btn" style="width: 260px;" onclick="addMember()">회원 정보 입력</button>
+		<br><br><br>
+		
+		<table border ="1" id="memberTbl">
+			<tr>
+				<th>이름</th><th>전화번호</th><th>주소</th>
+			</tr>
+			<tr>
+				<td>김태민</td><td>010-1111-1111</td><td>경기 남양주</td>
+			</tr>
+			<tr>
+				<td>민찬우</td><td>010-2222-2222</td><td>제주 서귀포</td>
+			</tr>
+			<tr>
+				<td>한은영</td><td>010-3333-3333</td><td>전남 여수</td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+</body>
+</html>
