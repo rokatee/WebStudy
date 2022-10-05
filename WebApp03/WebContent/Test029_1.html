@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test029_1.html</title>
+
+<script type="text/javascript">
+
+	var userSelect = 0;
+	
+	function actionChoice()
+	{
+		//alert("함수 호출");
+		
+		var choice = document.getElementsByName("radioGroup");
+		
+		//alert(choice);
+		
+		var message = "선택된 항목이 없습니다";
+		
+		for (var i = 0; i < choice.length; i++)
+		{
+			if (choice[i].checked)
+			{
+				message = "당신이 선택한 사이즈는 아이스크림의 종류를 "
+					  + choice[i].value + "개 고를 수 있습니다.";
+				break; 
+			}
+		}
+		
+		alert(message);
+	}
+	
+	function actionOrder()
+	{
+		var menu = document.getElementsByName("checkGroup");
+		var choice = document.getElementsByName("radioGroup");
+		
+		for (var i = 0; i < menu.length; i++)
+		{
+			if (menu.checked)
+			{
+				if (userSelect > paseInt(choice[i].value))
+				{
+					alert("선택갯수 초과");
+					menu.checked = false;
+					return;
+				}
+				
+				userSelect++;
+			}
+			else
+			{
+				userSelect--;
+			}
+			
+			alert(choice[i].value + " / " + userSelect);
+		}
+		
+	}
+
+
+	
+</script>
+
+</head>
+<body>
+
+<div>
+	<form>
+		----사이즈 선택----
+		<br><br>
+		
+		<label>
+			<input type="radio" name="radioGroup" id="size1" value="1"> 싱글(1)
+		</label>
+		<br>
+
+		<label>
+			<input type="radio" name="radioGroup" id="size2" value="2" > 더블(2)
+		</label>
+		<br>
+		
+		<label>
+			<input type="radio" name="radioGroup" id="size3" value="3" > 파인트(3)
+		</label>
+		<br>
+		
+		<label>
+			<input type="radio" name="radioGroup" id="size4" value="4" > 쿼터(4)
+		</label>
+		<br>
+		
+		<label>
+			<input type="radio" name="radioGroup" id="size5" value="5" > 패밀리(5)
+		</label>
+		<br>
+
+		<label>
+			<input type="radio" name="radioGroup" id="size6" value="6" > 하프갤런(6)
+		</label>
+		<br><br>
+		
+		<button type="button" class="btn" onclick="actionChoice()">선택하기</button>
+		<br><br>
+		<br><br>
+		
+		
+		----아이스크림 종류----
+		<br><br>
+		<label>
+			<input type="checkbox" name="checkGroup" id="c1" value="엄마" >엄마는외계인
+		</label>
+		<label>
+			<input type="checkbox" name="checkGroup" id="c2" value="바닐" >바닐라
+		</label>
+		<label>
+			<input type="checkbox" name="checkGroup" id="c3" value="레인" >레인보우 샤베트
+		</label>
+		<label>
+			<input type="checkbox" name="checkGroup" id="c4" value="민트" >민트 초코 봉봉
+		</label>
+		<br>
+		<label>
+			<input type="checkbox" name="checkGroup" id="c5" value="아몬" >아몬드 봉봉
+		</label>
+		<label>
+			<input type="checkbox" name="checkGroup" id="c6" value="바람" >바람과 함께 사라지다
+		</label>
+		
+		<br><br>
+		<button type="button" class="btn" onclick="actionOrder()">주문하기</button>
+		
+	</form>
+</div>
+
+</body>
+</html>

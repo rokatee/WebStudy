@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test028.html</title>
+
+<script type="text/javascript">
+
+	function actionChoice()
+	{
+		//alert("함수 호출 확인");
+		
+		var checkObj = document.getElementsByName("checkGroup");
+		var message = "";
+		var flag = true;
+		
+		for (var i = 0; i < checkObj.length; i++)
+		{
+			// 확인
+			//alert(checkObj[i].checked);
+			//--==>> 체크되어 있으면 true, 아니면 false
+			
+			if (checkObj[i].checked)
+			{
+				message += checkObj[i].value + " ";
+				flag = false;
+			}
+		}
+		
+		if (flag)
+		{
+			message = "선택한 과목이 없습니다";
+			alert(message);
+		}
+		else
+		{
+			alert(message);
+		}
+	}
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<p>라디오버튼, 체크박스 컨트롤</p>
+	<hr>
+</div>
+
+<div>
+	<form>
+		----과목 선택----
+		<br><br>
+		<label>
+			<input type="checkbox" name="checkGroup" value="자바기초">Java Beginning
+		</label>
+		<br>
+		<label>
+			<input type="checkbox" name="checkGroup" value="오라클">Oracle
+		</label>
+		<br>
+		<label>
+			<input type="checkbox" name="checkGroup" value="자바심화">Java Advanced
+		</label>
+		<br>
+		<label>
+			<input type="checkbox" name="checkGroup" value="웹클라이언트">Web Client
+		</label>
+		<br>
+		<label>
+			<input type="checkbox" name="checkGroup" value="웹APP서버">JSP / Servlet
+		</label>
+		<br>
+		<label>
+			<input type="checkbox" name="checkGroup" value="프레임워크">Framework
+		</label>
+		<br>
+		<br><br>
+		
+		<button type="button" class="btn" onclick="actionChoice()">선택완료</button>
+	</form>
+</div>
+
+</body>
+</html>

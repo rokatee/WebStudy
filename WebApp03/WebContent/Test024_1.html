@@ -18,140 +18,171 @@
 
 <script type="text/javascript">
 
-function actionCalendar()
-{
-	//alert("함수호출 테스트");
-	
-	// 사용자가 페이지에 입력한 연, 월, 가져오기
-	var yearStr = document.getElementById("txtYear").value;
-	var monthStr = document.getElementById("txtMonth").value;
-	
-	// 문자열 관련 유효성 확인 과정 추가 가능
-	var year = parseInt(yearStr);
-	var month = parseInt(monthStr);
-	
-	// 테스트
-	//alert("입력년도 : " + year + " / 입력월 : " + month);
-	
-	/*
-	if (year < 1)
+	function actionCalendar()
 	{
-		alert("입력 년도가 유효하지 않습니다");
-		return;
+		//alert("함수호출 테스트");
+		
+		// 사용자가 페이지에 입력한 연, 월, 가져오기
+		var yearStr = document.getElementById("txtYear").value;
+		var monthStr = document.getElementById("txtMonth").value;
+		
+		// 문자열 관련 유효성 확인 과정 추가 가능
+		var year = parseInt(yearStr);
+		var month = parseInt(monthStr);
+		
+		// 테스트
+		//alert("입력년도 : " + year + " / 입력월 : " + month);
+		
+		/*
+		if (year < 1)
+		{
+			alert("입력 년도가 유효하지 않습니다");
+			return;
+		}
+		if (month < 1 || month > 12)
+		{
+			alert("입력 월이 유효하지 않습니다");
+			return;
+		}
+		*/
+		
+		if (year < 1 || month < 1 || month > 12)
+		{
+			alert("입력 년도 또는 월이 유효하지 않습니다");
+			return;
+		}
+		
+		// 1단계. 1년 1월 1일 부터... 입력 년도 기준 전년도 12월 31일 까지의 총 날짜 수 구함.
+		// 총 날짜 수 = 입력전년도*365 + 입력전년도/4 - 입력전년도/100 + 입력전년도/400;
+		// Math.floor() 	→ 소수점 이하 절삭			→ parseInt()
+		// Math.ceil() 		→ 소수점 이하 올림			
+		// Math.round() 	→ 소수점 이하 반올림
+		
+		var total = 0;		// 총 날짜 수를 누적해 나갈 변수
+		
+		//total = 입력전년도*365 + 입력전년도/4 - 입력전년도/100 + 입력전년도/400;
+		total = (year-1)*365 + parseInt((year-1)/4) - parseInt((year-1)/100) + parseInt((year-1)/400);
+		
+		// 테스트
+		//alert("1년1월1일 ~ " + (year-1) + "년12월31일 : " + total + "일");
+		//--==>> 1년1월1일 ~ 2021년12월31일 : 738155일 (입력값 : 2022년 10월)
+	
+		
+		// 2단계. 해당 년도 1월 1일 부터... 해당 년도 해당 월 1일 까지의 총 날짜 수 구함.
+		var m = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+		
+		// 테스트
+		//alert(m.length);
+		//--==>> 12
+		
+		for (var i = 0; i < month-1; i++)
+			total += m[i];
+		total++;
+		
+		/* if (month>=3 && (윤년의 조건))
+			total++; */	
+		if (month>=3 && (year%4==0 && year%100!=0 || year%400==0) )
+			total++;	
+		
+		// 테스트
+		//alert(total);
+		//--==>> 738429 (2022년 10월 입력 기준)
+		
+		
+		// 3단계. 해당 년도 해당 월의 첫 날(1일)의 요일 구함.
+		var days = total % 7;
+		
+		// 테스트
+		//alert(days);
+		//--==>> 6 (2022년 10월 기준) 
+		// 1 → 월
+		// 2 → 화
+		// 3 → 수
+		// 4 → 목	
+		// 5 → 금
+		// 6 → 토
+		// 2022년 10월 1일 → 6 이므로 토요일
+		
+		
+		// 4단계. 해당 년도 해당 월의 마지막 날짜 구함. (28일, 29일, 30일, 31일)
+		var lastDay = m[month-1];
+		
+		//if (month == 2 && (윤년의 조건) )
+		// 윤년의 조건이 충족할 경우 lastDay를 29일로 변경
+		if (month==2 && (year%4==0 && year%100!=0 || year%400==0) )
+			lastDay = 29;
+		
+		// 테스트
+		//alert(lastDay);
+		//--==>> 28 (2022년 2월 기준)
+		//--==>> 29 (2020년 2월 기준)
+		
+		
+		// 5단계. 해당 년도 해당 월 기준 달력 구성. (출력, 그리기)
+		
+		// 5-1. 페이지 내의 기존 테이블 활용하기 --------------
+		var tableNode = document.getElementById("CalanderTbl");
+		
+		var trNode = document.createElement("tr");	//<tr></tr>
+		
+		// 1. 해당 월의 1일이 시작되기 전에 빈 칸 td 채우기
+		for (var i=0; i < days; i++)
+		{
+			trNode.appendChild(createTdNode(" "));	
+		}	
+		//테스트
+		//tableNode.appendChild(trNode);
+		
+		
+		// 2. 1일 부터... 해당 월의 마지막 날짜까지 td 채우기
+		var d = 1;
+		for (d = 1; d <= lastDay; d++)
+		{
+			trNode.appendChild(createTdNode(d));
+			
+			// 일요일을 그리기 시작할 때... 기존 tr 구성을 마무리하고
+			// 다시 새로운 tr 을 구성하는 부분
+			if ( (d + days)%7 == 0)		// 일요일을 그릴 차례
+			{
+				tableNode.appendChild(trNode);			// 기존 tr 구성 마무리
+				trNode = document.createElement("tr");	// 새로운 tr 구성
+			}
+		}
+		//테스트
+		//tableNode.appendChild(trNode);
+		
+		// 날짜 구성 이후 마지막 빈 칸 td 채우기
+		// 단, 특정 조건을 만족할 경우에만
+		// (월의 마지막이 토요일로 끝나지 않은 경우)
+		// 즉, 일요일을 그리기 시작할 상황이 아닌 경우
+		if ( (days+(d-1) )%7 != 0)
+		{
+			for (var i = 0; i < 7; i++, d++)
+			{
+				trNode.appendChild(createTdNode(""));
+				
+				// 일요일을 그리기 시작할 때(토요일 자리를 만든 후)
+				// 기존 tr 구성을 마무리할 수 있도록 처리
+				if ((days+d)%7==0)
+				{
+					tableNode.appendChild(trNode);
+					break;
+				}
+				// → 토요일 빈칸 td까지 다 채웠으면 스탑
+			}
+		}
+		
+		tableNode.appendChild(trNode);
+		
 	}
-	if (month < 1 || month > 12)
+	
+	function createTdNode(val)
 	{
-		alert("입력 월이 유효하지 않습니다");
-		return;
+		var textNode = document.createTextNode(val);
+		var tdNode = document.createElement("td");	//<td></td>
+		tdNode.appendChild(textNode);
+		return tdNode;
 	}
-	*/
-	
-	if (year < 1 || month < 1 || month > 12)
-	{
-		alert("입력 년도 또는 월이 유효하지 않습니다");
-		return;
-	}
-	
-	// 1단계. 1년 1월 1일 부터... 입력 년도 기준 전년도 12월 31일 까지의 총 날짜 수 구함.
-	// 총 날짜 수 = 입력전년도*365 + 입력전년도/4 - 입력전년도/100 + 입력전년도/400;
-	// Math.floor() 	→ 소수점 이하 절삭			→ parseInt()
-	// Math.ceil() 		→ 소수점 이하 올림			
-	// Math.round() 	→ 소수점 이하 반올림
-	
-	var total = 0;		// 총 날짜 수를 누적해 나갈 변수
-	
-	//total = 입력전년도*365 + 입력전년도/4 - 입력전년도/100 + 입력전년도/400;
-	total = (year-1)*365 + parseInt((year-1)/4) - parseInt((year-1)/100) + parseInt((year-1)/400);
-	
-	// 테스트
-	//alert("1년1월1일 ~ " + (year-1) + "년12월31일 : " + total + "일");
-	//--==>> 1년1월1일 ~ 2021년12월31일 : 738155일 (입력값 : 2022년 10월)
-
-	
-	// 2단계. 해당 년도 1월 1일 부터... 해당 년도 해당 월 1일 까지의 총 날짜 수 구함.
-	var m = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-	
-	// 테스트
-	//alert(m.length);
-	//--==>> 12
-	
-	for (var i = 0; i < month-1; i++)
-		total += m[i];
-	total++;
-	
-	/* if (month>=3 && (윤년의 조건))
-		total++; */	
-	if (month>=3 && (year%4==0 && year%100!=0 || year%400==0) )
-		total++;	
-	
-	// 테스트
-	//alert(total);
-	//--==>> 738429 (2022년 10월 입력 기준)
-	
-	
-	// 3단계. 해당 년도 해당 월의 첫 날(1일)의 요일 구함.
-	var days = total % 7;
-	
-	// 테스트
-	//alert(days);
-	//--==>> 6 (2022년 10월 기준) 
-	// 1 → 월
-	// 2 → 화
-	// 3 → 수
-	// 4 → 목	
-	// 5 → 금
-	// 6 → 토
-	// 2022년 10월 1일 → 6 이므로 토요일
-	
-	
-	// 4단계. 해당 년도 해당 월의 마지막 날짜 구함. (28일, 29일, 30일, 31일)
-	var lastDay = m[month-1];
-	
-	//if (month == 2 && (윤년의 조건) )
-	// 윤년의 조건이 충족할 경우 lastDay를 29일로 변경
-	if (month==2 && (year%4==0 && year%100!=0 || year%400==0) )
-		lastDay = 29;
-	
-	// 테스트
-	//alert(lastDay);
-	//--==>> 28 (2022년 2월 기준)
-	//--==>> 29 (2020년 2월 기준)
-	
-	
-	// 5단계. 해당 년도 해당 월 기준 달력 구성. (출력, 그리기)
-	
-	// 5-1. 페이지 내의 기존 테이블 활용하기 --------------
-	var tableNode = document.getElementById("CalanderTbl");
-	
-	var trNode = document.createElement("tr");	//<tr></tr>
-	
-	// 1. 해당 월의 1일이 시작되기 전에 빈 칸 td 채우기
-	for (var i=0; i < days; i++)
-	{
-		trNode.appendChild(createTdNode(" "));	
-	}	
-	//테스트
-	//tableNode.appendChild(trNode);
-	
-	
-	// 2. 1일 부터... 해당 월의 마지막 날짜까지 td 채우기
-	var d = 1;
-	for (d = 1; d <= lastDay; d++)
-	{
-		trNode.appendChild(createTdNode(d));
-	}
-	//테스트
-	//tableNode.appendChild(trNode);
-	
-}
-
-function createTdNode(val)
-{
-	var textNode = document.createTextNode(val);
-	var tdNode = document.createElement("td");	//<td></td>
-	tdNode.appendChild(textNode);
-	return tdNode;
-}
 
 
 </script>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test025.html</title>
+<script type="text/javascript">
+
+	function createLotto()
+	{
+		
+	}
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<h2>로또 게임</h2>
+	<hr>
+</div>
+<!-- 
+	로또 번호(1~45)를 중복되지 않은 정수 6개를 생성하여
+	출력해주는 페이지를 구현한다.
+	HTML, CSS, JavaScript 를 활용한다.
+	난수 발생 함수를 활용한다.
+	번호순으로(오름차순) 정렬하여 출력할 수 있도록 한다.
+	주문한 장 수 만큼 출력할 수 있도록 한다.
+	
+	페이지 레이아웃
+	-----------------------------------------------
+	로또	[	 ] 장			→ text  
+	
+	<주문하기>					→ button
+	
+	결과
+	-------------------------- 	→ textarea
+	1 2 3 4 5 6 
+	6 13 22 24 36 39
+	2 3 22 34 35 36
+	--------------------------
+	
+	-----------------------------------------------
+ -->
+
+<div>
+	<form>
+		로또
+		<input type="text" id="txtCount"> 장
+		<br><br>
+		<button type="button" onclick="createLotto()">주문하기</button>
+		<br><br>
+		
+		결과<br>
+		<textarea rows="10" cols="30"></textarea>
+	</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test027.html</title>
+
+<style>
+	* {color: #223322;}
+	input {font-family: 나눔고딕코딩; font-weight: bold;}
+	input:focus {background-color: #eeeedd;}
+	button.btn {width: 80px; font-weight: bold; font-family: 맑은 고딕;}
+	button.btn:hover {color: orange;}
+	td {text-align: left;}
+	.result{text-align: left;}
+</style>
+
+<script type="text/javascript">
+
+	function actionCount()
+	{
+		//alert("함수 호출 확인");
+		
+		// 라디오버튼에선
+		// document.getElementById();
+		// 를 쓰기보단 getElementsByName 를 사용
+		var radioObj = document.getElementsByName("radioGroup");
+		
+		// 확인
+		//alert(radioObj);
+		//--==>> [object NodeList] → 자바스크립트 배열
+
+		// 확인
+		//alert(radioObj.length);
+		//--==>> 6 → 배열의 길이
+		
+		var message = "선택된 항목이 없습니다";
+		
+		for (var i = 0; i < radioObj.length; i++)	// 0 1 2 3 4 5
+		{
+			// 확인
+			//alert(radioObj[i]);
+			//--==>> [object HTMLInputElement]
+			// 이 6번 뜰 것임
+			
+			// 확인
+			//alert(radioObj[i].checked);
+			//--==>> 버튼이 선택되어있는지 확인
+			//       선택되어있으면 true, 아니면 false
+
+			// 확인
+			//alert(radioObj[i].value);
+			//--==>> 1~6 까지 알림창으로 뜸
+			
+			if (radioObj[i].checked)
+			{
+				//alert(radioObj[i].value);
+				
+				message = "당신이 선택한 사이즈는 아이스크림의 종류를 "
+						  + radioObj[i].value + "개 고를 수 있습니다.";
+				break;
+			}
+		}
+		
+		alert(message);
+	}
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<p>라디오버튼, 체크박스 컨트롤</p>
+	<hr>
+</div>
+
+<div>
+	<form>
+		----사이즈 선택----
+		<br><br>
+		
+		<input type="radio" name="radioGroup" id="a" value="1">
+		<label for="a">싱글(1)</label><br>
+		
+		<label>
+			<input type="radio" name="radioGroup" id="b" value="2"> 더블(2)
+		</label>
+		<br>
+		
+		<label>
+			<input type="radio" name="radioGroup" id="c" value="3"> 파인트(3)
+		</label>
+		<br>
+		
+		<label>
+			<input type="radio" name="radioGroup" id="d" value="4"> 쿼터(4)
+		</label>
+		<br>
+		
+		<label>
+			<input type="radio" name="radioGroup" id="e" value="5"> 패밀리(5)
+		</label>
+		<br>
+
+		<label>
+			<input type="radio" name="radioGroup" id="f" value="6"> 하프갤런(6)
+		</label>
+		<br><br>
+		
+		<button type="button" class="btn" onclick="actionCount()">확인</button>
+	</form>
+</div>
+
+</body>
+</html>

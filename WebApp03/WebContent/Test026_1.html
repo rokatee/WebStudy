@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test026_1.html</title>
+
+<style>
+	* {color: #223322;}
+	input {font-family: 나눔고딕코딩; font-weight: bold;}
+	input:focus {background-color: #eeeedd;}
+	button.btn {width: 80px; font-weight: bold; font-family: 맑은 고딕;}
+	button.btn:hover {color: orange;}
+	td {text-align: left;}
+	.result{text-align: left;}
+</style> 
+
+<script type="text/javascript">
+   
+	function playGame()
+	{
+		//alert("확인");
+		var countStr = document.getElementById("txtCount").value;
+		var count = parseInt(countStr);
+		
+		for(var i=0; i<count; i++)
+		{
+			//document.getElementById("resultArea").value += "로또 한 게임 수행" + "\n";
+			//document.getElementById("resultArea").value += "로또 한 게임 수행 함수()" + "\n";
+			document.getElementById("resultArea").value += lottoSingle() + "\n";
+			//lottoSingle();
+		}
+	}
+   
+	function lottoSingle()
+	{
+		//return "수행한 로또 게임";
+		//방 6개로 구성된 자바스크립트 배열 생성;
+		//카드 놀이하는 식으로 구성..
+		//이런식이라면 HashSet 자료구조를 통해서 만드는게 가능한가?....
+		var lottoArray = new Array(6);
+		
+		//방 45개로 구성된 자바스크립트 배열 생성
+		var cardArray = new Array(45);
+		
+		//45개 방으로 구성된 배열을 각 방에 1~45의 로또 번호 채워넣기 → 카드 만들기
+		for(var i=1; i<=cardArray.length; i++)
+		{
+			cardArray[i-1] = i;
+		}
+		//확인
+		//alert(cardArray[21]);
+		
+		//뒤섞기
+		for(var i=0; i<cardArray.length; i++)
+		{
+			//Math.random()             → 0.xx ~ 0.99xxx  
+			//Math.random()*45              → 0.xx ~ 44.xxxx
+			//parseInt(Math.random()*45)    → 0 ~ 44의 난수 발생
+			var j = parseInt(Math.random()*45);
+			
+			
+			//무작위로 발생한 방 번호의 값(j)와 0, 1, 2 ,3 , .... 방의 값을 자리바꿈
+			// 무작위로 발생한 방 번호의 값(j)와 0, 1, 2, 3, ... 방의 값을 자리바꿈
+			
+			var temp = cardArray[i];
+			cardArray[i] = cardArray[j];
+			cardArray[j] = temp;
+	
+		}
+		
+		// 확인
+		//return cardArray;
+		
+		// 뽑힌 6개의 카드를 넣을 배열(최종 구성) 요소로 값 옮겨 담기
+		for (var i=0; i<lottoArray.length; i++)      // 0 1 2 3 4 5
+			lottoArray[i] = cardArray[i];
+		
+		// 정렬 기능 추가
+		lottoArray.sort(function(left, right)
+		{
+			return Number(left) - Number(right);
+		});
+		
+		// 구성된 최종 배열 반환
+		return lottoArray;
+	}
+
+</script>
+</head>
+<body>
+
+<div>
+   <h1>자바스크립트 활용</h1>
+   <h2>로또 게임</h2>
+   <hr>   
+</div>
+
+
+<!-- 
+   HTML, CSS, JavaScript를 활용하여
+   로또 번호(1~45)를 중복되지 않은 정수 6개로 생성하여
+   출력해주는 페이지를 구현한다.
+   단, 난수 발생 함수를 활용한다.
+   또한, 하나의 게임 내에서 번호순(오름차순)으로 정렬하여 출력할 수 있도록 한다.
+   주문한 게임의 수 만큼 출력할 수 있도록 한다.
+   
+   페이지 레이아웃
+   ------------------------------------------------------------
+
+   로또 게임    [   4   ]   장         → text
+   
+   <주문 하기>                     → button
+   
+   내용
+   -------------------------------    → textarea
+   1  2  7  12 35 42
+   20 21 25 38 39 40
+   3 5 6 15 24 29  
+   2 3 8 13 36 43
+   -------------------------------
+   
+   
+
+   ------------------------------------------------------------
+ -->
+<div>
+   <form>
+      로또 게임 
+         <input type="text" class="txt" id="txtCount"> 장
+      <br><br>
+      <button type="button" class="btn" 
+      style="width:250px;" onclick="playGame()">주문 하기</button>
+      <br><br>
+      
+      결과<br>
+      <textarea id="resultArea" cols="30" rows ="15"></textarea>
+   </form>
+</div>
+
+</body>
+</html>
