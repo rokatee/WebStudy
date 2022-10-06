@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test031.html</title>
+
+<style type="text/css">
+	*
+	{
+		color: #223322;
+		font-family: 맑은 고딕;
+	}
+	
+	#addr1, #addr2
+	{
+		width: 220px;
+	}
+	
+	#txt1
+	{
+		color: red;
+		font-size: small;
+	}
+
+</style>
+
+<script type="text/javascript">
+	
+	function searchAddr()
+	{
+		//alert("함수호출확인");
+		
+		window.open("Test032.html", "test", "width=500, height=300");
+	}
+
+</script>
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<h2>주소 검색</h2>
+	
+	<form>
+		기본 주소
+		<input type="text" id="addr1" readonly="readonly">
+		<input type="button" value="검색" class="btn" onclick="searchAddr()">
+		<br><br>
+		
+		상세 주소
+		<input type="text" id="addr2">
+		<br><br>
+		
+		<span id="txt1"></span>
+		
+	</form>
+</div>
+
+</body>
+</html>

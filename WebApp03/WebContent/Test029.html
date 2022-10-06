@@ -12,33 +12,37 @@
 	function choice(num)
 	{
 		//alert(num);
-		
+		//--==>> 라디오버튼 클릭 시, 해당 숫자 뜨도록
 		count = parseInt(num);
+		alert("주문한 사이즈 : " + num);
 	}
 	
 	function actionSelect(obj)
 	{
+	
+		//alert(obj.value);
+		// 각 버튼 별 value 값을 띄움 ex.엄마, 바닐, 레인...
 		
 		//alert(obj.checked);
 		//--==>> 체크되면 true 아니면 false
 		
-		if (obj.checked)
+		if (obj.checked) 	// actionSelect(this)가 체크되어 있으면,
 		{
-			if (userSelect >= count)
+			if (userSelect >= count)	// 체크된 개수가 choice()함수에서 받아온 값보다 크면
 			{
 				alert("선택할 수 있는 개수를 초과하였습니다");
-				obj.checked = false;
-				return;
+				obj.checked = false;	// 체크되지 않도록
+				return;					// 값 되돌리기
 			}
 			
-			userSelect++;
+			userSelect++;	// 개수 추가
 		}
-		else
+		else				// actionSelect(this)가 체크되어 있지 않으면,
 		{
-			userSelect--;
+			userSelect--;	// 아닐 경우 감소
 		}
 		
-		alert(count + " | " + userSelect);
+		alert("주문한 갯수 : " + userSelect + " / 선택 가능한 개수 : " + count);
 	}
 	
 </script>
@@ -123,9 +127,6 @@
 		<label>
 			<input type="checkbox" name="checkGroup" id="c12" value="슈팅" onclick="actionSelect(this)">슈팅스타
 		</label>
-		
-		<br><br>
-		<button type="button" class="btn" onclick="actionOrder()">주문하기</button>
 		
 	</form>
 </div>

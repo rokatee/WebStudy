@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test033.html</title>
+
+<style type="text/css">
+	#menuTable {display: none;}  
+	/* display는 아예 그리지 않겠다는 속성 */
+	/* 존재하는 것을 보이지 않게 하는 속성이 아님 */
+	/* 해당 속성은 Invisible 라고 따로 있음 */
+</style>
+
+<script type="text/javascript" src="js/myMenu.js"></script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+	<h2>메뉴 보이기 /  감추기</h2>
+</div>
+
+
+<div>
+	<form>
+		<!-- 클릭 시 메뉴 테이블 보이기 -->
+		<input type="button" value="메뉴 보이기" class="btn" onclick="myMenu(1)">
+		
+		<!-- 클릭 시 메뉴 테이블 감추기 -->
+		<input type="button" value="메뉴 감추기" class="btn" onclick="myMenu(2)">
+	
+		<input type="button" value="메뉴 보이기 / 감추기"
+			   onmouseover="myMenu(1)" onmouseout="myMenu(2)" class="">
+	</form>
+</div>
+<br><br>
+
+<div id="menuTable">
+	<table>
+		<tr>
+			<td>JAVA 기초</td>
+		</tr>
+		<tr>
+			<td>ORACLE 중급</td>
+		</tr>
+		<tr>
+			<td>JSP 고급</td>
+		</tr>
+		<tr>
+			<td>Servlet 응용</td>
+		</tr>
+	</table>
+</div>
+<span>테스트</span>	<!-- display 속성 테스트(css 체크) -->
+
+</body>
+</html>

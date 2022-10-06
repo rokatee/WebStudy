@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test032.html</title>
+
+<script type="text/javascript">
+	
+	function myAddr(addr)
+	{
+		//alert("함수호출확인");
+		//alert(addr);
+		
+		//Test031.html 파일 문서 addr1 value= addr;
+		window.opener.document.getElementById("addr1").value = addr;
+		//window
+		// → Test032.html
+		
+		//window.opener.document.getElementById("txt1").value = addr;
+		// → <span id="txt1" value="데이터"></span>
+		//	  이렇게 벨류의 데이터로 넣겠다는 의미
+		
+		// IE 용
+		//window.opener.document.getElementById("txt1").innerText = addr;
+		
+		// Chrome, FireFox 용
+		window.opener.document.getElementById("txt1").innerHTML = addr;
+		
+		//window.opener
+		// → Test031.html
+		
+		window.close();
+	}
+	
+</script>
+
+</head>
+<body>
+<div>
+	<form>
+		주소 검색 <input> <input type="button" value="검색">
+		<br><br>
+		
+		<a href="javascript:myAddr('서울 마포구 월드컵북로 1')">서울 마포구 월드컵북로 1 (1-73번지)</a><br>
+		<a href="javascript:myAddr('서울 마포구 월드컵북로 13')">서울 마포구 월드컵북로 13 (74-150번지)</a><br>
+		<a href="javascript:myAddr('서울 마포구 월드컵북로 21')">서울 마포구 월드컵북로 21 (151-152번지)</a><br>
+		<a href="javascript:myAddr('서울 마포구 월드컵북로 31')">서울 마포구 월드컵북로 31 (153번지)</a><br>
+		<a href="javascript:myAddr('서울 마포구 월드컵북로 35')">서울 마포구 월드컵북로 35 (154-155번지)</a><br>
+		<a href="javascript:myAddr('서울 마포구 월드컵북로 40')">서울 마포구 월드컵북로 40 (156-160번지)</a><br>
+	</form>
+</div>
+</body>
+</html>

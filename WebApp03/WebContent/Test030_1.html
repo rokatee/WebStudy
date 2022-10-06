@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test030.html</title>
+
+<style type="text/css">
+	* {font-family: 맑은 고딕; color: #223322;}
+	.btn {width: 240px; font-size: 17px;}
+	.btn:hover {color: orange;}
+</style>
+
+<script type="text/javascript">
+	
+	// 직원 추가
+	function addMember()
+	{
+		var uName = document.getElementById("userName").value;
+		var uSsn = document.getElementById("userSsn").value;
+		
+		
+		//var city = document.getElementById("userCity").value;
+		var cityObj = document.getElementById("userCity");	
+		
+		//alert(cityObj.selectedIndex);
+		//--==>> 서울(0), 대전(1), 광주(2), 대구(3)
+		//alert(cityObj.options[cityObj.selectedIndex].value);
+		//--==>> 1123(서울), 2234(대전), 3345(광주), 4456(대구)
+		//--==>> 서울, 대전, 광주, 대구
+		var uCity = cityObj.options[cityObj.selectedIndex].value;
+		
+		var dpmtObj = document.getElementById("userDepartment");
+		var uDpmt = dpmtObj.options[dpmtObj.selectedIndex].value;
+					
+		var positionObj = document.getElementById("userPosition");
+		var uPosition = positionObj.options[positionObj.selectedIndex].value;
+		
+		var uBasicpay = document.getElementById("userBasicPay").value;
+		
+		// 테이블 그리기-------------------------------------------------------------
+		var tableNode = document.getElementById("memberList"); 
+		var trNode = document.createElement("tr");
+		
+		trNode.appendChild(createTdNode(uName));
+		trNode.appendChild(createTdNode(uSsn));
+		trNode.appendChild(createTdNode(uCity));
+		trNode.appendChild(createTdNode(uDpmt));
+		trNode.appendChild(createTdNode(uPosition));
+		trNode.appendChild(createTdNode(uBasicpay));
+	
+		tableNode.appendChild(trNode);
+		//--------------------------------------------------------------테이블 그리기
+		
+		//formClear();
+		
+		document.forms[0].reset();
+		
+		document.getElementById("userName").focus();
+		
+		
+	}
+	
+	function createTdNode(val)
+	{
+		var textNode = document.createTextNode(val);
+		var tdNode = document.createElement("td");
+		tdNode.appendChild(textNode);
+		return tdNode;
+	}
+
+	function formClear()
+	{
+		document.getElementById("userName").value = "";
+		document.getElementById("userSsn").value = "";
+		var cityObj = document.getElementById("userCity");
+		cityObj.options[1].selected=true;
+		
+		var dpmtObj = document.getElementById("userDepartment");
+		dpmtObj.options[0].selected=true;
+		
+		var positionObj = document.getElementById("userPosition");
+		positionObj.options[3].selected=true;
+		
+		document.getElementById("userBasicPay").value = "";
+			
+	}
+	
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+</div>
+
+<div>
+	<h2>선택목록(select) 다루기</h2>
+	
+	<form>
+		<table>
+			<tr>
+				<td>이름</td>
+				<td>
+					<!-- <input type="text" id="userName" placeholder="ex)홍길동"> -->
+					<input type="text" id="userName">
+				</td>
+			</tr>
+			<tr>
+				<td>주민번호</td>
+				<td>
+					<!-- <input type="text" id="userSsn" placeholder="ex)751212-1234567"> -->
+					<input type="text" id="userSsn">
+				</td>
+			</tr>
+			<tr>	
+				<td>지역</td>
+				<td>
+					<!-- <input type="text" id="userCity" placeholder="ex)서울"> -->
+					<select id="userCity">
+						<option value="1123(서울)">서울</option>
+						<option value="2234(대전)" selected="selected">대전</option>
+						<option value="3345(광주)">광주</option>
+						<option value="4456(대구)">대구</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>부서</td>
+				<td>
+					<!-- <input type="text" id="userDepartment" placeholder="ex)개발부"> -->
+					<select id="userDepartment">
+						<option value="9987(개발부)">개발부</option>
+						<option value="8876(인사부)">인사부</option>
+						<option value="7765(자재부)">자재부</option>
+						<option value="6654(영업부)">영업부</option>
+						<option value="5543(총부무)">총무부</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>직위</td>
+				<td>
+					<!-- <input type="text" id="userPosition" placeholder="ex)부장"> -->
+					<select id="userPosition">
+						<option value="zaq(부장)">부장</option>
+						<option value="xsw(과장)">과장</option>
+						<option value="cde(대리)">대리</option>
+						<option value="vfr(사원)" selected="selected">사원</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>기본급</td>
+				<td>
+					<!-- <input type="text" id="userBasicPay" placeholder="ex)3000000"> -->
+					<input type="text" id="userBasicPay">
+				</td>
+			</tr>
+		</table>
+		
+		<!-- <input type="button" value="직원 추가" class="btn" onclick="selectTest()"> -->
+		
+		<input type="button" value="직원 추가" class="btn" onclick="addMember()">
+		
+		<!-- <input type="reset" value="깨끗하게 맑게 자신있게"> -->
+		
+		<br><br>
+		
+		<table id="memberList" border="1">
+			<tr>
+				<td>이름</td>
+				<td>주민번호</td>
+				<td>지역</td>
+				<td>부서</td>
+				<td>직위</td>
+				<td>기본급</td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+</body>
+</html>
