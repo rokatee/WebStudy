@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test035.html</title>
+
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<script type="text/javascript">
+
+	function testObj()
+	{
+		//alert("함수호출확인");
+		
+		// 사용자 정의 객체(생성자) 정의
+		function Blog(b, d)
+		{
+			// 객체를 구성하는 속성
+			this.body = b;
+			this.date = d;
+		}
+		
+		// 객체 생성
+		var blog = new Blog("블로그 개설", "2022-06-27");
+		
+		// 생성된 객체의 속성(멤버) 접근
+		var str = blog.body + " / " + blog.date;
+		
+		// 확인
+		//alert(str);
+		
+		//var blog1 = new blog("블로그 레이아웃 구성", "2022-07-10");
+		//var blog2 = new blog("블로그 학습내용 정리", "2022-07-22");
+		//var blog3 = new blog("생성자를 이용한 객체 생성", "2022-10-07");
+		
+		// 사용자 정의 객체 여러 개를 배열 구조에 저장
+		//var arr = [요소1, 요소2, 요소3];
+		//var arr = [blog1, blog2, blog3];
+		
+		var arr = [new Blog("블로그 레이아웃 구성", "2022-07-10")
+				  , new Blog("블로그 학습내용 정리", "2022-07-22")
+				  , new Blog("생성자를 이용한 객체 생성", "2022-10-07") ];
+		
+		str = "<table border='1' class='table'>";
+		str += "<tr><th>제목</th><th>날짜</th></tr>";
+		
+		for (var i = 0; i < arr.length; i++)
+		{
+			str += "<tr>";
+			str += "<td>" + arr[i].body + "</td>";
+			str += "<td>" + arr[i].date + "</td>";
+			str += "</tr>";
+		}
+		
+		str += "</table>";
+		
+		// 확인
+		var result = document.getElementById("result");	// div 엘리먼트
+		result.innerHTML = str;
+		
+	}
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<h2>자바스크립트 객체(사용자 정의 객체)</h2>
+	<hr>
+</div>
+
+<div>
+	<input type="button" class="btn control" value="사용자 정의 객체 테스트"
+			onclick="testObj()">
+	<br><br>
+	
+	<div id="result"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test036</title>
+
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<script type="text/javascript">
+
+	function testObj()
+	{
+		//alert("함수호출");
+
+		// 사용자 정의 객체 
+		function Blog(b, d)
+		{
+			//주요 속성 구성
+			this.body = b;
+			this.date = d;
+
+			// 주요 기능 정의
+			// 날짜 출력용 함수 정의
+			this.userLocalString = function()
+			{
+				return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+			};
+
+		}
+
+		// 객체 생성
+		var blog = new Blog("블로그 개설", "2022-06-27");
+
+		// 객체의 속성에 접근
+		var str = blog.body + " / " + blog.date;
+
+		// 확인
+		//alert(str);
+
+		// Test035.html 에서와 마찬가지로
+		// 사용자 정의 객체 여러 개를 자바스크립트 배열 구조에 저장.
+		// 단, 차이점 확인~!!!
+		// → 자바스크립트 내장 객체
+		//var arr = [];
+		//		↓
+		//var arr = [요소1, 요소2, 요소3];
+		//		↓
+		var arr = [ new Blog("블로그 레이아웃 구성", new Date("2022/06/27"))
+					, new Blog("블로그 학습내용 정리", new Date("2022/07/22"))
+					, new Blog("생성자 이용한 객체 생성", new Date("2022/10/07")) ];
+		
+		/*
+		○ 자바스크립트에서의 날짜 데이터
+		
+			Date 객체는 날짜와 시간 작업을 하는데 사용되는
+			가장 기본적인 자바스크립트 내장 객체이다
+			
+			var now = new Date();
+			
+			now.toString();
+			now.toLocaleString();
+			now.toLocaleDateString();
+			now.toLocaleTimeString();
+			
+			now.getFullYear();
+			now.getMonth()+1;		// 월 단위는 자바에서처럼 0부터 시작한다
+			now.getDate();
+			
+			※ 주의
+			
+				var userDate1 = new Date("2022/10/07");			// ○
+				var userDate2 = new Date(2022, 10, 07);			// ○
+				var userDate3 = new Date(October, 7, 2022);		// ○
+				var userDate4 = new Date("2022-10-07");			// X
+				var userDate5 = new Date("20221007");			// X
+		*/
+		
+		str = "<table class='table'>";
+		str += "<tr><th>제목</th><th>날짜</th></tr>";
+		
+		/*
+		for (var i = 0; i < arr.length; i++)
+		{
+			str += "<tr>";
+			str += "<td>" + arr[i].body + "</td>";
+			str += "<td>" + arr[i].date + "</td>";
+			str += "</tr>";
+		}
+		*/
+		
+		for (var i = 0; i < arr.length; i++)
+		{
+			str += "<tr>";
+			str += "<td>" + arr[i].body + "</td>";
+			str += "<td>" + arr[i].userLocalString(); + "</td>";	// 체크~!
+			str += "</tr>";
+		}
+		
+		str += "</table>";
+		
+		var result = document.getElementById("result");
+		result.innerHTML = str;
+		
+	}
+	
+</script>
+
+</head>
+<body>
+
+	<div>
+		<h1>자바 스크립트 활용</h1>
+		<hr>
+	</div>
+
+	<div>
+		<h2>자바스크립트 객체(사용자 정의 객체)</h2>
+
+		<div>
+			<input type="button" class="btn control" value="사용자 정의 객체 테스트"
+				onclick="testObj()"> 
+			<br><br>
+
+			<div id="result"></div>
+		</div>
+	</div>
+
+</body>
+</html>

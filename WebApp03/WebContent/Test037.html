@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test037.html</title>
+
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<style type="text/css">
+	
+	#uName {width: 150px;}
+	#uContent {width: 560px;}
+	.btn {width: 660px; height: 50px;}
+	
+</style>
+
+<script type="text/javascript">
+	
+	// 배열 구성 → 전역 변수
+	var boardArray = new Array();
+	
+	// 사용자 정의 객체 구성(→ 생성자 함수 정의)
+	function Board(uName, uContent)
+	{
+		this.userName = uName;
+		this.content = uContent;
+		this.writeDay = new Date();
+	}
+	
+	// 프로토타입 구성을 통해... 사용자 정의 객체의 함수(기능, 동작, 행위) 정의
+	//Board.prototype.userDateString = 값;
+	//Board.prototype.userDateString = 기능;
+	Board.prototype.userDateString = function()
+	{
+		//return 내용;
+		return this.writeDay.getFullYear() + "-"
+			 + (this.writeDay.getMonth()+1) + "-"
+			 + this.writeDay.getDate() + " "
+			 + this.writeDay.getHours() + ":"
+			 + this.writeDay.getMinutes() + ":"
+			 + this.writeDay.getSeconds();
+			 
+		// 시 → getHours()
+		// 분 → getMinutes()
+		// 초 → getSeconds()
+	};
+	
+	// 방명록 글쓰기 버튼이 클릭되었을 때 호출되어 기능하는 함수 정의
+	function protoTest()
+	{
+		//alert("함수호출확인");
+		
+		var name = document.getElementById("uName").value;
+		var content = document.getElementById("uContent").value;
+		
+		var len = boardArray.length;
+		
+		// 확인
+		//alert(len);
+		//--==>> 0 → 아무것도 담지 않은 현 시점에서의 테스트
+		
+		boardArray[len] = new Board(name, content);
+		
+		// 확인
+		//alert(len);
+		//--==>> 0, 1, 2, ... → 작성이 이루어질 때 마다 +1 
+		
+		print(len);
+		
+		
+	}
+	
+	// 내용 출력
+	function print(idx)
+	{
+		// 테스트
+		//var strTemp = boardArray[idx].content;
+		//alert(strTemp);
+		
+		var tableNode = document.getElementById("bbsTable");
+		var trNode = document.createElement("tr");
+		
+		trNode.appendChild(createTdNode((idx+1).toString()));				// 번호
+		trNode.appendChild(createTdNode(boardArray[idx].userName));			// 이름 
+		trNode.appendChild(createTdNode(boardArray[idx].content));			// 내용
+		//trNode.appendChild(createTdNode(boardArray[idx].writeDay));		// 작성일
+		// → 따로 프로토타입으로 만들었기 때문에 아래처럼 수정한다
+		trNode.appendChild(createTdNode(boardArray[idx].userDateString()));	// 작성일
+		
+		tableNode.appendChild(trNode);
+	}
+	
+	// 내용 구성된 td 노드 생성 및 반환 함수
+	function createTdNode(val)
+	{
+		var textNode = document.createTextNode(val);
+		var tdNode = document.createElement("td");
+		tdNode.appendChild(textNode);
+		return tdNode;
+	}
+	
+</script>
+
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<p>사용자 정의 객체 및 프로토타입을 활용한 자바스크립트</p>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<table class="table">
+			<tr>
+				<th>작성자</th>
+				<td>
+					<input type="text" id="uName" class="txt">
+				</td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td>
+					<input type="text" id="uContent" class="txt">
+				</td>
+			</tr>
+		</table>
+		<br>
+		
+		<input type="button" class="btn control" value="글쓰기"
+				onclick="protoTest()">
+		<br><br><br>
+		
+		<table class="table" id="bbsTable">
+			<tr>
+				<th>번호</th>
+				<th>작성자</th>
+				<th>내용</th>
+				<th>작성일</th>
+			</tr>
+		</table>
+		
+		
+	</form>
+</div>
+
+</body>
+</html>
