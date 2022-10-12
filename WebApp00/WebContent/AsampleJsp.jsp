@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AsampleJsp</title>
+<title>AsampleJsp.jsp</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>

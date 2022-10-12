@@ -3,36 +3,21 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <%
+	// 한글 처리를 위한 인코딩 방식 지정(한글 깨짐 방지)
+	// 데이터를 꺼내기 전에 바꾸어야 함(아래 request를 하기 전에 입력해야 함)
+	request.setCharacterEncoding("UTF-8");
 
 	String userName = request.getParameter("userName");
-	String userTel = request.getParameter("userTel");
-/* 	
-	PrintWriter outt = response.getWriter(); 
+	//String kor = request.getParameter("kor");
+	int kor = Integer.parseInt(request.getParameter("kor"));
+	//String eng = request.getParameter("eng");
+	int eng = Integer.parseInt(request.getParameter("eng"));
+	//String mat = request.getParameter("mat");
+	int mat = Integer.parseInt(request.getParameter("mat"));
 	
-	outt.print("<!DOCTYPE html>");
-	outt.print("<html>");
-	outt.print("<head>");
-	outt.print("<title>");
-	outt.print("Receive01.jsp");
-	outt.print("</title>");
-	outt.print("</head>");
-	   
-	outt.print("<body>");
-       
-	outt.print("<div>");
-	outt.print("<h1>");
-	outt.print("데이터 송수신 관련 실습01");
-	outt.print("</h1>");
-	outt.print("<hr>");
-	outt.print("</div>");
-       
-	outt.print("<div>");
-	outt.print("<span style='font-weight: bold;'>" + userName + "</span>" + "님, 회원가입이 완료되었습니다.<br> 회원님께서 등록하신 전화번호는 " + "<span style='font-weight: bold;'>" + userTel + "</span>" + " 입니다.");
-	outt.print("</div>");
-	   
-	outt.print("</body>");
-	outt.print("</html>");	 
-*/
+	int tot = kor + eng + mat;
+	double avg = tot / 3.0;
+
 	
 %>
 
@@ -40,7 +25,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Receive02.jsp</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
@@ -48,13 +33,15 @@
 <div>
 	<span style="font-weight: bold;">
 		<%=userName %>
-	</span>"님, 회원가입이 완료되었습니다.
+	</span>님, 성적 처리가 완료되었습니다.
 	<br>
-	회원님께서 등록하신 전화번호는 
-	<span style="font-weight: bold;">
-		<%=userTel %>
-	</span>입니다.
-	
+	회원님의 점수는<br>
+	국어 : <span style="font-weight: bold;"><%=kor %></span><br>
+	영어 : <span style="font-weight: bold;"><%=eng %></span><br>
+	수학 : <span style="font-weight: bold;"><%=mat %></span><br>
+	총점 : <span style="font-weight: bold;"><%=tot %></span><br>
+	평균 : <span style="font-weight: bold;"><%=String.format("%.1f", avg) %></span><br>
+	입니다.
 </div>
 
 </body>
