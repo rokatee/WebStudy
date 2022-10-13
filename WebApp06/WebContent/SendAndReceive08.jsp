@@ -138,7 +138,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SendAndReceive07.jsp</title>
+<title>SendAndReceive06_01.jsp</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 
 <style type="text/css">
@@ -195,7 +195,7 @@
      -->
      
 <div>
-   <h1>데이터 송수신 실습 07</h1>
+   <h1>데이터 송수신 실습 06</h1>
    <hr>
 </div>
 
@@ -204,9 +204,9 @@
    
    <!-- action 속성과 속성값 생략 → 요청 페이지는 자기 자신 / 데이터의 수신처 자기 자신 -->
 	<div style="text-align: center;">
-		<a href="SendAndReceive07.jsp?year=<%=selectYear %>&month=<%=selectMonth-1 %>">◀</a>
+		<a href="SendAndReceive08.jsp?year=<%=selectYear %>&month=<%=selectMonth-1 %>">◀</a>
 			<%=selectYear %>년 <%=selectMonth %>월
-		<a href="SendAndReceive07.jsp?year=<%=selectYear %>&month=<%=selectMonth+1 %>">▶</a>
+		<a href="SendAndReceive08.jsp?year=<%=selectYear %>&month=<%=selectMonth+1 %>">▶</a>
 	</div>
 </div>
 
