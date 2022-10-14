@@ -26,18 +26,19 @@
 <!-- 연산자를 함께 입력받을 수 있도록 한다. -->
 
 <!-- 사용자 최초 요청 페이지 -->
-<!-- 『http://localhost:8090/WebApp07/Send11.html』 -->
+<!-- 『http://localhost:8090/WebApp06/Send10_01.html』 -->
 
 <!-- 연산 전용 페이지 -->
-<!-- 『http://localhost:8090/WebApp07/Forward.jsp』 → java → Servlet -->
+<!-- 『http://localhost:8090/WebApp06/Forward10_01.jsp』 → java → Servlet -->
 <!-- ※ 스크립트 릿 코드만 존재 -->
 <!--  +jsp:forward 액션 태그 -->
 
 <!-- 최종 결과 출력 페이지 -->
-<!-- 『http://localhost:8090/WebApp07/Receive11.jsp』 -->
+<!-- 『http://localhost:8090/WebApp06/Receive10_01.jsp』 -->
 
 <div>
-   <form action="Forward10_01.jsp" method="post">
+   <!-- <form action="Forward10_01.jsp" method="post"> -->	<!-- jsp:forward 액션태그가 jsp 영역에 있는 경우 -->
+   <form action="Forward10_02.jsp" method="post">			<!-- jsp:forward 액션태그가 스크립릿 영역으로 넣은 경우 -->
       <table class="table" style="width: 500px;">
       
          <tr>

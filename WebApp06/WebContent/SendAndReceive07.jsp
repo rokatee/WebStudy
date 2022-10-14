@@ -30,10 +30,16 @@
 		selectMonth = Integer.parseInt(monthStr);
 	}
 	
-	cal.set(selectYear, selectMonth-1, 1);    //출력할 년도, 월로 설정
-	   
-    selectYear = cal.get(Calendar.YEAR);    //변화된 년, 월
-    selectMonth = cal.get(Calendar.MONTH) + 1;
+	if(selectMonth > 12)
+	{
+		selectYear++;
+		selectMonth = 1;
+	}
+	if(selectMonth < 1)
+	{
+		selectYear--;
+		selectMonth = 12;
+	}
 	//----------여기까지 수행하면 상황에 따라 그려야 할 달력의 년, 월 구성 완료
 	
 	// 여기서 부터는 달력 그리기
@@ -149,7 +155,6 @@
 	.sun{color:red;}
 	.sat{color:blue;}
 	a{text-decoration: none; color: black; }
-	table{margin: auto;}
 </style>
 
 <script>
@@ -203,7 +208,7 @@
    <h2>달력 구성</h2>
    
    <!-- action 속성과 속성값 생략 → 요청 페이지는 자기 자신 / 데이터의 수신처 자기 자신 -->
-	<div style="text-align: center;">
+	<div>
 		<a href="SendAndReceive07.jsp?year=<%=selectYear %>&month=<%=selectMonth-1 %>">◀</a>
 			<%=selectYear %>년 <%=selectMonth %>월
 		<a href="SendAndReceive07.jsp?year=<%=selectYear %>&month=<%=selectMonth+1 %>">▶</a>

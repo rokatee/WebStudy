@@ -4,7 +4,7 @@
     request.setCharacterEncoding("utf-8");
    
     Calendar cal = Calendar.getInstance();
-    int year = cal.get(Calendar.YEAR);
+    int year = cal.get(Calendar.YEAR); 
     int month = cal.get(Calendar.MONTH)+1;
     int day = cal.get(Calendar.DAY_OF_MONTH);
    
@@ -27,7 +27,7 @@
    
     int end = cal.getActualMaximum(Calendar.DAY_OF_MONTH);    //해당월의 마지막 날짜
     int w = cal.get(Calendar.DAY_OF_WEEK);    //1~7(일~토)
-    %>
+%>
     
 <!DOCTYPE html>
 <html>
