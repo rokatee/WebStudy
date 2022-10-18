@@ -17,15 +17,16 @@
 		memberCount += dao.count() + "명</span>";
 		
 		str.append("<table class='table'>");
-		str.append("<tr><th>번호</th><th>이름</th><th>전화번호</th></tr>");	
-		// 리스트를 얻어내기 위해 MemberDAO 객체의 lists() 메소드 호출
+		str.append("<tr><th>번호</th><th>이름</th><th>전화번호</th></tr>");
+		
+		// 리스트를 얻어내기 위해 MemberDAO 객체의 list() 메소드 호출
 		//-- 반복문을 통해 <table> 하위 엘리먼트 생성
 		for(MemberDTO member : dao.list())
 		{
 			str.append("<tr>");
 			str.append("<td class='record'>" + member.getSid() + "</td>");
 			str.append("<td class='record'>" + member.getName() + "</td>");
-			str.append("<td class='record'>" + member.getTel() + "</td><br>");
+			str.append("<td class='record'>" + member.getTel() + "</td>");
 			str.append("</tr>");
 		}
 		
@@ -59,9 +60,31 @@
 	input {width: 200px; border-radius: 6px;}
 	button {width: 100%; height: 30px; font-family: 맑은 고딕; font-weight: bold;}
 	input:focus {background-color: #ffeeff;}
+	th {background: #EEE;}
 	#memberCount{font-size:small; color:blue; font-weight:bold;}
 </style>
+<script type="text/javascript">
+	
+	function formCheck()
+	{
+		//alert("함수호출확인");
+		
+		var uName = document.getElementById("userName");
+		var nameMsg = document.getElementById("nameMsg");
+		
+		nameMsg.style.display = "none";
+		
+		if(nameMsg.value == "")
+		{
+			nameMsg.style.display = "inline";
+			name.Msg.focus();
+			return false;
+		}
+		
+		return true;
+	}
 
+</script>
 
 </head>
 <body>
@@ -72,8 +95,8 @@
 	
 	<div>
 		<p>DTO, DAO 개념 적용</p>
-		<form action="">
-			<table class="table">
+		<form action="MemberInsert.jsp" method="post" onsubmit="return formCheck()">
+			<table>
 				<tr>
 					<th>이름(*)</th>
 					<td>

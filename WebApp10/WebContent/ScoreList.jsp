@@ -61,10 +61,6 @@
 	button {width: 210px; height: 50px; font-weight: bold;}
 	.errMsg {font-size: small; color: red; display: none;}
 	th {background: #EEE;}
-	td {text-align: center;}
-	
-	
-	
 </style>
 <script type="text/javascript">
 	function formCheck()
