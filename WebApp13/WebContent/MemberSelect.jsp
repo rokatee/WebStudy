@@ -28,10 +28,26 @@
 			str.append("<td>" + member.getName() +"</td>");
 			str.append("<td>" + member.getTel() +"</td>");
 			str.append("<td>");
+			str.append("<a href='MemberUpdateForm.jsp?sid=" + member.getSid() + "'>");
+			str.append("<button type='button' class='btn01'>수정</button>");
+			str.append("</a>");
 			
-			str.append("<a><button type='button' class='btn01'>수정</button></a>");
-			str.append("<a><button type='button' class='btn01'>삭제</button></a>");
-			
+			/* str.append("<a href='javascript:memberDelete(10, 20)'>"); */
+			/* → 삭제 버튼 클릭 시 정적으로 10, 20이 뜬다 */
+			/*
+				※ 따옴표의 종류 : ①""  ②''  ③\"\" ④ `""`(Esc아래 버튼)
+	        	    일반적으로 따옴표가 두 번 중첩되어 사용하게 되면
+	            	① 과 ② 를 사용하면 된다.
+	            	하지만, 따옴표가 세 번 중첩되어 사용될 경우
+	            	③ Escape 를 사용해야 한다.
+			*/
+			/* 이름 값에 따옴표가 필요하다
+			   이를 각 회원의 sid와 name이 뜨도록 작성하면 아래와 같다 */
+			/* str.append("<a href='javascript:memberDelete(" + member.getSid() + ", `" +  member.getName() + "`)'>"); */
+			str.append("<a href='javascript:memberDelete(" + member.getSid() + ", \"" +  member.getName() + "\")'>");
+			str.append("<button type='button' class='btn01'>삭제</button>");
+			str.append("</a>");
+
 			str.append("</td>");
 			str.append("</tr>");
 			
@@ -60,9 +76,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>MemberSelect.jsp</title>
 <!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
 <link rel="stylesheet" type="text/css" href="css/memberSelect.css">
+
+<script type="text/javascript">
+	
+	function memberDelete(sid, name)
+	{
+		//alert("함수호출확인");
+		var res = confirm("번호 : " + sid + ", 이름 : " + name + "\n이 회원의 정보를 삭제하시겠습니까?");
+
+		//alert(res);
+		// confirm() 은 true(확인) false(취소) 를 반환
+		
+		if(res)		// res가 true 라면... → 사용자가 확인 버튼을 클릭했다면...(삭제 의사를 밝힘)
+		{
+			// MemberDelete.jsp 페이지를 요청할 수 있도록 처리
+			// 이 과정에서 sid 데이터 전달
+			window.location.href="MemberDelete.jsp?sid=" + sid;
+		}
+	}
+
+</script>
+
 </head>
 <body>
 	<div>

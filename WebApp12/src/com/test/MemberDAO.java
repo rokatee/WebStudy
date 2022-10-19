@@ -25,17 +25,14 @@ public class MemberDAO
 		return conn;
 	}
 	
-	// 데이터 입력 담당 메소드
+	// 데이터베이스 입력 담당 메소드
 	public int add(MemberDTO dto) throws SQLException
 	{
-		// 결과값 변수 선언 및 초기화
 		int result = 0;
 		
-		// 쿼리문 준비
 		String sql = "INSERT INTO TBL_MEMBER(SID, NAME, TEL) VALUES(MEMBERSEQ.NEXTVAL, ?, ?)";
 		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		
 		pstmt.setString(1, dto.getName());
 		pstmt.setString(2, dto.getTel());
 		
@@ -47,18 +44,14 @@ public class MemberDAO
 	}
 	
 	// 회원 리스트 출력 담당 메소드
-	public ArrayList<MemberDTO> list() throws SQLException
+	public ArrayList<MemberDTO> lists() throws SQLException
 	{
 		ArrayList<MemberDTO> result = new ArrayList<MemberDTO>();
 		
 		String sql = "SELECT SID, NAME, TEL FROM TBL_MEMBER ORDER BY SID";
-		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		
 		ResultSet rs = pstmt.executeQuery();
-		
 		MemberDTO member = null;
-		
 		while (rs.next())
 		{
 			member = new MemberDTO();
@@ -74,27 +67,22 @@ public class MemberDAO
 		return result;
 	}
 	
-	
 	// 인원 수 확인 담당 메소드
 	public int count() throws SQLException
 	{
 		int result = 0;
 		
 		String sql  = "SELECT COUNT(*) AS COUNT FROM TBL_MEMBER";
-		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		
 		ResultSet rs = pstmt.executeQuery();
-		
 		while(rs.next())
 			result = rs.getInt("COUNT");
-		
 		rs.close();
 		pstmt.close();
 		
 		return result;
-	}
 	
+	}
 	
 	// 데이터베이스 연결 종료 담당 메소드
 	public void close() throws SQLException
@@ -102,111 +90,75 @@ public class MemberDAO
 		DBConn.close();
 	}
 	
+	// 메소드 추가--------------------------------------------------------------
 	
-	
-	// 메소드 추가 ---------------------------------------------------------------------
-	
-	
-	
-	// 회원 데이터 검색 담당 메소드(sid 를 가지고 회원 데이터 조회
+	// 회원 정보 검색 담당 메소드
 	public MemberDTO searchMember(String sid) throws SQLException
 	{
-		// 결과값 변수 선언 및 초기화
 		MemberDTO result = new MemberDTO();
 		
-		// 쿼리문 준비
 		String sql = "SELECT SID, NAME, TEL FROM TBL_MEMBER WHERE SID=?";
-		
-		// pstmt를 통해 sql 호출 
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		
-		// 시드값 넘기기
-		// 메소드 매개변수의 sid를 String 으로 받았기 때문
 		pstmt.setString(1, sid);
-		
-		// 조회문이니 엑스큐트 쿼리
 		ResultSet rs = pstmt.executeQuery();
-		
-		while(rs.next())
+		while (rs.next())
 		{
-			// MemberDTO를 메소드에서 이미 받아오므로 객체 생성 불필요
-			//MemberDTO member = new MemberDTO(); → (X)
-			
 			result.setSid(rs.getString("SID"));
 			result.setName(rs.getString("NAME"));
 			result.setTel(rs.getString("TEL"));
 		}
-		
 		rs.close();
 		pstmt.close();
 		
 		return result;
 	}
 	
-	// 회원 데이터 수정 담당 메소드
+	// 회원 정보 수정 담당 메소드
 	public int modify(MemberDTO member) throws SQLException
 	{
-		// 결과값 변수 선언 및 초기화
 		int result = 0;
 		
-		// 쿼리문 준비
 		String sql = "UPDATE TBL_MEMBER SET NAME=?, TEL=? WHERE SID=?";
-		
-		// 데이터베이스의 쿼리문과 연결할 PreparedStatement 호출
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		
-		// 변경 해줄 값 변수들 불러오기
 		pstmt.setString(1, member.getName());
 		pstmt.setString(2, member.getTel());
 		pstmt.setString(3, member.getSid());
 		
-		// 데이터 수정이므로 executeUpdate 를 통해 result(결과값 변수) 에 담기 
 		result = pstmt.executeUpdate();
 		
-		// 리소스 반납
 		pstmt.close();
 		
 		return result;
+		
 	}
 	
-	// 회원 데이터 삭제 담당 메소드
+	// 회원 정보 삭제 담당 메소드
 	public int remove(String sid) throws SQLException
 	{
-		// 결과값 변수 선언 및 초기화
 		int result = 0;
 		
-		// 쿼리문 준비
 		String sql = "DELETE FROM TBL_MEMBER WHERE SID=?";
-		
-		// sql과 연결할 PreparedStatement 호출 
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		
-		// 쿼리문에서 필요한 값 불러오기
 		pstmt.setString(1, sid);
-		
-		// 데이터 수정에 필요한 executeUpdate를 통해 result(결과값 변수) 에 담기
+
 		result = pstmt.executeUpdate();
 		
-		// 리소스 반납
 		pstmt.close();
 		
-		return result;
+		return result;		
 	}
 	
-	// 자식 테이블의 참조 데이터 레코드 수를 확인하는 메소드
+	// 자식테이블의 참조데이터 레코드 수 확인
 	public int refCount(String sid) throws SQLException
 	{
 		int result = 0;
 		
 		String sql = "SELECT COUNT(*) AS COUNT FROM TBL_MEMBERSCORE WHERE SID=?";
-		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		
 		pstmt.setString(1, sid);
 		
 		ResultSet rs = pstmt.executeQuery();
-		
-		while(rs.next())
+		if (rs.next())
 			result = rs.getInt("COUNT");
 		
 		rs.close();
@@ -216,4 +168,6 @@ public class MemberDAO
 	}
 	
 	
+	
+	// --------------------------------------------------------------메소드 추가
 }
