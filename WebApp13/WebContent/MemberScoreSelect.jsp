@@ -135,11 +135,9 @@
 		//-- confirm 창은 true(확인) 또는 flase(취소)를 반환
 		
 		if (res)
-		{
-			
-		}
-		
+			window.location.href="MemberScoreDelete.jsp?sid=" + sid;
 	}
+	
 </script>
 </head>
 <body>
