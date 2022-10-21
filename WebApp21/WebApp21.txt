@@ -1,0 +1,24 @@
+■■■ WebApp21 ■■■
+
+○ 프로젝트 : WebApp21 
+
+○ 프로젝트 성격 : JDBC 연동 기본 게시판 작성 실습   
+   (게시판 작성의 기본 틀이기 때문에 
+    이번 프로젝트는 통으로 외워두면 도움이 될 것!!)
+
+○ 물리적 구성요소
+
+   00. WebApp21_scott.sql
+
+   01. DBConn.java
+   02. BoardDTO.java
+   03. BoardDAO.java
+   04. MyUtil.java
+
+   05. List.jsp
+   06. Created.jsp
+   07. Created_ok.jsp
+   08. Article.jsp
+   09. Update.jsp
+   10. Updated_ok.jsp
+   11. Delete.jsp
