@@ -86,7 +86,7 @@ END;
 
 SELECT *
 FROM TBL_BOARD
-ORDER BY NUM;
+ORDER BY NUM DESC;
 
 COMMIT;
 --==>> Ä¿¹Ô ¿Ï·á.

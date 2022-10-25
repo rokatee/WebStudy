@@ -97,7 +97,8 @@
 		</div><!-- #leftHeader -->
 		
 		<div id="rightHeader">
-			<input type="button" value="글올리기" class="btn2">
+			<input type="button" value="글올리기" class="btn2"
+			onclick="javascript:location.href='<%=cp %>/Create.jsp'">
 		</div><!-- #rightHeader -->
 		
 	</div><!-- #bbsList_header  -->
@@ -116,18 +117,32 @@
 		<div id="lists">
 			<!-- 
 			<dl>
-				<dd class="num">1</dd>
-				<dd class="subject">수리남엔 왜 다시 돌아오셨습니까, 형제님?</dd>
-				<dd class="name">민찬우</dd>
-				<dd class="created">2022-09-30</dd>
-				<dd class="hitCount">0</dd>
+				<dd class="num">775</dd>
+				<dd class="subject">에이맨...</dd>
+				<dd class="name">김태민</dd>
+				<dd class="created">2022-10-25</dd>
+				<dd class="hitCount">1</dd>
 			</dl> 
 			<dl>
-				<dd class="num">2</dd>
+				<dd class="num">774</dd>
+				<dd class="subject">가서 쏘시지나 갖고오라, 짠쓴빌로다가</dd>
+				<dd class="name">김인교</dd>
+				<dd class="created">2022-10-25</dd>
+				<dd class="hitCount">1</dd>
+			</dl> 
+			<dl>
+				<dd class="num">773</dd>
+				<dd class="subject">수리남엔 왜 다시 돌아오셨습니까, 형제님?</dd>
+				<dd class="name">민찬우</dd>
+				<dd class="created">2022-10-25</dd>
+				<dd class="hitCount">1</dd>
+			</dl> 
+			<dl>
+				<dd class="num">772</dd>
 				<dd class="subject">왓?! 어땍 아메리까?!</dd>
 				<dd class="name">유동현</dd>
-				<dd class="created">2022-09-30</dd>
-				<dd class="hitCount">0</dd>
+				<dd class="created">2022-10-25</dd>
+				<dd class="hitCount">1</dd>
 			</dl>
 			 -->
 			 
@@ -137,7 +152,9 @@
 			%>
 			<dl>
 				<dd class="num"><%=dto.getNum() %></dd>
-				<dd class="subject"><%=dto.getSubject() %></dd>
+				<dd class="subject">
+					<a href="<%=articleUrl %>&num=<%=dto.getNum() %>"><%=dto.getSubject() %></a>
+				</dd>
 				<dd class="name"><%=dto.getName() %></dd>
 				<dd class="created"><%=dto.getCreated() %></dd>
 				<dd class="hitCount"><%=dto.getHitCount() %></dd>
