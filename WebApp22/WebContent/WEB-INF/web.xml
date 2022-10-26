@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>WebApp22</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- Test1 → Servlet 구성 ① -->
+  <!-- 서블릿의 name과 서블릿 mapping의 name을 같게 해서 연결하면 된다 -->
+  <!--
+  <servlet>
+  	<servlet-name>test1Servlet</servlet-name> 
+  	<servlet-class>com.test.Test1</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>test1Servlet</servlet-name>
+	<url-pattern>/test1</url-pattern>	
+  </servlet-mapping>
+   -->
+   
+  <!-- Test1 → Servlet 구성 ② -->
+  <!-- 
+  <servlet>
+  	<servlet-name>test1Servlet</servlet-name>
+  	<servlet-class>com.test.Test1</servlet-class>
+  	<init-param>
+      	  <param-name>name</param-name>
+      	  <param-value>정미경</param-value>
+      </init-param>
+      <init-param>
+      	  <param-name>age</param-name>
+      	  <param-value>14</param-value>
+      </init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>test1Servlet</servlet-name>
+	<url-pattern>/test1</url-pattern>	
+  </servlet-mapping>
+   -->
+  
+  <!-- Test1 → Servlet 구성 ③ -->
+  <context-param>
+  	<param-name>type</param-name>
+  	<param-value>밝고명랑</param-value>
+  </context-param>
+  
+  <servlet>
+     <servlet-name>test1Servlet</servlet-name>
+     <servlet-class>com.test.Test1</servlet-class>
+     <init-param>
+        <param-name>name</param-name>
+        <param-value>정미경</param-value>
+     </init-param>
+     <init-param>
+        <param-name>age</param-name>
+        <param-value>14</param-value>
+     </init-param>
+  </servlet>
+  
+  <servlet-mapping>
+     <servlet-name>test1Servlet</servlet-name>
+   <url-pattern>/test1</url-pattern>   
+  </servlet-mapping>
+  
+  <!-- Test2 → Servlet 구성 -->
+  <servlet>
+    <servlet-name>test2Servlet</servlet-name>
+    <servlet-class>com.test.Test2</servlet-class>
+  </servlet>
+   
+  <servlet-mapping>
+    <servlet-name>test2Servlet</servlet-name>
+    <url-pattern>/test2</url-pattern>	
+  </servlet-mapping>
+  
+  
+</web-app>

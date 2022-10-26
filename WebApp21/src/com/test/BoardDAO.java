@@ -247,6 +247,29 @@ public class BoardDAO
 					+ " ) "
 					+ " WHERE RNUM >= ? AND RNUM <= ?";
 			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, searchValue);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next())
+			{
+				BoardDTO dto = new BoardDTO();
+				dto.setNum(rs.getInt("NUM"));
+				dto.setName(rs.getString("NAME"));
+				dto.setSubject(rs.getString("SUBJECT"));
+				dto.setHitCount(rs.getInt("HITCOUNT"));
+				dto.setCreated(rs.getString("CREATED"));
+				
+				result.add(dto);
+			}
+			
+			rs.close();
+			pstmt.close();
+			
 		} catch (Exception e)
 		{
 			System.out.println(e.toString());
