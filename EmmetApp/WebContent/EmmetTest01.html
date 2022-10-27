@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EmmetTest01.html</title>
+</head>
+<body>
+
+<div>
+	<h1>※ 기능 적용 키 → Ctrl + E</h1>
+	<hr>
+</div>
+
+0. html 기본
+
+<!-- 
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+ -->
+ 
+ 
+1. 태그 선택자
+	div 쓰고 Tab키 혹은 Ctrl+E
+	→ <div></div>
+	a 쓰고 Tab키 혹은 Ctrl+E
+	→ <a href=""></a>
+	img 쓰고 Tab키 혹은 Ctrl+E
+	→ <img src="" alt="" />
+	div{재미있다} 쓰고 Tab키 혹은 Ctrl+E
+	→ <div>재미있다</div>
+
+
+
+2. 아이디 선택자
+	div#box 쓰고 Tab키 혹은 Ctrl+E
+	→ id속성값에 box가 채워진채로 태그가 완성된다
+	   <div id="box"></div>
+	#box
+	<div id="box"></div>
+	#box{aaa}
+	<div id="box">aaa</div>
+	table#tbl
+	<table id="tbl"></table>
+
+
+
+3. 클래스 선택자
+	div.items
+	<div class="items"></div>
+	div.items{aaa}
+	<div class="items">aaa</div>
+	.items
+	<div class="items"></div>
+	.items{bbb}
+	<div class="items">bbb</div>
+	
+
+
+4. 조합
+	div#item1.items
+	<div id="item1" class="items"></div>
+	div#item1.items.box.control
+	<div id="item1" class="items box control"></div>
+	div#item1.items.box.{aaa}
+	<div id="item1" class="items box ">aaa</div>
+	#item1.items.box.{aaa}
+	<div id="item1" class="items box ">aaa</div>
+  
+   
+
+5. 속성 선택자
+	div[title]
+	<div title=""></div>
+	div[title='test']
+	<div title="test"></div>
+	a[href='www.naver.com' title='네이버']
+	<a href="www.naver.com" title="네이버"></a>
+	a[href='www.naver.com' title='네이버']{네이버 바로가기}
+	<a href="www.naver.com" title="네이버">네이버 바로가기</a>
+
+
+
+6. PCDATA
+	div{박스}
+	<div>박스</div>
+	a{홈페이지로 이동}
+	<a href="">홈페이지로 이동</a>
+	p{문단내용기술}
+	<p>문단내용기술</p>
+
+
+
+7. 반복생성
+	div*5
+	<div>첫 번째 내용 작성</div>
+	<div>탭을 누르면 </div>
+	<div>다음 div 사이로</div>
+	<div>이동이 된다</div>
+	<div>신기방기~</div>
+	
+	img[src=images/dog.png]*5
+	<img src="images/dog.png" alt="" />
+	<img src="images/dog.png" alt="" />
+	<img src="images/dog.png" alt="" />
+	<img src="images/dog.png" alt="" />
+	<img src="images/dog.png" alt="" />
+	
+	.box{box}*5
+	<div class="box">box</div>
+	<div class="box">box</div>
+	<div class="box">box</div>
+	<div class="box">box</div>
+	<div class="box">box</div>
+
+	#box{box}*5
+	<div id="box">box</div>
+	<div id="box">box</div>
+	<div id="box">box</div>
+	<div id="box">box</div>
+	<div id="box">box</div>
+	→ 이러면 id가 모두 똑같아서 활용도가 떨어지지만
+
+	#box$*5
+	<div id="box1"></div>
+	<div id="box2"></div>
+	<div id="box3"></div>
+	<div id="box4"></div>
+	<div id="box5"></div>
+	→ $를 붙이면 숫자가 나열되어 작성된다
+
+	img[src=images/dog$.png]*5
+	<img src="images/dog1.png" alt="" />
+	<img src="images/dog2.png" alt="" />
+	<img src="images/dog3.png" alt="" />
+	<img src="images/dog4.png" alt="" />
+	<img src="images/dog5.png" alt="" />
+
+
+
+8. 연속 생성
+	div+p
+	<div></div>
+	<p></p>
+	
+	h1{제목}+p{내용}*5
+	<h1>제목</h1>
+	<p>내용</p>
+	<p>내용</p>
+	<p>내용</p>
+	<p>내용</p>
+	<p>내용</p>
+	
+	(h1{제목$}+p{내용 입니다.}*2)*3
+	→ 제목1개 + 내용2 개를 3번 반복
+	<h1>제목1</h1>
+	<p>내용 입니다.</p>
+	<p>내용 입니다.</p>
+	<h1>제목2</h1>
+	<p>내용 입니다.</p>
+	<p>내용 입니다.</p>
+	<h1>제목3</h1>
+	<p>내용 입니다.</p>
+	<p>내용 입니다.</p>
+	
+	div+a+div+p+div+img
+	<div></div>
+	<a href=""></a>
+	<div></div>
+	<p></p>
+	<div></div>
+	<img src="" alt="" />
+
+
+
+9. 하위 생성
+	table+
+	<table>
+		<tr>
+			<td></td>
+		</tr>
+	</table>
+
+	ul+
+	<ul>
+		<li></li>
+	</ul>
+	
+	ol+
+	<ol>
+		<li></li>
+	</ol>
+	
+
+
+10. 자식 생성
+	div>p
+	<div>
+		<p></p>
+	</div>
+	
+	div>p*5
+	<div>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+	</div>
+
+	(div>p*2)*3
+	<div>
+		<p></p>
+		<p></p>
+	</div>
+	<div>
+		<p></p>
+		<p></p>
+	</div>
+	<div>
+		<p></p>
+		<p></p>
+	</div>
+
+	table#tbl>tr*3>td*2
+	<table id="tbl">
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+
+	table#tbl>tr*3>td.label+td.content
+	<table id="tbl">
+		<tr>
+			<td class="label"></td>
+			<td class="content"></td>
+		</tr>
+		<tr>
+			<td class="label"></td>
+			<td class="content"></td>
+		</tr>
+		<tr>
+			<td class="label"></td>
+			<td class="content"></td>
+		</tr>
+	</table>
+	
+	
+	lorem
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus tempora sint nobis sequi deleniti illum dolorem obcaecati dolorum iure distinctio impedit nostrum dolore minus vitae doloribus error a neque numquam.
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium voluptates tempora voluptate sit nemo consequatur architecto ducimus deleniti voluptas libero aperiam sapiente impedit omnis repudiandae numquam porro tempore molestiae provident.
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis tempore molestias mollitia natus eveniet aspernatur assumenda voluptatibus eius animi accusamus quidem ad porro. Omnis voluptatibus voluptate inventore culpa hic reprehenderit.
+	
+	<td>lorem</td>
+	<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti debitis ad doloribus cum minima sapiente veniam voluptatem nemo voluptas molestias natus quis voluptatum nulla hic facere eligendi recusandae harum doloremque.</td>
+	
+	lorem(td)
+	<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non debitis quisquam odio explicabo doloremque ut vero libero fugiat eveniet sapiente eaque unde quam nesciunt est culpa. Atque dolore a sequi.</td>
+
+
+
+
+
+	
+</body>
+</html>

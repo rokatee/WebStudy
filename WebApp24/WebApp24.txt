@@ -1,0 +1,11 @@
+■■■ WebApp24.txt ■■■
+
+○ 인원 수 다섯 명의 회원 이름과 전화번호, 주소를 입력받아
+   객체를 구성하고
+   구성된 객체의 속성을 반복적으로 출력하는 프로그램을 구성한다
+   (EL 사용, JSTL 사용)
+   - MemberInsertForm.jsp
+   - MemberDTO.java
+   - MemberInsert.jsp
+   - MemberList.jsp
+   
