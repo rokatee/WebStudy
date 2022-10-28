@@ -1,0 +1,22 @@
+사용자가 hellosend03 페이지 요청
+
+web.xml 파일에서 /hellosend03 으로 매핑된
+컨트롤러 찾기 → HelloSend03Controller
+
+HelloSend03Controller 에서
+view/HelloSend03.html 로 포워딩
+
+사용자에게 HelloSend03.html 페이지 보여줌
+
+사용자가 HelloSend03.html 에 정보 입력 후 submit
+(action="helloreceive03")
+
+web.xml 파일에서 /helloreceive03 으로 매핑된
+컨트롤러 찾기 → HelloReceive03Controller
+
+HelloReceive03Controller 에서
+모델 객체(HelloReceive03Model) 생성 후 연결
+HelloReceive03Model 의 process 함수를 통해
+view 정보 얻어냄(view/HelloReceive03.jsp)
+
+view/HelloReceive03.jsp로 포워딩

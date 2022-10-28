@@ -1,0 +1,104 @@
+■■■ jQuery(제이쿼리) ■■■
+
+○ 개요
+   - jQuery 는 빠르고 간결한 Javascript Library.
+   - HTML Document traversing, 이벤트 처리, 애니메이션,
+     AJAX 를 단순화 하여 빠른 웹 개발을 가능하게 한다.
+   - CSS 규격 지원 : CSS 1 ~ 3 와 기본 XPath 지원.
+   - 다양한 브라우저 지원.
+   - 경량 파일(약 90kb 수준의 파일 크기)
+   - John Resig 에 의해 개발.
+
+○ jQuery 를 사용함으로써 얻을 수 있는 장점
+   - HTML 과 DOM(document object model), CSS 의 변경이 간편하다.
+   - 이벤트 처리가 간편하다.
+   - 애니메이션 같은 각종 효과를 적용하기 쉽다.
+   - AJAX, JSON과 같은 처리가 간편하다.
+   - 브라우저 호환성을 해결할 수 있다.
+ 
+○ jQuery 다운로드 및 라이브러리 포함
+   - jQuery 다운로드
+     http://jquery.com/
+   
+   - jQuery 를 사용하기 위한 라이브러리 포함.
+     1. 로컬 PC 저장소에 물리적으로 존재할 때
+        (즉, 제이쿼리 파일을 다운로드 받은 경우.
+	 특정 디렉터리 안에 들어있는 경우 그 경로까지 지정해주어야 한다.
+	 <script type="text/javascript" src="jquery-x.x.x.js"></script>
+     2. CDN 으로 직접 경로 지정
+        <script type="text/javascript" src="http://code.jquery.com/jquery.x.x.x.js></script>
+
+   - jQuery UI 를 사용하기 위한 CSS 및 라이브러리 포함.
+     <link rel="stylesheet" href="jquery-ui.css"></link>
+     <script type="text/javascript" src="jquery-x.x.x.js"></script>
+     <script type="text/javascript" src="jquery-ui-x.x.x.custom.mi.js"></script>
+     또는 
+     <link rel="stylesheet" href="http://code.jquery.com/ui/x.x.x/temes/base..."></link>
+     <script type="text/javascript" src="http://code.jquery.com/jquery...js"></script>
+     <script type="text/javascript" src="http://code.jquery.com/ui/...-ui.js"></script>
+
+○ jQuery 의 사용 방법(2가지)
+   1. http://jquery.com 에서 파일을 다운로드하여 사용하는 방법
+      ※ 다운로드 받을 수 있는 종류
+         - 『production』버전
+	    : 소스를 압축해서(불필요한 공백 및 개행 제거)
+	      웹 서버에서 빠르게 실행할 수 있도록 경량화/최소화 한 버전.
+	 - 『development』버전
+	    : 테스트나 디버깅 또는 코드에 대한 분석을 위해
+	      압축을 하지 않고 가독성을 높여놓은 버전.
+	      (공백 및 개행 처리가 되어 있음)
+
+   2. CDN(Content Delivery Network)을 통해 사용하는 방법
+      ※ CDN : 웹 페이지를 실행할 때마다 공개 서버에서 네트워크를 통해 
+               jQuery 를 다운로드 받을 수 있도록 해주는 개념
+	     
+      별도의 파일을 다운로드 받을 필요 없이
+      『<script type="text/javascript" 
+                src="http://code.jquery.com/jquery-x.x.x.min.js"></script>』
+      와 같은 구문을 통해 포함시킨다.
+ 
+○ jQuery 참조 및 학습 사이트
+   - http://try.jquery.com/
+   - http://learn.jquery.com/
+   - http://www.w3schools.com/jquery/
+
+
+※ jQuery 는 자바스크립트 라이브러리 일종이다.
+   『write less, do more』를 통해 알 수 있듯이
+   기존 자바스크립트 문장을 더 적은 라인으로 줄일 수 있다.
+   또한 라이브러리 자체도 가볍고 설치도 필요없이 사용할 수 있다.
+
+○ jQeury 의 대표적인 선택자 3가지
+
+   - 타입 선택자(요소 선택자 : 엘리먼트 선택자)
+     페이지 상의 모든 <p> 요소를 선택하고자 할 경우 다음과 같이 기술하면 된다.
+     『$("p")』 cf. ${} / ${} 둘 사이의 차이점 인지하기(문서단에서 쓰임/스크립트 단에서 쓰임) 
+
+   - 클래스 선택자
+     <p class="test"> 라는 클래스가 test 인 요소를 선택하고자 할 경우
+     다음과 같이 기술하면 된다.
+     『$(".test")』
+
+   - 아이디 선택자
+     <p id="test"> 라는 아이디가 test 인 요소를 선택하고자 할 경우
+     다음과 같이 기술하면 된다.
+     『$("#test")』
+
+
+○ 그 외의 선택자
+   - $("*") : 모든 요소를 선택한다.
+   - $(this) : 현재 요소를 선택한다. (따옴표 없음에 유의할 것)
+   - $("div span") : <div> 요소 안에 있는 <span> 요소를 선택한다.
+   - $("p.test") : <p> 요소 중에서 test 클래스인 요소를 선택한다.
+   - $("p:first") : 첫 번째 <p> 요소를 선택한다.
+   - $("ul li:first") : 첫 번째 <ul>에서 첫 번째 <li> 요소를 선택한다.
+   - $("ul li:first-child") : 모든 <ul>에서 첫 번째 <li> 요소를 선택한다.
+   - $("[href]") : href 속성을 가진 모든 요소들을 선택한다.
+   - $("a[target='_blank']") : 모든 <a> 요소들 중 target 속성에서 _blank 값을
+     가진 것들을 선택한다.
+   - $("a[target!='_blank']") : 위와 반대로 _blank 값이 없는 것들을 선택한다.
+   - $(":button") : 모든 <button> 요소와 모든 <input type="button"> 을 선택한다.
+   - $("tr:even") : 모든 짝수 <tr> 요소를 선택한다.
+   - $("tr:odd") : 모든 홀수 <tr> 요소를 선택한다.
+   - $("ul > li") : <ul> 요소에서 직계 자손인 <li> 요소만 선택한다.
+                    (다중 리스트 구조로 되어 있을 때...)
