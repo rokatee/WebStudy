@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest07.html</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	//$(document).ready();
+	$(function()
+	{
+		/* 
+		$("#allCheck").click(function()
+		{
+			alert("클릭");
+		});
+		*/
+		
+		$("#allCheck").change(function()
+		{
+			//alert("체인지");
+			
+			//alert( $(this).attr("checked") );
+			//--==>> undefined
+			
+			//alert( $(this).prop("checked") );
+			//--==>> 체크됐을 땐 true / 해제일 때 false
+			//		 이렇게 속성에 접근 가능
+			
+			//alert( this.checked );
+			//--==>> 체크됐을 땐 true / 해제일 때 false
+			//		 이렇게 속성에 접근 가능
+			
+			//alert( $(this).is(":checked") );
+			//				 ------------
+			//				 속성의 이름이 아니라 속성값
+			//--==>> 체크됐을 땐 true / 해제일 때 false
+			
+			// 방법 1
+			//$("div > input").prop("checked", "checked");
+			//--==>> 모두 체크된다
+			//$("div > input").prop("checked", "unchecked");
+			//--==>> unchecked 는 안되네?
+			
+			//$("div > input").prop("checked", true);
+			//$("div > input").prop("checked", false);
+			
+			//$("div > input").prop("checked", this.checked);
+			//$("div > input:checkbox").prop("checked", this.checked);
+			//										  ----
+			//								 		  #allCheck
+			
+			// 방법 2
+			// 『$(선택자).children()』
+			$("div").children().prop("checked", this.checked);
+			
+			
+			
+			
+			
+			
+			
+			
+					
+		});
+		
+	});
+	
+</script>
+</head>
+<body>
+
+<label>
+	<input type="checkbox" id="allCheck">모두 선택
+</label>
+<br /><br />
+
+<div>
+	<input type="checkbox" id="check1" >
+	<label for="check1">바나나</label><br />
+	<input type="checkbox" id="check2" >
+	<label for="check2">딸기</label><br />
+	<input type="checkbox" id="check3" >
+	<label for="check3">수박</label><br />
+	<input type="checkbox" id="check4" >
+	<label for="check4">포도</label><br />
+	<input type="checkbox" id="check5" >
+	<label for="check5">키위</label><br />
+</div>
+
+</body>
+</html>

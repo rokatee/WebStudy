@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest03.html</title>
+<style type="text/css">
+
+	*
+	{
+		margin: 0px;
+		padding: 0px;
+	}
+	
+	div
+	{
+		margin: 5px;
+		padding: 3px;
+		border: 3px solid black;
+		border-radius: 10px;
+	}
+	
+</style>
+<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	
+	//$(document).ready();
+	$(document).ready(function()
+	{
+		//alert("제이쿼리 함수호출 확인");
+		// 페이지 오픈 시 알림창 호출됨
+		
+		$("div").click(function()
+		{
+			//alert("test");
+			//--==>> 페이지 오픈이 아닌 클릭했을 때 알림창 뜨기
+			
+			//alert( $(this).html());
+			//--==>> 태그와 태그안의 값이 같이 나옴
+			//       <h1>A강의실</h1>
+			//		 <p>JAVA 수업 중</p>
+			//alert( $(this).text());
+			//--==>> 태그안의 값만 나옴
+			//       A강의실
+			//		 JAVA 수업 중
+			//alert( $("h1").text());
+			//--==>> A강의실B강의실C강의실D강의실E강의실F강의실
+			//alert( $("h1", this).text());
+			//--==>> 클릭한 것의 h1값이 나옴 → A강의실
+			//alert( $("p").text());
+			//--==>> JAVA 수업 중JQUERY 수업 중.NET 수업 중ORACLE 수업 중ASP 수업 중PHP 수업 중
+			//alert( $("p", this).text());
+			//--==>> 클릭한 것의 p값이 나옴 → JAVA 수업 중 
+			
+			var h1 =  $("h1", this).text();
+			var p =  $("p", this).text();
+			
+			alert(h1 + " / " + p);
+			//--==>> A강의실 / JAVA 수업 중
+			
+		});
+		
+	});
+
+</script>
+</head>
+<body>
+
+<div>
+	<h1>A강의실</h1>
+	<p>JAVA 수업 중</p>
+</div>
+
+<div>
+	<h1>B강의실</h1>
+	<p>JQUERY 수업 중</p>
+</div>
+
+<div>
+	<h1>C강의실</h1>
+	<p>.NET 수업 중</p>
+</div>
+
+<div>
+	<h1>D강의실</h1>
+	<p>ORACLE 수업 중</p>
+</div>
+
+<div>
+	<h1>E강의실</h1>
+	<p>ASP 수업 중</p>
+</div>
+
+<div>
+	<h1>F강의실</h1>
+	<p>PHP 수업 중</p>
+</div>
+
+</body>
+</html>

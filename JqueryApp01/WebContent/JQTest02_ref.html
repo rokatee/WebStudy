@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest02_ref.html</title>
+<script type="text/javascript">
+	
+	function actionTest(obj)
+	{
+		//alert("함수호출확인");
+	
+		//var h1Obj = document.getElementById(obj);
+		//alert(h1Obj);
+		//--==>> null
+		
+		//var a = document.getElementById(obj.id);
+		//alert(a);
+		//--==>> [object HTMLHeadingElement]
+		
+		var a = document.getElementById(obj.getAttribute("id"));
+		//alert(a);
+		//--==>> [object HTMLHeadingElement]
+		
+		a.innerHTML += "★";
+		//--==>> 이름 옆에 별이 붙음
+		
+		
+		
+		
+	}
+	
+</script>
+</head>
+<body>
+
+<h1 onclick="actionTest(this)" id="name1">김태민</h1>
+<h1 onclick="actionTest(this)" id="name2">민찬우</h1>
+<h1 onclick="actionTest(this)" id="name3">유동현</h1>
+
+</body>
+</html>

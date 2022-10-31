@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest10.html</title>
+<style type="text/css">
+	table
+	{
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+
+	th, td
+	{
+		border: 1px solid black;
+	}
+	.th
+	{
+		width: 100px;
+	}
+	
+</style>
+<script type="text/javascript">
+	
+	function addCal()
+	{
+		//alert("함수");
+		var subject = document.getElementById("subject").value;
+		//alert(subject);
+		var day = parseInt(document.getElementById("day").value);
+		//alert(day);
+		var start = parseInt(document.getElementById("sTime").value);
+		var end = parseInt(document.getElementById("eTime").value);
+		//alert(start + " ~ " + end);
+		var color = document.getElementById("color").value;
+		//alert(color);
+		
+		//getElementsByTagName() // 태그이름으로 불러오기
+		var td = document.getElementsByTagName("td");
+		//alert(td.length);	// td 의 총 개수
+		
+		// 테스트
+		// td의 개수만큼 테이블에 input값 넣기
+		/*
+		for (var i = 0; i < td.length; i++)
+		{
+			//alert(td[i].cellIndex);
+			td[i].innerText = subject;
+		}
+		*/
+		
+		for (var i = ((day-1)+(start-1)*4); i <= ((day-1)+(end-1)*4); i+=4)
+		{
+			td[i].style.backgroundColor = color;
+			td[i].innerText = subject;
+			
+		}
+	}
+</script>
+</head>
+<body>
+
+<div>
+	<h1>일정</h1>
+	<hr>
+</div>
+
+<div>
+	<table class="table">
+		<tr class="tr">
+			<th class="th"></th>
+			<th class="th">월</th>
+			<th class="th">화</th>
+			<th class="th">수</th>
+			<th class="th">목</th>
+		</tr>
+		<tr>
+			<th>11:00</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>12:00</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>13:00</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>14:00</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>15:00</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>16:00</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>17:00</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>18:00</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+</div>
+<br />
+
+<div>
+	제목 <input type="text" id="subject" name="subject">
+	<br />
+	
+	날짜
+	<select name="day" id="day">
+		<option value="1">월요일</option>
+		<option value="2">화요일</option>
+		<option value="3">수요일</option>
+		<option value="4">목요일</option>
+	</select>
+	<br />
+	
+	시간 
+	<select name="sTime" id="sTime">
+		<option value="1">11:00</option>
+		<option value="2">12:00</option>
+		<option value="3">13:00</option>
+		<option value="4">14:00</option>
+		<option value="5">15:00</option>
+		<option value="6">16:00</option>
+		<option value="7">17:00</option>
+		<option value="8">18:00</option>
+	</select>
+	~
+	<select name="eTime" id="eTime">
+		<option value="1">11:00</option>
+		<option value="2">12:00</option>
+		<option value="3">13:00</option>
+		<option value="4">14:00</option>
+		<option value="5">15:00</option>
+		<option value="6">16:00</option>
+		<option value="7">17:00</option>
+		<option value="8">18:00</option>
+	</select>
+	<br />
+	
+	색상
+	<select name="color" id="color">
+		<option value="red">빨강</option>
+		<option value="blue">파랑</option>
+		<option value="green">초록</option>
+		<option value="gray">회색</option>
+	</select>
+	<br />
+	
+</div>
+<br />
+
+<div>
+	<input type="button" class="btn" value="일정 추가하기" onclick="addCal()" >
+</div>
+
+</body>
+</html>

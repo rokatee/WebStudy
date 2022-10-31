@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest02.html</title>
+<style type="text/css">
+
+	.item
+	{
+		border: 2px solid red;
+		color: white;
+		background: black;
+	}
+	
+</style>
+
+
+<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	
+	/* 
+	function test()
+	{
+		alert("함수호출확인");
+	}
+	*/
+	
+	//$(); 의 사용법
+	//jqeury(document).ready();
+	//jqeury();
+	//$();
+	//$(document).ready();
+	
+	$(document).ready(function()
+	{
+		//테스트
+		//alert("함수호출확인");
+		
+		// ※ 사용자가 뭔가 건드리지 않아요
+		//	  (즉, 특별한 이벤트를 발생시키지 않아도)
+		//    자동으로 처리될 수 있는 영역
+		
+		/*
+		// 선택자.click()
+		//$("h1").click(기능동작행위);
+		$("h1").click(function()
+		{
+			//alert("클릭확인");
+			//alert($(this));
+			//--==>> [object Object]
+			//alert($(this).html());
+			//--==>> alert("김태민");
+			//		 alert("민찬우");
+			//$(this).html("결과확인");
+			//--==>> h1 값이 "결과확인" 이라는 문자로 변경됨
+			//		 김태민 → 결과확인
+			//		 민찬우 → 결과확인
+			//$(this).html("★");
+			$(this).html($(this).html() + "★");
+			//--==>> 김태민 → 김태민★
+			//--==>> 민찬우 → 민찬우★
+		});
+		*/
+	
+		/*
+		// 선택자.on() : 이벤트 처리
+		//$("h1").on("click", 기능동작행위)
+		$("h1").on("click", function()
+		{
+			//alert("클릭 이벤트 발생");
+			//alert($(this).html());
+			
+			$(this).html(function(index, html)
+			{
+				//alert(index);
+				// 몇 번 째 인덱스인지 나와야 하지만
+				// 호출된 기준이 $(this) 이므로
+				// 무조건 0 번째만 호출된다
+				
+				//alert(html);	// 이름 순서로 나옴
+				return html + "★";
+				
+			});
+		});
+		*/
+		
+		/*
+		$("h1").on(
+		{
+			
+			//속성1
+			//, 속성2
+			//, 속성3
+			
+			// mouseenter : 어찌어찌하겠다. (기능, 동작, 행위) → 마우스 진입할 때
+			// mouseenter : 저찌저찌하겠다. (기능, 동작, 행위) → 마우스 떠날 때 (빠져나갈 때)
+			mouseenter: function() { $(this).addClass("item"); }
+			, mouseleave: function() { $(this).removeClass("item"); }
+			
+		});
+		*/
+		
+		// mouseenter, mouseleave
+		//$("h1").hover(설정되었을때의기능동작행위, 해제되었을때의기능동작행위);
+		$("h1").hover(function()
+		{
+			// 상태 설정 시 적용되는 행위
+			$(this).addClass("item");
+			
+			
+		}, function()
+		{
+			// 상태 해제 시 적용되는 행위
+			$(this).removeClass("item");
+			
+			
+		});
+		
+		
+	});
+	
+	
+</script>
+</head>
+
+<!-- <body onload="test()"> -->
+<body>
+
+<!-- <h1 onclick="test()">함수호출</h1> -->
+
+<h1>김태민</h1>
+<h1>민찬우</h1>
+<h1>유동현</h1>
+
+</body>
+</html>

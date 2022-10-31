@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest10_1.html</title>
+
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+
+<style type="text/css">
+	
+	body, div, span, table, th, td
+	{
+		font-size: 12px;
+	}
+	
+	#list
+	{
+		border: solid 1px gray;
+		border-collapse: collapse;
+		width: 800px;
+	}
+	
+	#list th
+	{
+		width: 152px;
+	}
+	
+	#list td
+	{
+		width: 162px;
+	}
+	
+	#list th, #list td
+	{
+		border: solid 1px gray;
+		padding: 3px;
+		
+	}
+	
+	
+</style>
+
+<script type="text/javascript">
+
+	function addList()
+	{
+		
+		var subject = document.getElementById("subject").value;
+		
+		//테스트
+		//alert(subject);
+		
+		var day = parseInt(document.getElementById("day").value);
+		//테스트
+		//alert(day);	//-- 2
+		
+		var start = parseInt(document.getElementById("start").value);
+		var end = parseInt(document.getElementById("end").value);
+		var color = document.getElementById("color").value;
+		
+		// check~!!!
+		var tds = document.getElementsByTagName("td");		// ※ 모든 td 들
+		
+		//alert(tds.length);	//-- 32 (-> th 제외)
+		
+		// 요일(td)이 4가지 이기 때문에... *4
+		for (var i = (day + (start-1)*4); i <= (day + (end-1)*4); i+=4)
+		{
+			tds[i].style.backgroundColor = color;
+			tds[i].innerText = subject;
+		}
+		
+		
+		// 월(day) -> 0, 13:00(start) -> 3, 13:00(end) -> 3
+		/* for (var i = (day + (start-1) * 4); i <= (day + (end-1)*4); i+=4)
+		{
+			
+		}
+ 		*/		
+ 		/*
+ 		for (var i = (0 + (3-1) * 4); i <= (0 + (3-1)*4); i+=4)
+		{
+			tds[i].style.backgroundColor = color;
+			tds[i].innerText = subject;
+		}
+ 		*/
+ 		/*
+ 		for (var i = 8; i <= 32; i+=4)
+		{
+			tds[8].style.backgroundColor = color;
+			tds[8].innerText = subject;
+		}
+ 		*/
+ 		
+ 		document.getElementById("subject").value= "";
+ 		document.getElementById("subject").focus();
+		
+	
+		
+	}
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>일정</h1>
+	<hr>
+</div>
+
+<table id="list">
+	<tr>
+		<th>&nbsp;</th>
+		<th>월</th>
+		<th>화</th>
+		<th>수</th>
+		<th>목</th>
+	</tr>
+	<tr>
+		<th>11:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>12:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>13:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>14:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>15:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>16:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>17:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>18:00</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	
+</table>
+
+<div>
+	<label>제목</label>
+	<input type="text" id="subject">
+	<br>
+	<label>날짜</label>
+	<select id="day">
+		<option value="0">월요일</option>
+		<option value="1">화요일</option>
+		<option value="2">수요일</option>
+		<option value="3">목요일</option>
+	</select>
+	<br>
+	<label>시간</label>
+	<select id="start">
+		<option value="1">11:00</option>
+		<option value="2">12:00</option>
+		<option value="3">13:00</option>
+		<option value="4">14:00</option>
+		<option value="5">15:00</option>
+		<option value="6">16:00</option>
+		<option value="7">17:00</option>
+		<option value="8">18:00</option>
+	</select>
+	<select id="end">
+		<option value="1">11:00</option>
+		<option value="2">12:00</option>
+		<option value="3">13:00</option>
+		<option value="4">14:00</option>
+		<option value="5">15:00</option>
+		<option value="6">16:00</option>
+		<option value="7">17:00</option>
+		<option value="8">18:00</option>
+	</select>
+	<br>
+	
+	<label>색상</label>
+	<select id="color">
+		<option value="red">빨강</option>
+		<option value="blue">파랑</option>
+		<option value="yellow">노랑</option>
+		<option value="black">검정</option>
+	</select>
+	<br>
+	
+	<input type="button" value="일정 추가하기" style="margin-top: 15px;" onclick="addList()">
+</div>
+
+
+</body>
+</html>

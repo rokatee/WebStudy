@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest06.html</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+<script type="text/javascript">
+	
+	$(document).ready(function()
+	{
+		// 초기 게시물 구성 → 스크롤 생성---------------------------
+		
+		// document 의 높이
+		//var dHeight = $(document).height();
+		// 테스트
+		//alert("dHeight : " + dHeight);
+		
+		// window 의 높이(브라우저 창)
+		//var wHeight = $(window).height();
+		// 테스트
+		//alert("wHeight : " + wHeight);
+		
+		// scroll 의 높이
+		//var sHeight = $(window).scrollTop() + wHeight;
+		// 테스트
+		//alert("sHeight : " + sHeight);
+		
+		for (var i = 0; i < 30; i++)	// 30번 반복
+		{
+			$("<h3>기존의 읽어온 게시물 / "
+					+ $(document).height() + " / "
+					+ $(window).scrollTop() + " / "
+					+ $(window).height() + "</h3>").appendTo("body");
+		}
+		
+		
+		// ---------------------------초기 게시물 구성 → 스크롤 생성
+		
+		$(window).scroll(function()
+		{
+			//alert("확인");
+			
+			var dHeight = $(document).height();
+			var wHeight = $(window).height();
+			var sHeight = $(window).scrollTop() + wHeight;
+			
+			// 스크롤이 바닥에 내려졌을 때
+			// 태그 10개 추가하여 body에 붙여넣기
+			if (dHeight == sHeight)
+			{
+				for (var i = 0; i < 10; i++)
+				{
+					$("<h3>추가로 읽어온 게시물 / "
+							+ dHeight + " / "
+							+ sHeight + " / "
+							+ wHeight + "</h3>").appendTo("body");
+				}
+			}
+		});
+	});
+
+</script>
+</head>
+<body>
+
+
+
+</body>
+</html>

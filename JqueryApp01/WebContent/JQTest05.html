@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest05.html</title>
+<style type="text/css">
+
+	.outer
+	{
+		width: 200px;
+		height: 200px;
+		background: orange;
+		padding: 50px;
+		margin: 10px;
+	}
+	
+	.inner
+	{
+		width: 100%;
+		height: 100%;
+		background: red;
+	}
+	
+</style>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	$(document).ready(function()
+	{
+		
+		// 키보드 관련 이벤트
+		/*
+		$("textarea").keydown(function()
+		{
+			//alert("확인");
+			
+			// 텍스트 영역에 입력된 값을 경고창을 통해 확인
+			//alert( $(this).html() );
+			//alert( $(this).text() );
+			//--==>> 값이 나오지 않음
+			alert( $(this).val() );
+			//--==>> 값은 나오지만 반응이 하나 느림
+			//       d를 눌러도 그 이후 다른 값을 한 번 더 입력해야
+			//       d가 경고창에 나옴 (keydown 이기 때문)
+		});
+		*/
+		
+		$("textarea").keyup(function()
+		{
+			//alert( $(this).val() );
+			//--==>> 입력한 값 그대로 바로 경고창이 나옴
+			//       keyup 이기 때문
+			
+			var len = $(this).val().length;
+			//alert(len);
+			
+			var remain = 10 - len;
+			//alert(remain);
+			$("h1").html(remain);
+			// 입력할 때마다 h1의 숫자가 줄어듦
+			
+			// remain 이 0 이 되었을 경우
+			// 입력을 막아버리던지... 경고창을 띄우던지
+			// 등의 추가적인 액션 처리를 얼마든지 할 수 있다
+			if( remain <= 3 && remain >= 1)
+			{
+				$("h1").css("color", "orange");
+			}
+			else if (remain <= 0)
+			{
+				$("h1").css("color", "red").html("더이상 입력 불가");
+				$(this).attr("disabled", "disabled");
+			}
+			else
+			{
+				$("h1").css("color", "black");
+			}
+		});
+		
+		
+		// 마우스 관련 이벤트
+		//선택자.함수({이벤트1, 이벤트2});
+		// vs
+		//선택자.함수1(),함수2();
+		$(".outer").mouseover(function()
+		{
+			$("body").append($("<div>mouseover</div>").css("color", "blue"));
+		}).mouseenter(function()
+		{
+			$("body").append($("<div>mouseenter</div>").css("color", "red"));
+		});
+		
+		
+		
+	});
+
+</script>
+</head>
+<body>
+
+키보드 관련 이벤트<br />
+1. keydown / 2. keypress / 3. keyup 순으로 발생<br />
+<br />
+
+<div>
+	<p>남기고 싶은 말</p>
+	<h1>10</h1>
+	<textarea cols="70" rows="5"></textarea>
+</div>
+<br /><br />
+
+마우스 관련 이벤트<br />
+mouseenter / mouseleave / mousemove / mouseout / mouseover / mouseup 등<br />
+
+<div class="outer">
+	<div class="inner">
+	</div>
+</div>
+
+
+
+</body>
+</html>
