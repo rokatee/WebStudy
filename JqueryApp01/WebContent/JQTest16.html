@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest16.html</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	/*
+	○ :not(부정)
+		- returns : Array<Element>
+		- 주어진 것에 해당하지 않는 모든 것을 반환한다
+	*/
+	
+	$(document).ready(function()
+	{
+		$("button").click(function()
+		{
+			//alert("버튼클릭확인");
+			
+			// 선택된 엘리먼트 확인
+			$("input:not(:checked) + span").css("background-color", "yellow");
+			$("input").attr("disabled", "disabled");
+			
+		});
+	});
+
+</script>
+</head>
+<body>
+
+<button type="button">확인</button>
+<br /><br />
+
+<div>
+	<input type="checkbox" name="a">
+	<span>찬우</span>
+</div>
+
+<div>
+	<input type="checkbox" name="b">
+	<span>동현</span>
+</div>
+
+<div>
+	<input type="checkbox" name="c" checked="checked">
+	<span>태민</span>
+</div>
+
+</body>
+</html>

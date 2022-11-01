@@ -35,26 +35,76 @@
 		var color = document.getElementById("color").value;
 		//alert(color);
 		
-		//getElementsByTagName() // 태그이름으로 불러오기
+		// getElementsByTagName() → 태그이름으로 불러오기
 		var td = document.getElementsByTagName("td");
-		//alert(td.length);	// td 의 총 개수
+		//alert(td.length);	// td 의 총 개수 → 32개
 		
 		// 테스트
-		// td의 개수만큼 테이블에 input값 넣기
+		// 정적으로 자릿수 채우기
+		//td[0].innerText = "0번째 td";
 		/*
+		// td의 개수만큼 테이블에 input값 넣기
 		for (var i = 0; i < td.length; i++)
 		{
 			//alert(td[i].cellIndex);
-			td[i].innerText = subject;
+			td[i].innerText = i + "번째 td";
+		}
+		*/
+		/*
+		// i를 4씩 증가시켜 td의 개수만큼 테이블에 input값 넣기
+		for (var i = 0; i < td.length; i+=4)
+		// → 월요일에만 값이 채워짐
+		for (var i = 1; i < td.length; i+=4)
+		// → 화요일에만 값이 채워짐
+		for (var i = 2; i < td.length; i+=4)
+		// → 수요일에만 값이 채워짐
+		{
+			td[i].innerText = i + "번째 td";
+		}
+		*/
+		/*
+		// 요일별로 값 채우기
+		for (var i = day; i < td.length; i+=4)
+		{
+			td[i].innerText = i + "번째 td";
+		}
+		*/
+		/*
+		// 우선 4씩 반복이니 *4
+		// day(0) / start(1)*4 	 → td(0)
+		// day(0) / start(2)*4 	 → td(4)
+		// day(0) / start(3)*4 	 → td(8)
+		// day(0) / start(4)*4 	 → td(12)
+		
+		// day(1) / start(1)*4 	 → td(1)
+		// day(1) / start(2)*4 	 → td(5)
+		
+		// day(2) / start(1)*4 	 → td(2)
+		// day(2) / start(2)*4 	 → td(6)
+		
+		// 0번째 자리부터 채워야 하는데
+		// 시작시간 / 끝시간이 1로 시작하므로 -1
+		// day    + (start-1)*4  → td
+		for (var i = day+(start-1)*4; i < td.length; i+=4)
+		{
+			td[i].innerText = i + "번째 td";
 		}
 		*/
 		
-		for (var i = ((day-1)+(start-1)*4); i <= ((day-1)+(end-1)*4); i+=4)
+		
+		// 시간이 4일씩 반복하므로 시간에 *4
+		// (요일(td)이 4가지 이기 때문에... *4)
+		// 0번째 자리부터 채워야 하는데
+		// 시작시간 / 끝시간이 1로 시작하므로 -1
+		for (var i = day+(start-1)*4; i <= day+(end-1)*4; i+=4)
 		{
-			td[i].style.backgroundColor = color;
+			td[i].style.backgroundColor = color;	// td에 들어갈 입력값의 색상
 			td[i].innerText = subject;
-			
 		}
+		
+		// 추가한 후 제목 입력칸 비워두고 커서 올리기
+ 		document.getElementById("subject").value= "";
+ 		document.getElementById("subject").focus();
 	}
 </script>
 </head>
@@ -140,10 +190,10 @@
 	
 	날짜
 	<select name="day" id="day">
-		<option value="1">월요일</option>
-		<option value="2">화요일</option>
-		<option value="3">수요일</option>
-		<option value="4">목요일</option>
+		<option value="0">월요일</option>
+		<option value="1">화요일</option>
+		<option value="2">수요일</option>
+		<option value="3">목요일</option>
 	</select>
 	<br />
 	

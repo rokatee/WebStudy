@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest17.html</title>
+<style type="text/css">
+	
+	table
+	{
+		background: #eeeeee;
+		border: 1px solid gray;
+	}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	/*
+	○ :even (짝수)
+		- returns : Array<Element>
+		- 					. . .
+		- 매칭된 원소들 중 인덱스가 짝수인 것을 모두 반환한다.
+
+	○ :odd (홀수)
+		- returns : Array<Element>
+		- 					. . .
+		- 매칭된 원소들 중 인덱스가 짝홀수인 것을 모두 반환한다.
+	*/
+	
+	$(document).ready(function()
+	{
+		$("#btn1").click(function()
+		{
+			//alert("버튼클릭확인");
+			
+			// 선택된 엘리먼트 확인
+			$("tr:even").css("background-color", "#bbbbff");
+		});
+
+		$("#btn2").click(function()
+		{
+			//alert("버튼클릭확인");
+			
+			// 선택된 엘리먼트 확인
+			$("tr:odd").css({backgroundColor : "#223322", color : "white"});
+		});
+	});
+
+</script>
+</head>
+<body>
+
+<button type="button" id="btn1">확인 1</button>
+<button type="button" id="btn2">확인 2</button>
+<br /><br />
+
+<table>
+	<tr>
+		<td>Row Index #0</td>
+	</tr>
+	<tr>
+		<td>Row Index #1</td>
+	</tr>
+	<tr>
+		<td>Row Index #2</td>
+	</tr>
+	<tr>
+		<td>Row Index #3</td>
+	</tr>
+	<tr>
+		<td>Row Index #4</td>
+	</tr>
+	<tr>
+		<td>Row Index #5</td>
+	</tr>
+	<tr>
+		<td>Row Index #6</td>
+	</tr>
+	<tr>
+		<td>Row Index #7</td>
+	</tr>
+	<tr>
+		<td>Row Index #8</td>
+	</tr>
+	<tr>
+		<td>Row Index #9</td>
+	</tr>
+</table>
+
+</body>
+</html>

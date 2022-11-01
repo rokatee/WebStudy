@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest15.html</title>
+<style type="text/css">
+	
+	td
+	{
+		color: blue;
+		font-weight: bold;
+	}
+	
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	/*
+	○ :first (첫 번째)
+		- returns : Element
+		- 매칭되는 원소들 중 첫 번째 것만 반환한다
+	○ :last (마지막)
+		- returns : Element
+		- 매칭되는 원소들 중 마지막 것만 반환한다
+	*/
+	
+	$(document).ready(function()
+	{
+		$("#btn1").click(function()
+		{
+			//alert("버튼클릭확인");
+			
+			// 선택된 엘리먼트 확인
+			$("tr:first").css("font-style", "italic");
+		});
+		$("#btn2").click(function()
+		{
+			//alert("버튼클릭확인");
+			
+			// 선택된 엘리먼트 확인
+			$("tr:last").css({backgroundColor : "yellow", fontWeight : "bolder"});
+		});
+	});
+
+</script>
+</head>
+<body>
+
+<button type="button" id="btn1">확인 1</button>
+<button type="button" id="btn2">확인 2</button>
+<br /><br />
+
+<table>
+	<tr>
+		<td>Row 1</td>
+	</tr>
+	<tr>
+		<td>Row 2</td>
+	</tr>
+	<tr>
+		<td>Row 3</td>
+	</tr>
+	<tr>
+		<td>Row 4</td>
+	</tr>
+	<tr>
+		<td>Row 5</td>
+	</tr>
+</table>
+
+</body>
+</html>

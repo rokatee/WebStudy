@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest10_jQuery_1.html</title>
+<style type="text/css">
+	
+	body, div, span, table, th, td
+	{
+		font-size: 12px;
+	}
+	
+	#list
+	{
+		border: solid 1px gray;
+		border-collapse: collapse;
+		width: 800px;
+	}
+	
+	#list th
+	{
+		width: 152px;
+	}
+	
+	#list td
+	{
+		width: 162px;
+	}
+	
+	#list th, #list td
+	{
+		border: solid 1px gray;
+		padding: 3px;
+	}
+	
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	$(document).ready(function()
+	{
+		$("#btn").click(function()
+		{
+			//alert("버튼클릭확인");
+			
+			// 선택된 엘리먼트 확인
+			var subject = $("#subject").val();
+			var day = parseInt($("#day").val());
+			var start = parseInt($("#start").val());
+			var end = parseInt($("#end").val());
+			var color = $("#color").val();
+			
+			//alert(subject + " / " + day + " / " + start + " / " + end + " / " + color);
+			
+			// 테스트
+			//$("td:eq(2)").css("background-color", "red");
+			//$("td:eq(2)").css("color", "red").text(subject);
+			
+			
+			// javascript 로 처리했던 기능을 jQuery 로 구성하면 더 간단하다.
+			// 1. 모든 tr 중 원하는 행을 찾고 (eq(i))
+			// 2. 그 찾은 tr의 자식 td 중 원하는 td를 찾아서
+			//    색 바꾸기 / 제목 입력
+			
+			// 방법 1
+			for (var i = start; i <= end; i++)
+			{
+				$("tr:eq(" + i + ") td:eq(" + day + ")").css("background-color", color).text(subject);
+				//$("tr:eq(" + i + ")").children().eq(day+1).css("background-color", color).text(subject);
+				
+				//$("#list tr").eq(i).text(item);
+				//$("#list tr").eq(i).children().text(item);
+				//$("#list tr").eq(i).children().eq(week).text(item);
+				//$("#list tr").eq(i).children().eq(week).css("background-color", color).text(item);
+			}
+			
+			/*
+			// 방법 2
+			for (var i = day+(start-1)*4; i <= day+(end-1)*4; i+=4)
+			{
+				$("td:eq(" + i + ")").css("background-color", color).text(subject);
+				$("td:eq(" + i + ")").css("background-color", color).html(subject);
+			}
+			*/
+			
+			$("#subject").val("");
+			$("#subject").focus();
+			
+		});
+	});
+
+</script>
+</head>
+<body>
+
+<div>
+	<h1>일정 관리</h1>
+	<hr />
+</div>
+
+<div>
+	<table id="list">
+		<tr>
+			<th></th>
+			<th>월</th>
+			<th>화</th>
+			<th>수</th>
+			<th>목</th>
+		</tr>
+		<tr>
+			<th>11:00</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>12:00</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>13:00</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>14:00</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>15:00</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>16:00</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>17:00</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th>18:00</th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+</div>
+<br />
+
+<div>
+	<label>제목</label>
+	<input type="text" name="subject" id="subject"/>
+	<br>
+
+	<label>요일</label>
+	<select name="day" id="day">
+		<option value="0">월</option>
+		<option value="1">화</option>
+		<option value="2">수</option>
+		<option value="3">목</option>
+	</select>
+	<br>
+
+	<label>시간</label>
+	<select name="start" id="start">
+		<option value="1">11:00</option>
+		<option value="2">12:00</option>
+		<option value="3">13:00</option>
+		<option value="4">14:00</option>
+		<option value="5">15:00</option>
+		<option value="6">16:00</option>
+		<option value="7">17:00</option>
+		<option value="8">18:00</option>
+	</select>
+	~
+	<select name="end" id="end">
+		<option value="1">11:00</option>
+		<option value="2">12:00</option>
+		<option value="3">13:00</option>
+		<option value="4">14:00</option>
+		<option value="5">15:00</option>
+		<option value="6">16:00</option>
+		<option value="7">17:00</option>
+		<option value="8">18:00</option>
+	</select>
+	<br>
+	
+	<label>색상</label>
+	<select name="color" id="color">
+		<option value="red">빨강</option>
+		<option value="blue">파랑</option>
+		<option value="green">초록</option>
+		<option value="gray">회색</option>
+	</select>
+	
+</div>
+<br>
+
+<button type="button" id="btn" class="btn">일정 추가</button>
+
+</body>
+</html>

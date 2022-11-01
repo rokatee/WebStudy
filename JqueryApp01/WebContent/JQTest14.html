@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest14.html</title>
+<style type="text/css">
+
+   div, span
+   {
+   
+      display:block;
+      width: 80px;
+      height: 80px;
+      margin: 5px;
+      background: #bfa;
+      float: left;
+      font-size: 14px;
+   }
+   div#small
+   {
+      width: 60px;
+      
+      height: 25px;
+      
+      background: #fab;
+      
+      font-size: 12px;
+      
+   }
+   
+   
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+   /*
+   ○ prev ~ sibling (앞원소 형제원소)
+      - returns : Array<Element>
+      - 주어진 앞 원소와 형제인 뒤 원소를 찾아 모두 배열로 반환
+   */
+   $(document).ready(function()
+   {
+      $("button").click(function()
+      {
+         $("#prev ~ div").css("border", "3px groove blue");
+      });
+      
+   });
+
+
+
+
+</script>
+</head>
+<body>
+
+<button type="button">확인</button><br><br>
+
+<div>div</div>
+<div id="prev">div#prev</div>
+<div>div sibling</div>
+<div>div sibling<div id="small">div neice</div></div>
+<div>div sibling (not div)</div>
+<div>div sibling</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest12.html</title>
+<style type="text/css">
+	
+	body
+	{
+		font-size: 14px;
+	}
+	
+	span#main
+	{
+		display: block;
+		background: yellow;
+		height: 110px;
+	}
+	
+	button 
+	{
+		display: block;
+		float: left;
+		margin: 2px;
+		font-size: 14px;
+	}
+	
+	div
+	{
+		width: 90px;
+		height: 90px;
+		margin: 5px;
+		float: left;
+		background: #bbf;
+		font-weight: bold;
+	}
+	
+	div.mini
+	{
+		width: 30px;
+		height: 30px;
+		background: green;
+	}
+
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	/* 
+	○ parent > child (부모, 자식)
+	   - returns : Array<Element>
+	   - 주어진 조상에 포함된 주어진 자손에 배치되는 1단계의 자손(자식)들만
+	     모두 배열로 반환
+	*/
+	
+	$(document).ready(function()
+	{
+		$("#check").click(function()
+		{
+			// 선택된 엘리먼트 확인
+			$("#main > *").css("border", "3px double red");
+		});
+	});
+	
+</script>
+</head>
+<body>
+
+<button type="button" id="check">확인</button>
+
+<span id="main">
+	<div></div>
+	
+	<button type="button">child</button>
+	
+	<div class="mini"></div>
+	
+	<div>
+		<div class="mini"></div>
+		<div class="mini"></div>
+	</div>
+	
+	<div>
+		<button type="button">Grand</button>
+	</div>
+	
+	<div>
+		<span>A Span <em>in</em> Child</span>
+	</div>
+	
+	<span>A Span in main</span>
+	
+</span>
+
+</body>
+</html>

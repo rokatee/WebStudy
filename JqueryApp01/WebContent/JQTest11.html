@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest11.html</title>
+<style type="text/css">
+
+	body
+	{
+		font-size: 14px;
+	}
+   
+	form
+	{
+		border: 2p green solid;
+		padding: 2px;
+		margin: 0px;
+		background: #efe;
+	}
+	
+	div
+	{
+		color:red;
+	}
+
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+   /*
+   조상 선택자
+      -returns : Array<Element>
+      -주어진 조상에 주어진 자손을 가진 모든 자손을 배열로 반환
+   */
+   $(document).ready(function()
+{
+	$("button").click(function()
+	{
+		//alert("버튼클릭");
+		
+		$("form input").css("border", "2px dotted blue");
+	});
+});
+      
+</script>
+</head>
+<body>
+
+<form action="">
+   <div>조상, 자손 선택자</div>
+ 
+   <button type="button">확인</button><br />
+ 
+   <label for="">Child</label>
+ 
+   <input type="text" name="name"/>
+ 
+   <div>
+	   <label for="">GrandChild</label>
+	   <input type="text" name="newsletter"/>
+   </div>
+</form>
+
+확인 : <input type="text" name="name"/>
+
+</body>
+</html>
