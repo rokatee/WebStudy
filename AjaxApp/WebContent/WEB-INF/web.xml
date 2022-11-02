@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
-  <display-name>WebApp00</display-name>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
+	id="WebApp_ID" version="3.1">
+  <display-name>AjaxApp</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -9,4 +12,50 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- AjaxTest02.jsp -->
+  <servlet>
+  	<servlet-name>test02</servlet-name>
+  	<servlet-class>com.test.ajax.Test02</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>test02</servlet-name>
+  	<url-pattern>/test02.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- AjaxTest03.jsp -->
+  <servlet>
+  	<servlet-name>test03</servlet-name>
+  	<servlet-class>com.test.ajax.Test03</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>test03</servlet-name>
+  	<url-pattern>/test03.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- AjaxTest04.jsp -->
+  <servlet>
+  	<servlet-name>test04</servlet-name>
+  	<servlet-class>com.test.ajax.Test04</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>test04</servlet-name>
+  	<url-pattern>/test04.do</url-pattern>
+  </servlet-mapping>
+  	
+  <!-- AjaxTest05.jsp -->
+  <servlet>
+  	<servlet-name>test05</servlet-name>
+  	<servlet-class>com.test.ajax.Test05</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>test05</servlet-name>
+  	<url-pattern>/test05.do</url-pattern>
+  </servlet-mapping>
+  	
+  
 </web-app>
