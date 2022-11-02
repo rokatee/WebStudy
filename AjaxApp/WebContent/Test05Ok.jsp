@@ -17,7 +17,7 @@
  	//    텍스트가 아닌 XML 형태로 반환하려고 하는 것이다
 %><?xml version="1.0" encoding="UTF-8"?>
 <list>
-	<c:forEach var="item" item="${list }">
+	<c:forEach var="item" items="${list }">
 	<item>
 		<zipcode>${item.zipCode }</zipcode>
 		<address>${item.address }</address>

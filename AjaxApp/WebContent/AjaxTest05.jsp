@@ -162,15 +162,16 @@
 	<h1>회원가입</h1>
 	<h2>우편번호 검색</h2>
 	<hr />
-	
+	<!-- 
 	<p>- AjaxTest05.jsp</p>
 	<p>- ajax.js</p>
 	<p>- main.css</p>
-	<p>- com.test.ajax.Test05.java</p> <!-- Servlet (중복검사를 맡는 곳)-->
+	<p>- com.test.ajax.Test05.java</p> Servlet (중복검사를 맡는 곳)
 	<p>- Test05Ok.jsp</p>
 	<p>- web.xml</p>
 	<p>- URL : test05.do</p>
-	<p>- DB 연동 → 자료구조 대체 활용<!--  → admin, superman은 등록되어 있다 가정 --></p>
+	<p>- DB 연동 → 자료구조 대체 활용 → admin, superman은 등록되어 있다 가정</p>
+	 -->
 </div>
 
 <table class="table">
