@@ -12,6 +12,11 @@
 <title>AjaxTest05.jsp</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <style type="text/css">
+	.doNot
+	{
+		background-color: #d5d5d5;
+	}
+	
 	#result
 	{
 		display: inline-block;
@@ -153,6 +158,18 @@
 					+ "'>[" + zipcodeText +"] " + addressText + "</option>";
 		}
 	}
+
+	function selectZipCode(sel)
+	{
+		//alert(sel.value);
+		
+		if (sel.value != "0")
+		{
+			document.getElementById("addr1").value = sel.value.split("/")[0]
+			document.getElementById("addr2").value = sel.value.split("/")[1]
+			document.getElementById("addr3").focus();
+		}
+	}
 	
 </script>
 </head>
@@ -166,11 +183,11 @@
 	<p>- AjaxTest05.jsp</p>
 	<p>- ajax.js</p>
 	<p>- main.css</p>
-	<p>- com.test.ajax.Test05.java</p> Servlet (중복검사를 맡는 곳)
+	<p>- com.test.ajax.Test05.java</p> Servlet (주소검색을 맡는 곳)
 	<p>- Test05Ok.jsp</p>
 	<p>- web.xml</p>
 	<p>- URL : test05.do</p>
-	<p>- DB 연동 → 자료구조 대체 활용 → admin, superman은 등록되어 있다 가정</p>
+	<p>- DB 연동 → 자료구조 대체 활용 → 서교동, 신사동 은 등록되어 있다 가정</p>
 	 -->
 </div>
 
@@ -201,7 +218,7 @@
 			<input type="text" id="addr" class="control txt" placeholder="동 입력"/>
 			<input type="button" value="검색하기" class="control btn" onclick="search()"/>
 			<br />
-			<select id="addrResult" class="control">
+			<select id="addrResult" class="control" onchange="selectZipCode(this)">
 				<option>주소를 입력하세요</option>
 			</select>
 		</td>

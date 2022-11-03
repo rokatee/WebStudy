@@ -35,7 +35,7 @@
   	<url-pattern>/test03.do</url-pattern>
   </servlet-mapping>
   
-  <!-- AjaxTest04.jsp -->
+  <!-- AjaxTest04.jsp 아이디 중복검사 -->
   <servlet>
   	<servlet-name>test04</servlet-name>
   	<servlet-class>com.test.ajax.Test04</servlet-class>
@@ -46,7 +46,7 @@
   	<url-pattern>/test04.do</url-pattern>
   </servlet-mapping>
   	
-  <!-- AjaxTest05.jsp -->
+  <!-- AjaxTest05.jsp 우편번호 검색 확인 -->
   <servlet>
   	<servlet-name>test05</servlet-name>
   	<servlet-class>com.test.ajax.Test05</servlet-class>
@@ -55,6 +55,17 @@
   <servlet-mapping>
   	<servlet-name>test05</servlet-name>
   	<url-pattern>/test05.do</url-pattern>
+  </servlet-mapping>
+  	
+  <!-- AjaxTest06.jsp 추천 검색어 처리 -->
+  <servlet>
+  	<servlet-name>test06</servlet-name>
+  	<servlet-class>com.test.ajax.Test06</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>test06</servlet-name>
+  	<url-pattern>/test06.do</url-pattern>
   </servlet-mapping>
   	
   

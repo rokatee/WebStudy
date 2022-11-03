@@ -60,7 +60,6 @@ public class Test05 extends HttpServlet
 			list.add(new ZipCodeDTO("04044", "서울특별시 마포구 독막로3길 21-6 (서교동)"));
 			list.add(new ZipCodeDTO("04044", "서울특별시 마포구 독막로3길 23 (서교동)"));
 			list.add(new ZipCodeDTO("04047", "서울특별시 마포구 독막로3길 24 (서교동)"));
-			
 		}
 		else if (addr.indexOf("신사") > -1)
 		{
