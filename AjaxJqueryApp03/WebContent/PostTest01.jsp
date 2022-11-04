@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>GetTest01.jsp</title>
+<title>PostTest01.jsp</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <style type="text/css">
 	
@@ -22,9 +22,14 @@
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-
-	// ○ 『$.get(url, data, callback);』
-	//    - 매개변수로 전달받은 URL 을 사용하여 서버에 대한 GET 요청을 전송한다
+	
+	// ○ 『$.post(url, data, callBack);』
+	//	  - 매개변수로 넘겨받은 url 을 사용하여 서버에 대한 POST 요청을 전송한다
+	//	  - 매개변수
+	//      ·url      : (String) POST 메소드로 연결하는 서버 측 URL
+	//      ·data     : (Object) 이름과 값의 쌍으로 프로퍼티를 가진 객체
+	//				     미리 구성 및 인코딩 된 쿼리 스트링
+	//      ·callBack : (Function) 요청이 완료되면 호출되는 함수
 	$(function()
 	{
 		$("#sendBtn").click(function()
@@ -35,20 +40,23 @@
 			var su2 = $("#su2").val();
 			var oper = $("#oper").val();
 			
-			//$.get(요청URL, 세 개의 데이터);
-			//$.get(요청URL, {키:값, 키:값, 키:값}, function(인자){인자에 대한 처리 → 업무 처리; });
-			//$.get("GetTest01ok.jsp", {키:값, 키:값, 키:값}, function(인자){인자에 대한 처리 → 업무 처리; });
-			$.get("GetTest01ok.jsp"
-				, { 
-					su1:su1
-					, su2:su2
-					, oper:oper
-				},	function(args)
-				{
-					// 인자에 대한 처리 → 업무 처리
-					$("#result").html(args);
-				});
-		}); 
+			// post 방식으로 처리
+			$.post("PostTest01ok.jsp"
+			, {
+				su1 : su1
+				, su2 : su2
+				, oper : oper
+			}
+			, function(args)
+			{
+				$("#resultDiv").html(args);
+				
+			});
+			
+			
+			
+			
+		});
 	});
 
 </script>
@@ -56,7 +64,7 @@
 <body>
 
 <div>
-	<h1>jquery의 get() 메소드 실습</h1>
+	<h1>jquery의 post() 메소드 실습</h1>
 	<hr />
 </div>
 
@@ -77,7 +85,7 @@
 </div>
 <br />
 
-<div id="result">
+<div id="resultDiv">
 	<!-- 10 + 20 = 30 -->
 </div>
 <br /><br />

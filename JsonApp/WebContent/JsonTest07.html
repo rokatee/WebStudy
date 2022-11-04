@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest07.html</title>
+<script type="text/javascript">
+	
+	// [](브라켓)을 사용하였기에 이들의 정체성은 모두 배열
+	var myJsonObject7 = 
+	[
+		"test"
+	]
+
+	var myJsonObject7_1 = 
+	[
+		"test", "test2"
+	]
+	
+	var myJsonObject7_2 = 
+	[
+		"test", "test2", 123, 123+1
+	]
+	
+	
+
+</script>
+</head>
+<body>
+
+	<!--  -->
+
+<form action="">
+	<input type="button" value="click1" onclick="alert(myJsonObject7)" />
+	<!-- test -->
+	
+	<input type="button" value="click2" onclick="alert(myJsonObject7_1)" />
+	<!-- test,test2 -->
+	
+	<input type="button" value="click3" onclick="alert(myJsonObject7_2)" />
+	<!-- test,test2,123,124 -->
+	<!-- check → 123+1 이 아닌 124 로 나옴을 관찰 -->
+	<!-- 배열로 생성해서 클릭1~3처럼 쌩으로 찍으면 더미형태로 관찰됨 -->
+	<br /><br />
+
+	
+	<input type="button" value="click4" onclick="alert(typeof myJsonObject7)" />
+	<!-- object -->
+	
+	<input type="button" value="click5" onclick="alert(typeof myJsonObject7_1)" />
+	<!-- object -->
+	
+	<input type="button" value="click6" onclick="alert(typeof myJsonObject7_2)" />
+	<!-- object -->
+	<br /><br />
+	
+	
+	<input type="button" value="click7" onclick="alert(myJsonObject7[0])" />
+	<!-- test -->
+	
+	<input type="button" value="click8" onclick="alert(typeof myJsonObject7[0])" />
+	<!-- string -->
+	<br /><br />
+
+
+	<input type="button" value="click9" onclick="alert(myJsonObject7[1])" />
+	<!-- undefined -->
+	
+	<input type="button" value="click10" onclick="alert(typeof myJsonObject7[1])" />
+	<!-- undefined -->
+	<!-- → 자바 였다면 '어레이 인덱스 아웃오브바운드 익셉션' 에러가 떴을 것 -->
+	<br /><br />
+	
+	
+	<input type="button" value="click11" onclick="alert(myJsonObject7_1[0] + myJsonObject7_1[1])" />
+	<!-- testtest2 -->
+	
+	<input type="button" value="click12" onclick="alert(typeof (myJsonObject7_1[0] + myJsonObject7_1[1]))" />
+	<!-- string -->
+	<br /><br />
+	
+	
+	<input type="button" value="click13" onclick="alert(myJsonObject7_2[2] + myJsonObject7_2[3])" />
+	<!-- 247 -->
+	
+	<input type="button" value="click14" onclick="alert(typeof (myJsonObject7_2[2] + myJsonObject7_2[3]))" />
+	<!-- number -->
+	<br /><br />
+
+	
+	<input type="button" value="click15" onclick="alert(myJsonObject7_1[0] + myJsonObject7_2[2])" />
+	<!-- test123 -->
+	
+	<input type="button" value="click16" onclick="alert(typeof (myJsonObject7_1[0] + myJsonObject7_2[2]))" />
+	<!-- string -->
+	<br /><br />
+	
+	
+	<input type="button" value="click17" onclick="alert(myJsonObject7_2[3] + myJsonObject7_2[4])" />
+	<!-- NaN -->
+	
+	<input type="button" value="click18" onclick="alert(typeof (myJsonObject7_2[3] + myJsonObject7_2[4]))" />
+	<!-- number -->
+	<!-- 숫자와 undefined 를 더했을 때 나오는 값을 관찰하라 -->
+	<!-- 클릭17에선 NaN 이라고 하지만 클릭18번은 number 가 뜬다 -->
+	<!-- NaN는 number 타입에서 관리한다 -->
+	<br /><br />
+	
+	
+	
+	
+</form>
+
+</body>
+</html>

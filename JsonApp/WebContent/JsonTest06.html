@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest06.html</title>
+<script type="text/javascript">
+	
+	/*
+	// ①
+	var myJsonObject6 = 
+	{
+			"test" : 123
+	}
+	*/
+	
+	/*
+	// ②
+	var myJsonObject6 = 
+	{
+			"test" : 123.456
+	}
+	*/
+	
+	/*
+	// ③
+	var myJsonObject6 = 
+	{
+			"test" : true
+	}
+	*/
+	
+	// ④
+	var myJsonObject6 = 
+	{
+			"test" : null
+	}
+	
+	
+</script>
+</head>
+<body>
+
+<form>
+	<input type="button" value="click1" onclick="alert(myJsonObject6.test)" />
+	<!-- ① 123 -->
+	<!-- ② 123.456 -->
+	<!-- ③ true -->
+	<!-- ④ null -->
+	
+	<input type="button" value="click2" onclick="alert(typeof myJsonObject6.test)" />
+	<!-- ① number -->
+	<!-- ② number -->
+	<!-- ③ boolean -->
+	<!-- ④ object -->
+	<br /><br />
+	
+	
+	<input type="button" value="click3" 
+		onclick="myJsonObject6.test=123; alert(myJsonObject6.test)"/>
+	<!-- 123 -->
+	
+	<input type="button" value="click4" 
+		onclick="myJsonObject6.test=123; alert(typeof myJsonObject6.test)"/>
+	<!-- number -->
+	<br /><br />
+	
+	
+	<input type="button" value="click5" 
+		onclick="myJsonObject6.test='123'; alert(myJsonObject6.test)"/>
+	<!-- 123 -->
+
+	<input type="button" value="click6" 
+		onclick="myJsonObject6.test='123'; alert(typeof myJsonObject6.test)"/>
+	<!-- string -->
+	<!-- 클릭5,6 번과 같이 숫자로 구성되어 있더라도
+	     number가 아닌 string 일수도 있음을 인지하자 -->
+	
+	
+</form>
+
+</body>
+</html>
