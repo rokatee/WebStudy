@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BootTest01.html</title>
+
+<!-- 부트스트랩 적용 이전과 이후 내용을 비교 확인 -->
+<!-- 각 엘리먼트들이 갖는 시각적인 효과 및 여백 정책 -->
+<!-- 브라우저마다 기본 여백 정책 다르다. -->
+
+<!--  
+	처음 디자인하는 출발지점을 같게 하려고 
+	부트스트랩이 적용되면 기본 여백이 없다.
+	부트스트랩 코드 주석처리해보고 코드 차이 확인해보자.
+	
+	일반적인 엘리먼트도 부트스트랩 적용 여부에 따라
+	많이 달라진다.  (큰 차이 없는 엘리먼트도 있지만)
+-->
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<h1>제목입니다.</h1>
+
+평범한 텍스트입니다.
+
+<h1>h1. Bootstrap heading <small>Secondary text</small></h1>
+<h2>h2. Bootstrap heading <small>Secondary text</small></h2>
+<h3>h3. Bootstrap heading <small>Secondary text</small></h3>
+<h4>h4. Bootstrap heading <small>Secondary text</small></h4>
+<h5>h5. Bootstrap heading <small>Secondary text</small></h5>
+<h6>h6. Bootstrap heading <small>Secondary text</small></h6>
+<br /><br />
+
+
+<h1>회원 게시판 <small>회원만 쓰기 가능</small></h1>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+Animi sequi neque est perspiciatis quo maxime similique consequatur. 
+Sapiente corporis laboriosam temporibus totam commodi dolores debitis 
+reprehenderit est fuga amet mollitia?</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+Aut veritatis dolores harum minima et pariatur nisi nobis 
+consectetur possimus quam beatae hic deserunt quia molestias 
+adipisci minus rerum fugiat maiores?</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+Doloribus modi provident quibusdam cumque hic unde quo 
+nesciunt cum facilis repudiandae nihil sunt sapiente quod? 
+Id ipsa explicabo eos corrupti molestias.</p>
+<br /><br />
+
+
+우리는 <mark>강조할 텍스트</mark>에 mark 태그를 사용할 수 있다. <br /><br />
+
+<!-- 
+	부트스트랩 들어오면서, 반응형 웹/그리드를 최종적으로 전달하려고 들어온거지만
+	파이널이나 실무에서 부트스트랩을 사용하게 된다면
+	시각적인 효과에 의존하여 사용하지말고,
+	의미를 전달할 수 있는 element 골라서 사용할 것을 당부한다.
+	html의 웹 표준할 때도 강조했던 것
+-->
+
+<!-- ↓ 의미 전달하고 있는 문장 -->
+이 텍스트 라인은 <del>삭제된 텍스트</del>로 다루어지고 있음을 의미한다. <br /><br />
+
+<!-- ↓ 의미 전달하지 않음. 의미 전달하는 태그 아니다. -->
+이 텍스트 라인은 해당 텍스트에 <s>시각적인 효과</s>를 부여하기 위해 사용되고 있다. <br /><br />
+<!--  
+	그래서 둘 다 보여지는 효과는 똑같지만, 
+	del 은 써도 되는 태그이고, s 는 가급적이면 쓰지 말라는 태그인 것이다.
+-->
+
+
+
+<!-- ↓ 의미 전달하고 있는 문장 -->
+이 텍스트 라인은 문서에 <ins>추가적으로 삽입</ins>되었음을 의미한다. <br /><br />
+
+<!-- ↓ 의미 전달하지 않음. 의미전달하는 태그 아니다. -->
+이 텍스트 라인은 <u>밑줄 처리</u>가 되도록 시각적인 효과를 부여한다. <br /><br />
+
+<!--  
+	그래서 둘 다 보여지는 효과는 똑같지만, 
+	ins 는 써도 되는 태그이고, u 는 가급적이면 쓰지 말라는 태그인 것이다.
+-->
+
+
+<!--  
+	bootstrap 사용할 때, 의미를 어떻게 전달하게 하느냐가 중요하다.
+	버튼을 div로 보이게, div를 버튼으로 보이게, 이미지 태그를 버튼으로 등등
+	이 페이지를 이용하는 사용자가 얼마든지 헷갈리게 할 수 있기 때문에
+	태그할 때, 의미 잘 전달할 수 있게 만들어야/활용해야 한다.
+	
+	웹표준 근거해서 0점자리 page 만들면
+	div로 만들었는데 시각적으로 불편한 장애우들이 이용하는 사이트에서는
+	'이거 버튼이야~' 라고 알려줘버린다..
+-->
+<div class="accordion accordion-flush" id="accordionFlushExample">
+	<div class="accordion-item">
+		<h2 class="accordion-header" id="flush-headingOne">
+			<button class="accordion-button collapsed" type="button"
+				data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+				aria-expanded="false" aria-controls="flush-collapseOne">
+				Accordion Item #1</button>
+		</h2>
+		<div id="flush-collapseOne" class="accordion-collapse collapse"
+			aria-labelledby="flush-headingOne"
+			data-bs-parent="#accordionFlushExample">
+			<div class="accordion-body">
+				Placeholder content for this accordion, which is intended to
+				demonstrate the
+				<code>.accordion-flush</code>
+				class. This is the first item's accordion body.
+			</div>
+		</div>
+	</div>
+	<div class="accordion-item">
+		<h2 class="accordion-header" id="flush-headingTwo">
+			<button class="accordion-button collapsed" type="button"
+				data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+				aria-expanded="false" aria-controls="flush-collapseTwo">
+				Accordion Item #2</button>
+		</h2>
+		<div id="flush-collapseTwo" class="accordion-collapse collapse"
+			aria-labelledby="flush-headingTwo"
+			data-bs-parent="#accordionFlushExample">
+			<div class="accordion-body">
+				Placeholder content for this accordion, which is intended to
+				demonstrate the
+				<code>.accordion-flush</code>
+				class. This is the second item's accordion body. Let's imagine
+				this being filled with some actual content.
+			</div>
+		</div>
+	</div>
+	<div class="accordion-item">
+		<h2 class="accordion-header" id="flush-headingThree">
+			<button class="accordion-button collapsed" type="button"
+				data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+				aria-expanded="false" aria-controls="flush-collapseThree">
+				Accordion Item #3</button>
+		</h2>
+		<div id="flush-collapseThree" class="accordion-collapse collapse"
+			aria-labelledby="flush-headingThree"
+			data-bs-parent="#accordionFlushExample">
+			<div class="accordion-body">
+				Placeholder content for this accordion, which is intended to
+				demonstrate the
+				<code>.accordion-flush</code>
+				class. This is the third item's accordion body. Nothing more
+				exciting happening here in terms of content, but just filling
+				up the space to make it look, at least at first glance, a bit
+				more representative of how this would look in a real-world
+				application.
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

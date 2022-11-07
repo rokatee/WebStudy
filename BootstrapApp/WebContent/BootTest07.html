@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BootTest07.html</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<style type="text/css">
+
+	div { border: 1px solid gray; }
+
+</style>
+</head>
+<body>
+
+<!--  
+	http://bootstrapk.com/css/
+	
+									 			★==========
+	※ 그리드 시스템 → 화면 분할(영역 분할) → 기본 12 분할
+									 			============★
+	
+					    	 column 
+						 	   ---
+	   사용할 클래스  		『.col-xs』    『.col-sm』  『.col-md』 『.col-lg』
+	   				         	   ---            ---          ---         ---
+	   				       		  x-small	     small        middle      large
+	   				       
+	   브라우저 크기  		 아주 작은 기기    작은 기기     중간 기기	 큰 기기			
+	   (= 디바이스 크기)
+-->
+<div class="row" style="height:100px; background-color: gray">
+	<div class="col-md-4 col-md-6 col-xs-12" style="height: 98px; background-color: orange;">홈메뉴</div>
+	<div class="col-md-2 col-md-12 col-xs-12" style="height: 98px; background-color: silver;">메뉴1</div>
+	<div class="col-md-2 col-md-6 col-xs-12" style="height: 98px; background-color: white;">메뉴2</div>
+	<div class="col-md-2 col-md-6 col-xs-12" style="height: 98px; background-color: green;">메뉴3</div>
+	<div class="col-md-2 col-md-6 col-xs-12" style="height: 98px; background-color: skylbue;">메뉴4</div>
+</div>
+<br /><br />
+md
+md
+md
+md
+md
+
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-8">col-xs-12 .col-sm-6 .col-md-8</div>
+	<div class="col-xs-6 col-sm-3 col-md-4">col-xs-6 .col-sm-3 .col-md-4</div>
+</div>
+<br /><br />
+
+<div class="row">
+	<div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+	<div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+	<!-- 브라우저/뷰포트/디바이스 크기가 xs면 둘이 반반 나눠가질 것이다. -->
+	<!-- 크기가 md 면 4칸4칸 차지하고 마지막 4칸은 비워져있을 것이다. -->
+</div>
+<br /><br />
+
+<div class="row" style="height: 100px; background-color: gray;">
+
+	<div class="col-xs-4 col-sm-12" style="height: 98px; background-color: skyblue;"></div>
+	
+	<div class="col-xs-4 col-sm-6" style="height: 98px; background-color: white;"></div>
+	
+	<!-- 
+	<div class="col-xs-4 col-sm-12 col-md-2"
+	style="height: 98px; background-color: blue;"></div>
+	-->
+	<!-- 현재 background 가 green 인데 green 이 보일 일이 없다. -->
+	
+	<!-- 근데 아래처럼 하게 되면, green 1만큼 보일 것이다. -->
+	<div class="col-xs-4 col-sm-6" style="height: 98px; background-color: orange;"></div>
+	
+</div>
+
+
+</body>
+</html>

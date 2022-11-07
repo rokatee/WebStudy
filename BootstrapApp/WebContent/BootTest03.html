@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BootTest03.html</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<style type="text/css">
+/* 거의 크기, text-align 지정한거밖에 없음 */
+/* 스타일 몇 개 안먹였는데 그럴듯한 게시판 만들어진다. */
+
+	#table1 { width: 720px; }
+	
+	#table1 th { text-align: center; }
+	#table1 th:nth-child(1) { width: 50px; }
+	#table1 th:nth-child(2) { width: 400px; }
+	#table1 th:nth-child(3) { width: 60px; }
+	#table1 th:nth-child(4) { width: 160px; }
+	#table1 th:nth-child(5) { width: 50px; }
+	
+	#table1 td { text-align: center; }
+	#table1 td:nth-child(2) { text-align: left; }
+	#table1 td:nth-child(5) { text-align: right; }
+	
+	#btnSet { margin-top: -10px; }
+	#main { width: 700px; margin: 0px auto; }
+	
+	#tblAdd { width: 600px; }
+	#tblAdd th { width: 150px; text-align: right; padding-right: 15px; }
+	#tblAdd td { width: 450px; }
+	
+</style>
+</head>
+<body>
+
+<h1>회원 가입</h1>
+
+<form style="width: 500px; margin: 20px;">
+
+	<input type="text" class="form-control"/>
+	<br />
+	
+	<textarea cols="" rows="" class="form-control"></textarea>
+	<br />
+	
+	<select class="form-control">
+		<option>Test1</option>
+		<option>Test2</option>
+		<option>Test3</option>
+		<option>Test4</option>
+	</select>
+	<br />
+	
+	<input type="checkbox" class="form-control"/>
+	<br />
+	
+	<a href="#" class="form-control">홈으로</a>
+	<br /><hr /><br />
+	
+	<!-- 버튼의 유형 -->
+	<input type="button" />
+	<input type="button" value="confirm" />
+	<input type="button" value="confirm" class="btn"/>
+	<input type="button" value="confirm" class="btn btn-default"/>
+	<input type="button" value="confirm" class="btn btn-default"/>
+	<input type="button" value="confirm" class="btn btn-success"/>
+	<input type="button" value="confirm" class="btn btn-primary"/>
+	<input type="button" value="confirm" class="btn btn-info"/>
+	<input type="button" value="confirm" class="btn btn-warning"/>
+	<input type="button" value="confirm" class="btn btn-danger"/>
+	<br /><br /><br />
+	
+	<!-- 버튼의 크기 -->
+	<input type="button" value="confirm" class="btn btn-success btn-lg"/>
+	<input type="button" value="confirm" class="btn btn-primary"/>
+	<input type="button" value="confirm" class="btn btn-info btn-sm"/>
+	<input type="button" value="confirm" class="btn btn-info btn-xs"/>
+	<br /><br /><br />
+	
+	<!-- 『btn-block』 : 버튼이 포함되어 있는 부모 요소만큼 꽉 채워서 랜더링한다. -->
+	<input type="button" value="confirm" class="btn btn-primary btn-block" />
+	<br /><br /><br />
+
+	<!-- 버튼의 활성화 -->	
+	<input type="button" value="confirm" class="btn btn-default"/>
+	<input type="button" value="confirm" class="btn btn-default active" />
+	<br><br />
+	<input type="button" value="confirm" class="btn btn-primary"/>
+	<input type="button" value="confirm" class="btn btn-primary active" />
+	<br /><br /><br />
+	
+	
+	
+	
+	<!-- a태그 앵커태그/링크이다. -->
+	<a href="#">네이버</a>
+	
+	<!-- 분명히 링크인데, class를 btn으로 줘버리면
+		 링크가 버튼처럼 되어버림 
+		 그럴 때는 꼭!!!!!! role 속성부여해서 무슨 역할 수행하는지 써야함 
+		 role 속성 친절하게, 누락없이 잘 작성해줘야 한다
+		 특히 시각장애인이 사용하는 사이트에선 중요함 -->
+	<a href="#" class="btn btn-primary" role="button">네이버</a>
+	
+	<br /><br /><br /><br /><br />
+	
+</form>
+<br /><br />
+
+<div id="main">
+
+	<h1>게시판</h1>
+		
+	<table class="table table-striped" id="table1">
+		<tr>
+			<th>번호</th>
+			<th>제목</th>
+			<th>이름</th>
+			<th>날짜</th>
+			<th>읽음</th>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>게시판 테스트입니다.</td>
+			<td>민찬우</td>
+			<td>2022-11-07</td>
+			<td>22</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>게시판 테스트일껄요.</td>
+			<td>김태민</td>
+			<td>2022-11-07</td>
+			<td>28</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>게시판 테스트이기를.</td>
+			<td>유동현</td>
+			<td>2022-11-07</td>
+			<td>35</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>게시판 테스트인가요.</td>
+			<td>김유림</td>
+			<td>2022-11-07</td>
+			<td>39</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>게시판 테스트인거죠.</td>
+			<td>홍길동</td>
+			<td>2022-11-07</td>
+			<td>32</td>
+		</tr>
+	</table>
+	
+	<div id="btnSet">
+		<input type="button" value="글쓰기" class="btn btn-default"/>
+		<input type="button" value="새로고침" class="btn btn-default"/>
+	</div>
+
+</div>
+<br /><br /><br /><br />
+
+
+<div id="main">
+
+	<h1>게시판 글쓰기</h1>
+	
+	<!-- form 만들고 안에 컨텐츠들 class=form-control로 설정하면 
+	     통일성있게 만들 수 있다. -->
+	<form>
+		<table class="table table-bordered" id="tblAdd">
+			<tr>
+				<th>이름</th>
+				<td>
+					<input type="text" class="form-control" placeholder="이름을 입력하세요"/>
+				</td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<td>
+					<input type="text" class="form-control" placeholder="제목을 입력하세요"/>
+				</td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td>
+					<textarea cols="" rows="" class="form-control"
+					placeholder="내용을 입력하세요"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<th>암호</th>
+				<td>
+					<input type="password" class="form-control"
+					placeholder="암호를 입력하세요" />
+				</td>
+			</tr>
+			<tr>
+				<th>파일</th>
+				<td>
+					<input type="file" class="form-control" 
+					placeholder="파일을 선택하세요"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+
+</div>
+<br /><br /><br /><br />
+
+</body>
+</html>
